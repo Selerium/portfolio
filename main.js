@@ -124,10 +124,10 @@ document.querySelector('#app').innerHTML = `
   <header>
     <h1 id="adi"><a href="/">adi.</a></h1>
     <div class="contact-links">
-      <a target="_blank" rel="nofollow" href="https://wa.me/971555532396?text=[PORTFOLIO]%20I'm%20looking%20for%20a%20web%20dev/"><img id="whatsapp" src="./contact-icons/whatsapp logo.png"></a>
-      <a target="_blank" rel="nofollow" href="mailto:johnadithya008@gmail.com"><img id="mail" src="./contact-icons/mail logo.png"></a>
-      <a target="_blank" rel="nofollow" href="https://www.linkedin.com/in/johnadi/"><img id="linkedin" src="./contact-icons/linkedin logo.png"></a>
-      <a target="_blank" rel="nofollow" href="https://www.github.com/Selerium/"><img id="github" src="./contact-icons/github logo.png"></a>
+      <a target="_blank" rel="nofollow" href="https://wa.me/971555532396?text=[PORTFOLIO]%20I'm%20looking%20for%20a%20web%20dev/"><img id="whatsapp" src="contact-icons/whatsapp logo.png"></a>
+      <a target="_blank" rel="nofollow" href="mailto:johnadithya008@gmail.com"><img id="mail" src="contact-icons/mail logo.png"></a>
+      <a target="_blank" rel="nofollow" href="https://www.linkedin.com/in/johnadi/"><img id="linkedin" src="contact-icons/linkedin logo.png"></a>
+      <a target="_blank" rel="nofollow" href="https://www.github.com/Selerium/"><img id="github" src="contact-icons/github logo.png"></a>
     </div>
   </header>
   <div id="gradient-layer"></div>
