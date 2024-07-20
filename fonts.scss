@@ -1,0 +1,70 @@
+@font-face {
+	font-family: "jacques";
+	src: url("/fonts/jacquesfrancois.ttf");
+}
+
+@font-face {
+	font-family: "inkfree";
+	src: url("/fonts/inkfree.ttf");
+}
+
+@font-face {
+	font-family: "rage";
+	src: url("/fonts/rage.ttf");
+}
+
+.javanese {
+	font-family: "javanese";
+}
+
+.inkfree {
+	font-family: "inkfree";
+}
+
+.rage {
+	font-family: "rage";
+}
+
+h1 {
+	margin: 0;
+	font-size: 2rem;
+	letter-spacing: 0.75rem;
+}
+
+p {
+	margin: 0;
+}
+
+button {
+	font-family: 'inkfree';
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.w200 {
+	font-weight: 200;
+}
+
+.w300 {
+	font-weight: 300;
+}
+
+.w400 {
+	font-weight: 400;
+}
+
+.w500 {
+	font-weight: 500;
+}
+
+.w600 {
+	font-weight: 600;
+}
+
+.w700 {
+	font-weight: 700;
+}
+
+.w800 {
+	font-weight: 800;
+}
