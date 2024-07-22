@@ -1,8 +1,6 @@
 @import 'fonts.scss';
 
 :root {
-	overflow: hidden;
-	scroll-behavior: smooth;
 	background-color: black;
 
 	font-family: 'jacques';
@@ -27,15 +25,22 @@
 	}
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	margin: 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	overflow-x: hidden;
+	// overflow-y: hidden;
 
 	canvas {
 		z-index: 1;
+		max-width: 100%;
 	}
 
 	#gradient-layer {
@@ -67,6 +72,7 @@ header {
 	top: 20px;
 	left: 10vw;
 	z-index: 100;
+	mix-blend-mode: difference;
 
 	display: flex;
 	justify-content: space-between;
@@ -74,6 +80,7 @@ header {
 	h1 {
 		cursor: pointer;
 		transition: all 300ms ease;
+		mix-blend-mode: difference;
 
 		a {
 			text-decoration: none;
@@ -86,12 +93,16 @@ header {
 	}
 
 	.contact-links {
+		@media screen and (max-width: 1000px) {
+			display: none;
+		}
 		display: flex;
 		align-items: center;
 		gap: 3rem;
 		z-index: 100;
 
 		a img {
+			mix-blend-mode: difference;
 			cursor: pointer;
 			height: 48px;
 			width: auto;
@@ -105,6 +116,8 @@ header {
 }
 
 main {
+	height: fit-content;
+
 	.hero-section {
 		height: 100vh;
 		z-index: 100;
@@ -116,10 +129,16 @@ main {
 		transition: all ease 300ms;
 
 		h1 {
+			text-align: center;
 			font-size: 5rem;
+
+			@media screen and (max-width: 1000px) {
+				font-size: 4rem;
+			}
 		}
 
 		p {
+			text-align: center;
 			font-size: 2rem;
 			font-family: 'inkfree';
 			font-style: italic;
@@ -136,6 +155,10 @@ main {
 			transition: all ease 300ms;
 			transition: display linear 500ms;
 			z-index: 100;
+
+			@media screen and (max-width: 1000px) {
+				display: none;
+			}
 		}
 		
 		button:hover {
@@ -175,13 +198,10 @@ main {
 		#about-me {
 			top: -10vh;
 		}
-		
-		#back {
-			top: 8vh;
-		}
-		
-		#about-me, #back {
+
+		#about-me {
 			position: absolute;
+			background-color: white;
 			cursor: pointer;
 			padding: 1rem 1.5rem;
 			border-radius: 1rem	;
@@ -189,14 +209,6 @@ main {
 			transition: all ease 300ms;
 			transition: display linear 500ms;
 			z-index: 100;
-		}
-
-		#back:hover {
-			transform: scale(1.1);
-			border: none;
-			background-color: #80664b;
-			color: #ffffff;
-			box-shadow: #ffffff50 0 0 50px 5px;
 		}
 
 		.resume {
@@ -211,13 +223,70 @@ main {
 			flex-direction: column;
 			justify-content: flex-start;
 			align-items: center;
-			
-			h1 {
+		}
+
+		#about-me:hover {
+			transform: scale(1.1);
+			border: none;
+			background-color: #687188;
+			color: #ffffff;
+			box-shadow: #ffffff50 0 0 50px 5px;
+		}
+	}
+
+	.about {
+		position: absolute;
+		left: 0;
+		height: fit-content;
+		width: 100vw;
+		background-color: #d9d9d9;
+
+		.top-section {
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 2rem;
+			height: fit-content;
+
+			#back {
+				// position: absolute;
+				background-color: white;
+				cursor: pointer;
+				padding: 1rem 1.5rem;
+				border-radius: 1rem	;
+				box-shadow: #333 6px 6px;
+				transition: all ease 300ms;
+				transition: display linear 500ms;
+				z-index: 100;
+
+				@media screen and (max-width: 1000px) {
+					display: none;
+				}
+			}
+
+			#back:hover {
+				transform: scale(1.1);
+				border: none;
+				background-color: #80664b;
+				color: #ffffff;
+				box-shadow: #ffffff50 0 0 50px 5px;
+			}
+
+			.h1-wrap {
+				width: max-content;
+				height: 5rem;
+			}
+
+			.button-text {
 				background-color: #ffffff;
 				letter-spacing: 0.1rem;
 				font-weight: 600;
-				
+				width: fit-content;
+
 				cursor: pointer;
+				border: solid black 2px;
 				padding: 1rem 1.5rem;
 				border-radius: 1rem;
 				box-shadow: #333 6px 6px;
@@ -228,20 +297,262 @@ main {
 				a {
 					color: black;
 					text-decoration: none;
+					font-family: 'inkfree';
 					// color: white;
 				}
 			}
+
+			.button-text:hover {
+				transform: scale(1.05);
+				border: none;
+				background-color: #687188;
+				color: #ffffff;
+				box-shadow: #ffffff50 0 0 50px 5px;
+
+				a {
+					color: #ffffff;
+				}
+			}
+
+			.grid {
+				display: grid;
+				justify-items: center;
+				width: 80%;
+				grid-template-columns: 50% 50%;
+
+				@media screen and (max-width: 1000px) {
+					height: fit-content;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+				}
+
+				.me {
+					display: flex;
+					flex-direction: column;
+					width: 90%;
+					height: 50vh;
+					align-items: center;
+					justify-content: center;
+
+					img {
+						width: 75%;
+						height: 65%;
+					}
+
+					h1 {
+						font-family: 'inkfree';
+						letter-spacing: normal;
+						color: black;
+						font-weight: 300;
+						font-size: 9rem;
+
+						@media screen and (max-width: 1000px) {
+							font-size: 4rem;
+							text-align: center;
+						}
+					}
+				}
+
+				p {
+					width: 90%;
+					height: 50vh;
+					font-size: 1.75rem;
+					color: black;
+					text-align: justify;
+
+					@media screen and (max-width: 1000px) {
+						font-size: 1.15rem;
+						height: fit-content
+					}
+				}
+			}
+
+			#down {
+				bottom: -10rem;
+
+				width: 96px;
+				height: auto;
+				transition: transform ease 150ms;
+			}
+
+			#down:hover {
+				cursor: pointer;
+				transform: scale(1.1);
+			}
 		}
 
-		#about-me:hover, .resume h1:hover {
-			transform: scale(1.1);
-			border: none;
-			background-color: #687188;
-			color: #ffffff;
-			box-shadow: #ffffff50 0 0 50px 5px;
+		.jobs {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
 
-			a {
-				color: #ffffff;
+			background-color: black;
+			height: fit-content;
+			width: 100%;
+			padding-top: 12vh;
+			gap: 4rem;
+
+			#up {
+				top: 10rem;
+
+				background-color: white;
+				border-radius: 3rem;
+
+				width: 96px;
+				height: auto;
+				transition: transform ease 150ms;
+			}
+
+			#up:hover {
+				cursor: pointer;
+				transform: scale(1.1);
+			}
+
+			h1 {
+				text-align: center;
+				// padding: 1rem 2rem;
+				// padding-left: 2.25rem;
+				// background-color: white;
+				// color: black;
+				font-size: 4rem;
+				font-family: 'inkfree';
+				letter-spacing: normal;
+				border-radius: 1.75rem;
+			}
+
+			.job-wrap {
+				width: 80vw;
+				height: 18rem;
+				
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 5rem;
+
+				@media screen and (max-width: 1000px) {
+					flex-direction: column;
+					height: fit-content;
+					gap: 2rem;
+				}
+
+				img, .job-info {
+					width: 40%;
+					height: 100%;
+
+					@media screen and (max-width: 1000px) {
+						width: 100%;
+					}
+				}
+
+				img {
+					border: solid;
+				}
+
+				.line {
+					height: 18rem;
+					width: 4px;
+					
+					border-radius: 8px;
+					background-color: #939393;
+
+					@media screen and (max-width: 1000px) {
+						width: 18rem;
+						height: 4px;
+						display: none;
+					}
+				}
+
+				.job-info {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					gap: 1rem;
+
+					h2 {
+						font-family: 'josefin';
+						font-size: 3rem;
+						margin: 0;
+					}
+					
+					h3 {
+						font-family: 'josefin';
+						font-weight: 200;
+						font-style: italic;
+						font-size: 2rem;
+						margin: 0;
+					}
+					
+					p {
+						font-family: 'josefin';
+						font-weight: 200;
+						font-size: 1.5rem;
+						text-align: justify;
+					}
+				}
+			}
+
+			.all-skills {
+				display: grid;
+				justify-content: center;
+				align-items: center;
+				grid-template-columns: 30% 4px 30% 4px 30%;
+				width: 80vw;
+				gap: 2rem;
+				row-gap: 4rem;
+
+				@media screen and (max-width: 1000px) {
+					display: flex;
+					flex-direction: column;
+				}
+
+				.line {
+					background-color: #939393;
+					border-radius: 8px;
+					height: 90%;
+					width: 4px;
+
+					@media screen and (max-width: 1000px) {
+						display: none;
+					}
+				}
+
+				.skill-wrap {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					gap: 2rem;
+					width: 100%;
+					height: fit-content;
+					padding: 2rem 0;
+
+					h2 {
+						margin: 0;
+						font-family: 'josefin';
+						font-size: 2rem;
+						text-align: center;
+					}
+
+					.skill-info {
+						display: flex;
+						flex-wrap: wrap;
+						justify-content: center;
+						gap: 1rem;
+
+						p {
+							text-align: center;
+							font-family: 'josefin';
+							font-weight: 300;
+							font-size: 2rem;
+							transition: all ease 80ms;
+						}
+
+						p:hover {
+							transform: scale(1.2);
+						}
+					}
+				}
 			}
 		}
 	}
