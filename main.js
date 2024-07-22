@@ -188,6 +188,7 @@ document.querySelector('#app').innerHTML = `
           </div>
         </div>
       </div>
+
       <div class="jobs">
         <h1 class="button-text">my skills</h1>
         <div class="all-skills">
