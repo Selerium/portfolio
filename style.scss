@@ -260,6 +260,7 @@ main {
 				transition: all ease 300ms;
 				transition: display linear 500ms;
 				z-index: 100;
+				margin-top: 5rem;
 
 				@media screen and (max-width: 1000px) {
 					display: none;
