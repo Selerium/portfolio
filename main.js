@@ -151,7 +151,15 @@ document.querySelector('#app').innerHTML = `
             <img>
             <h1>about me.</h1>
           </div>
-          <p>An <b>ambitious, hardworking creative</b>, pursuing a career in <b>software development</b>. Highly proficient in web dev, across a variety of frameworks and platforms. Development of dynamic and static sites alongside <b>high quality UI/UX design skills</b>. Exceptional quality of work individually as well as within a team in both participative and managerial roles. <b>Extroverted, bold, cross-culture personality</b> – open-minded and ready for any kind of situation. <b>Easy to adapt</b> and <b>quick to learn</b> additional skills as required by the job.</p>
+          <div class="p-wrap">
+            <p>An <b>ambitious, hardworking creative</b>, pursuing a career in <b>software development</b>. Highly proficient in vanilla <b>web dev</b>, with additional knowledge in <b>Vue</b> and <b>Angular</b>. Development of dynamic and static sites alongside high-quality <b>UI/UX</b> design skills. Exceptional quality of work individually as well as within a team in both <b>participative</b> and <b>managerial</b> roles. <b>Extroverted, bold, cross-culture personality</b> – <b>open-minded</b> and ready for any kind of situation. <b>Easy to adapt</b> and <b>quick to learn</b> additional skills as required by the job.</p>
+            <br>
+            <div class="line"></div>
+            <br>
+            <p style="font-family: 'josefin'"><b>Bachelor's of Computer and Networking Engineering Technology</b> - from Canadian University Dubai</p>
+            <br>
+            <p style="font-family: 'josefin'"><b>Diploma in Computer Science</b> - from 42 Abu Dhabi</p>
+          </div>
         </div>
         <div class="h1-wrap">
           <h1 class="button-text"><a href="CV_JohnAdi.pdf" download>my resume</a></h1>
@@ -161,30 +169,36 @@ document.querySelector('#app').innerHTML = `
       <div class="jobs">
         <h1 class="button-text">my career</h1>
         <div class="job-wrap">
-          <img>
+          <div class="img-wrap">
+            <img src="logos/adi-logo.png" style="margin: 2rem;">
+          </div>
           <div class="line"></div>
           <div class="job-info">
             <h2>adi.</h2>
             <h3>(my personal brand) - freelance</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus leo non enim vulputate, non sollicitudin urna malesuada. Aliquam erat volutpat. Quisque quis nibh lacus. Nulla suscipit accumsan ipsum eu molestie. Fusce lorem velit, viverra vitae velit at, sagittis imperdiet augue.</p>
+            <p>I create static and dynamic websites for different clients using different frameworks as per customer requirements. I carefully work with the customers to create a design that satisfies their business needs and provide them with a creative and innovative website.</p>
           </div>
         </div>
         <div class="job-wrap">
-          <img>
+          <div class="img-wrap">
+            <img src="logos/kalvad-logo.png" style="width: 80%; height: auto">
+          </div>
           <div class="line"></div>
           <div class="job-info">
             <h2>Kalvad DevOps</h2>
             <h3>(since 2023) - software engineer</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus leo non enim vulputate, non sollicitudin urna malesuada. Aliquam erat volutpat. Quisque quis nibh lacus. Nulla suscipit accumsan ipsum eu molestie. Fusce lorem velit, viverra vitae velit at, sagittis imperdiet augue.</p>
+            <p>Joining as an intern, I've worked with Kalvad on a variety of projects, developing in Zola with vanilla JS and/or added libraries, and also on Angular projects. I work directly with the company's clients to discuss on how we can best bring their ideas to life in a feasible manner.</p>
           </div>
         </div>
         <div class="job-wrap">
-          <img>
+          <div class="img-wrap">
+            <img src="logos/png-logo.png" style="width: 100%; height: auto">
+          </div>
           <div class="line"></div>
           <div class="job-info">
             <h2>Print&Go</h2>
             <h3>(since 2020) - advisory</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus leo non enim vulputate, non sollicitudin urna malesuada. Aliquam erat volutpat. Quisque quis nibh lacus. Nulla suscipit accumsan ipsum eu molestie. Fusce lorem velit, viverra vitae velit at, sagittis imperdiet augue.</p>
+            <p>A startup that is aims to revolutionise the way we print, Print&Go has been in development for a while with a strong, diverse team. I have worked in an advisory capacity with the team, suggesting business ideas, explaining tech requirements for development, marketing suggestions, and help provide oversight over the entire SDLC.</p>
           </div>
         </div>
       </div>
