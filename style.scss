@@ -278,6 +278,10 @@ main {
 			.h1-wrap {
 				width: max-content;
 				height: 5rem;
+
+				@media screen and (max-width: 500px) {
+					display: none;
+				}
 			}
 
 			.button-text {
@@ -320,9 +324,9 @@ main {
 				justify-items: center;
 				width: 80%;
 				grid-template-columns: 50% 50%;
-
+				
 				@media screen and (max-width: 1000px) {
-					height: fit-content;
+					height: 100%;
 					display: flex;
 					flex-direction: column;
 					align-items: center;
@@ -335,6 +339,11 @@ main {
 					height: 50vh;
 					align-items: center;
 					justify-content: center;
+					
+					@media screen and (max-width: 1000px) {
+						justify-content: flex-start;
+						height: 20vh;
+					}
 
 					img {
 						width: 75%;
@@ -363,6 +372,10 @@ main {
 					justify-content: center;
 					align-items: flex-start;
 
+					@media screen and (max-width: 500px) {
+						padding: 8rem 0;
+					}
+
 					.line {
 						border-radius: 8px;
 						width: 100%;
@@ -377,17 +390,21 @@ main {
 						color: black;
 						text-align: justify;
 						
-						@media screen and (max-width: 1000px) {
-							font-size: 1.15rem;
-							height: fit-content;
+						@media screen and (max-width: 1900px) {
+							height: fit-content
 						}
 
 						@media screen and (max-width: 1100px) {
 							line-height: 1.5rem;
 						}
 						
-						@media screen and (max-width: 1900px) {
-							height: fit-content
+						@media screen and (max-width: 1000px) {
+							font-size: 1.15rem;
+							height: fit-content;
+						}
+
+						@media screen and (max-width: 500px) {
+							font-size: 1rem;
 						}
 					}
 
