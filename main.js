@@ -148,7 +148,6 @@ document.querySelector('#app').innerHTML = `
         <br>
         <div class="grid">
           <div class="me">
-            <img>
             <h1>about me.</h1>
           </div>
           <div class="p-wrap">
