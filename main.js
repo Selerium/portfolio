@@ -197,7 +197,7 @@ document.querySelector('#app').innerHTML = `
           <div class="job-info">
             <h2>Print&Go</h2>
             <h3>(since 2020) - advisory</h3>
-            <p>A startup that is aims to revolutionise the way we print, Print&Go has been in development for a while with a strong, diverse team. I have worked in an advisory capacity with the team, suggesting business ideas, explaining tech requirements for development, marketing suggestions, and help provide oversight over the entire SDLC.</p>
+            <p>A startup that aims to revolutionise the way we print, Print&Go has been in development for a while with a strong, diverse team. I have worked in an advisory capacity with the team, suggesting business ideas, explaining tech requirements for development, marketing suggestions, and help provide oversight over the entire SDLC.</p>
           </div>
         </div>
       </div>
