@@ -1,0 +1,9 @@
+.link {
+    transition: 200ms ease;
+}
+
+.link:hover {
+    transform: scale(1.1);
+    fill: var(--primary);
+    stroke: var(--primary);
+}
