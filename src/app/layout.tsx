@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${primary.className} antialiased w-dvw max-w-dvw py-4 px-8`}
+        className={`${primary.className} antialiased w-dvw max-w-dvw py-4 px-8 box-border`}
       >
         <NavBar />
         {children}
