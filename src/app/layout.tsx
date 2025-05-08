@@ -1,15 +1,7 @@
 import type { Metadata } from "next";
-import { Outfit, Raleway } from "next/font/google";
+import { primary } from "./fonts";
 import NavBar from "./navbar";
 import "./globals.css";
-
-export const primary = Outfit({
-  subsets: ["latin"],
-});
-
-export const secondary = Raleway({
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "adi. - Portfolio",
@@ -24,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${primary.className} antialiased w-dvw max-w-dvw py-4 px-8 box-border`}
+        className={`${primary.className} antialiased w-full flex flex-col justify-start items-center`}
       >
         <NavBar />
         {children}
