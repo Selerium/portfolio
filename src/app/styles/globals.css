@@ -1,3 +1,4 @@
+@import url(animations.css);
 @import "tailwindcss";
 
 :root {
@@ -11,8 +12,8 @@
   --color-primary: #1E2026;
   --color-secondary: #34384a;
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --tracking-widest: 8;
+  --default-transition-duration: 300ms;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -38,4 +39,10 @@ body {
 
 .bg-shadow {
   box-shadow: 0 0 192px 174px var(--color-secondary);
+  animation: movingGlowCircles ease 15s infinite;
+}
+
+.bg-shadow:nth-child(1) {
+  animation-delay: -750ms;
+  animation-direction: alternate-reverse;
 }

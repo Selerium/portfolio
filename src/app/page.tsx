@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { secondary } from "./fonts";
+import { primary } from "./styles/fonts";
 
 export default function Home() {
   const [imageSrcs, setImageSrcs] = useState([
@@ -32,8 +32,8 @@ export default function Home() {
   }
 
   return (
-    <div className="h-dvh py-4 box-border w-11/12 flex flex-col justify-end items-center">
-      <div className="w-full h-9/12 flex justify-center gap-4 items-center relative">
+    <div className="h-dvh py-4 box-border w-full flex flex-col justify-end items-center overflow-x-clip relative z-0">
+      <div className="w-11/12 h-9/12 flex justify-center gap-4 items-center relative">
         {imageSrcs.slice(0, 3).map((img, index) => (
           <img
             src={img}
@@ -54,11 +54,11 @@ export default function Home() {
         <div className="w-50 h-50 bg-shadow -top-1/6 -left-1/6 z-0 absolute bg-secondary rounded-full"></div>
         <div className="w-50 h-50 bg-shadow -bottom-1/6 -right-1/6 z-0 absolute bg-secondary rounded-full"></div>
       </div>
-      <div className="w-full h-2/12 flex justify-between items-center">
+      <div className="w-11/12 h-2/12 flex justify-between items-center">
         <button className="cursor-pointer link" onClick={moveLeft}><img src="/arrow.svg"></img></button>
         <div className="flex flex-col justify-center items-center gap-4">
           <h1 className="text-6xl font-semibold tracking-tighter">your website could look like this</h1>
-          <button className={`link cursor-pointer text-xl tracking-widest font-semibold ${secondary.className} uppercase py-2 px-4 bg-primary border border-white w-fit rounded-lg`}>get a quote</button>
+          <button className={`link cursor-pointer text-xl tracking-widest font-semibold ${primary.className} text-center uppercase py-2 pl-7 px-4 bg-primary border border-white w-fit rounded-lg`}>get a quote</button>
         </div>
         <button className="cursor-pointer link" onClick={moveRight}><img src="/arrow.svg" className="rotate-180"></img></button>
       </div>

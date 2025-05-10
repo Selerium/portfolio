@@ -1,7 +1,0 @@
-.link {
-    transition: 200ms ease;
-}
-
-.link:hover {
-    transform: scale(1.1);
-}

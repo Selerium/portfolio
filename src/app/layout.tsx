@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { primary } from "./fonts";
-import NavBar from "./navbar";
-import "./globals.css";
+import { primary } from "./styles/fonts";
+import NavBar from "./components/navbar";
+import "./styles/globals.css";
 
 export const metadata: Metadata = {
   title: "adi. - Portfolio",
