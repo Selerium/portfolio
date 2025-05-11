@@ -23,21 +23,21 @@
 }
 
 .delayed-text:nth-child(1) {
-    transition-delay: 75ms;
-}
-
-.delayed-text:nth-child(2) {
-    transition-delay: 100ms;
-}
-
-.delayed-text:nth-child(3) {
     transition-delay: 125ms;
 }
 
-.delayed-text:nth-child(4) {
+.delayed-text:nth-child(2) {
     transition-delay: 150ms;
 }
 
-.delayed-text:nth-child(5) {
+.delayed-text:nth-child(3) {
     transition-delay: 175ms;
+}
+
+.delayed-text:nth-child(4) {
+    transition-delay: 200ms;
+}
+
+.delayed-text:nth-child(5) {
+    transition-delay: 225ms;
 }

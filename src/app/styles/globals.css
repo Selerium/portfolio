@@ -46,3 +46,16 @@ body {
   animation-delay: -750ms;
   animation-direction: alternate-reverse;
 }
+
+#about {
+  background-image: linear-gradient(#000000, var(--primary));
+}
+
+.about-hover {
+  background-image: linear-gradient(var(--color-secondary) 40%, #000000 100%);
+  opacity: 0;
+}
+
+.about-hover:hover {
+  opacity: 0.5;
+}
