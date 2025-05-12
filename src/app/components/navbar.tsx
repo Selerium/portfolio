@@ -1,4 +1,5 @@
 "use client"
+
 import { useState } from "react";
 import { primary, secondary } from "../styles/fonts";
 import "../styles/links.css";
@@ -20,7 +21,7 @@ export default function NavBar() {
     return (
       <div className={`${showSidebar ? 'opacity-100 z-50' : 'opacity-0 -z-50 translate-y-full'} absolute transition-all top-0 w-dvw h-dvh flex flex-col gap-12 justify-center items-center bg-black`}>
         <img className={`delayed-text ${showSidebar ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'} transition-all w-20 h-auto p-4`} src="/adi-logo.svg"></img>
-        {pages.map(page => <Link href={page == 'welcome' ? '/' : page} className={`cursor-pointer delayed-text text-3xl ${primary.className} ${showSidebar ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'} transition-all uppercase tracking-widest font-semibold`} key={`${page}`} onClick={toggleSidebar}>{ page }</Link>)}
+        {pages.map((page, idx) => <Link onClickCapture={() => setChosenPage(idx)} href={page == 'welcome' ? '/' : page} className={`cursor-pointer delayed-text text-3xl ${primary.className} ${showSidebar ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'} transition-all uppercase tracking-widest font-semibold`} key={`${page}`} onClick={toggleSidebar}>{ page }</Link>)}
       </div>
     )
   }
