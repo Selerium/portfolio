@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { primary } from "./styles/fonts";
+import Link from "next/link";
 
 export default function Home() {
   const [imageSrcs, setImageSrcs] = useState([
@@ -58,7 +59,7 @@ export default function Home() {
         <button className="cursor-pointer link" onClick={moveLeft}><img src="/arrow.svg"></img></button>
         <div className="flex flex-col justify-center items-center gap-4">
           <h1 className="text-6xl font-semibold tracking-tighter">your website could look like this</h1>
-          <button className={`link cursor-pointer text-xl tracking-widest font-semibold ${primary.className} text-center uppercase py-2 pl-7 px-4 bg-primary border border-white w-fit rounded-lg`}>get a quote</button>
+          <Link href="/connect" className={`link cursor-pointer text-xl tracking-widest font-semibold ${primary.className} text-center uppercase py-2 pl-7 px-4 bg-primary border border-white w-fit rounded-lg`}>get a quote</Link>
         </div>
         <button className="cursor-pointer link" onClick={moveRight}><img src="/arrow.svg" className="rotate-180"></img></button>
       </div>

@@ -23,6 +23,10 @@
   }
 }
 
+input {
+  box-shadow: inset 0 0 9px 2px #1e202640;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -53,6 +57,10 @@ body {
 
 #projects {
   background-image: linear-gradient(var(--color-primary) 0%, #0f1012 29%, #0f1012 71%, var(--color-primary) 100%);
+}
+
+#connect {
+  background-image: linear-gradient(var(--color-primary) 0%, #0f1012 75%, #000000 100%);
 }
 
 .projectList {
