@@ -16,25 +16,25 @@ export default function Connect() {
             <div className="w-1/3 min-w-72 flex flex-col items-center gap-4">
                 <h1 className={`${primary.className} lowercase tracking-tight font-semibold text-5xl`}>curious? get in touch</h1>
                 <p className={`${secondary.className} tracking-tight text-md font-light`}>(unless you're a cat - heard that's fatal)</p>
-                <form onSubmit={submitForm} className="flex flex-col gap-4 w-full">
+                <form onSubmit={submitForm} className="flex flex-col gap-4 w-full min-w-72 p-4 h-4/5 overflow-y-auto">
                     <div className="flex flex-wrap gap-4 w-full justify-center">
-                        <div className="grow w-1/3 min-w-72 flex flex-col gap-2">
+                        <div className="grow w-1/3 flex flex-col gap-2">
                             <label className={`${secondary.className} font-light text-md tracking-tight`}>first name</label>
                             <input name="firstName" className={`${secondary.className} font-light text-md tracking-tight lowercase bg-white rounded-lg p-2 text-black`} type="text" placeholder="first name"></input>
                         </div>
-                        <div className="grow w-1/3 min-w-72 flex flex-col gap-2">
+                        <div className="grow w-1/3 flex flex-col gap-2">
                             <label className={`${secondary.className} font-light text-md tracking-tight`}>last name</label>
                             <input name="lastName" className={`${secondary.className} font-light text-md tracking-tight lowercase bg-white rounded-lg p-2 text-black`} type="text" placeholder="last name"></input>
                         </div>
-                        <div className="grow w-1/3 min-w-72 flex flex-col gap-2">
+                        <div className="grow w-1/3 flex flex-col gap-2">
                             <label className={`${secondary.className} font-light text-md tracking-tight`}>contact email</label>
                             <input name="email" className={`${secondary.className} font-light text-md tracking-tight lowercase bg-white rounded-lg p-2 text-black`} type="email" placeholder="xxxx@example.com"></input>
                         </div>
-                        <div className="grow w-1/3 min-w-72 flex flex-col gap-2">
+                        <div className="grow w-1/3 flex flex-col gap-2">
                             <label className={`${secondary.className} font-light text-md tracking-tight`}>whatsapp number</label>
                             <input name="whatsapp" className={`${secondary.className} font-light text-md tracking-tight lowercase bg-white rounded-lg p-2 text-black`} type="tel" placeholder="+xxx xx xxx xxxx"></input>
                         </div>
-                        <div className="grow w-full min-w-72 flex flex-col gap-2">
+                        <div className="grow w-full flex flex-col gap-2">
                             <label className={`${secondary.className} font-light text-md tracking-tight`}>why are you reaching out?</label>
                             <select name="enquiryType" className={`${secondary.className} font-light text-md tracking-tight lowercase bg-white rounded-lg p-2 text-black`}>
                                 <option hidden defaultChecked>choose an option</option>
