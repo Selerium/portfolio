@@ -42,7 +42,7 @@ export default function About() {
           idx == activeSection ? "w-2/5" : ""
         } w-1/5 grow h-4/5 bg-black cursor-pointer transition-all rounded-lg flex justify-center items-center relative`}
       >
-        <div className="absolute transition-all w-full h-full rounded-lg about-hover z-10"></div>
+        <div className="absolute transition-all w-full h-full rounded-lg about-hover z-40"></div>
         <div
           className={`absolute transition-all pointer-events-none overflow-y-clip flex flex-col justify-center items-center p-8 w-full h-full rounded-lg z-50`}
         >

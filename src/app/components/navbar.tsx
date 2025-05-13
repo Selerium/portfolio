@@ -2,18 +2,17 @@
 
 import { useState } from "react";
 import { primary, secondary } from "../styles/fonts";
-import "../styles/links.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function NavBar() {
+  const firstPath = usePathname();
   const pages = ["welcome", "about", "projects", "connect"];
-  const [chosenPage, setChosenPage] = useState(0);
+  const [chosenPage, setChosenPage] = useState(-1);
   const [showSidebar, setShowSidebar] = useState(false);
 
   function toggleSidebar() {
     setShowSidebar(!showSidebar);
-    console.log(usePathname());
   }
 
   function Sidebar() {
@@ -21,7 +20,7 @@ export default function NavBar() {
       <div
         className={`${
           showSidebar ? "opacity-100 z-50" : "opacity-0 -z-50 translate-y-full"
-        } absolute transition-all top-0 w-dvw h-dvh flex flex-col gap-12 justify-center items-center bg-black`}
+        } fixed transition-all top-0 w-dvw h-dvh flex flex-col gap-12 justify-center items-center bg-black`}
       >
         <img
           className={`delayed-text ${
@@ -56,10 +55,10 @@ export default function NavBar() {
 
   return (
     <div
-      className={`z-40 w-full fixed flex items-center justify-center left-0 top-0 py-4`}
+      className={`w-full h-dvh absolute overflow-y-clip flex items-start justify-center left-0 top-0 py-4`}
     >
       {Sidebar()}
-      <nav className={`flex w-11/12 justify-between items-center h-fit`}>
+      <nav className={`z-40 flex w-11/12 justify-between items-center h-fit`}>
         <img src="/adi-logo.svg" className="w-20 mr-20 h-auto"></img>
         <div
           onClick={toggleSidebar}
@@ -69,7 +68,7 @@ export default function NavBar() {
           <h4
             className={`${secondary.className} transition-all cursor-pointer font-extralight text-xl glow`}
           >
-            {pages[chosenPage]}
+            {chosenPage == -1 ? (firstPath.length > 1 ? firstPath.substring(1) : 'welcome') : pages[chosenPage]}
           </h4>
           <div className="h-[1px] w-14 bg-white"></div>
           <svg

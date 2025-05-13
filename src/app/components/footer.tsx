@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full flex justify-center items-end py-20 z-50">
+    <footer className="w-full flex justify-center items-end py-20 z-30">
       <div className="w-11/12 flex justify-between items-start text-white">
         <img src="/adi-logo.svg" className="h-8 w-auto"></img>
         <div className="flex flex-col gap-4">
@@ -17,9 +17,9 @@ export default function Footer() {
           <Link href="/projects">projects</Link>
         </div>
         <div className="flex flex-col gap-4">
-          <a href="https://github.com/selerium">github</a>
-          <a href="mailto:johnadithya008@gmail.com">mail</a>
-          <a href="https://linkedin.com/in/johnadi">linkedin</a>
+          <Link href="https://github.com/selerium">github</Link>
+          <Link href="mailto:johnadithya008@gmail.com">mail</Link>
+          <Link href="https://linkedin.com/in/johnadi">linkedin</Link>
         </div>
       </div>
     </footer>
