@@ -52,8 +52,8 @@ export default function Home() {
             onClick={index == leftElement ? moveLeft : index == rightElement ? moveRight : console.log}
           ></img>
         ))}
-        <div className="w-50 h-50 bg-shadow -top-1/6 -left-1/6 z-0 absolute bg-secondary rounded-full"></div>
-        <div className="w-50 h-50 bg-shadow -bottom-1/6 -right-1/6 z-0 absolute bg-secondary rounded-full"></div>
+        {/* <div className="w-50 h-50 bg-shadow -top-1/6 -left-1/6 z-0 absolute bg-secondary rounded-full"></div>
+        <div className="w-50 h-50 bg-shadow -bottom-1/6 -right-1/6 z-0 absolute bg-secondary rounded-full"></div> */}
       </div>
       <div className="w-11/12 h-2/12 flex justify-between items-center">
         <button className="cursor-pointer link" onClick={moveLeft}><img src="/arrow.svg"></img></button>

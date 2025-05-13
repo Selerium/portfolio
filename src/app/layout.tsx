@@ -14,11 +14,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log('mounteddddd');
+
   return (
     <html lang="en">
       <body
-        className={`${primary.className} antialiased w-full flex flex-col justify-start items-center`}
+        className={`${primary.className} antialiased w-full flex flex-col overflow-x-clip justify-start items-center`}
       >
+        <div className="w-50 h-50 bg-shadow -top-1/6 -left-1/6 z-0 absolute bg-secondary rounded-full"></div>
+        <div className="w-50 h-50 bg-shadow -bottom-1/6 -right-1/6 z-0 absolute bg-secondary rounded-full"></div>
         <NavBar />
         {children}
         <Footer />

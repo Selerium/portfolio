@@ -52,19 +52,27 @@ body {
 }
 
 #about {
-  background-image: linear-gradient(#000000, var(--primary));
+  /* background-image: linear-gradient(#000000, var(--primary)); */
 }
 
 #projects {
-  background-image: linear-gradient(var(--color-primary) 0%, #0f1012 29%, #0f1012 71%, var(--color-primary) 100%);
+  /* background-image: linear-gradient(var(--color-primary) 0%, #0f1012 29%, #0f1012 71%, var(--color-primary) 100%); */
 }
 
 #connect {
-  background-image: linear-gradient(var(--color-primary) 0%, #0f1012 75%, #000000 100%);
+  /* background-image: linear-gradient(var(--color-primary) 0%, #0f1012 75%, #000000 100%); */
 }
 
-footer {
-  background-image: linear-gradient(#00000000 0%, #000000ff 100%);
+a {
+  span {
+    opacity: 0;
+  }
+}
+
+a:hover {
+  span {
+    opacity: 1;
+  }
 }
 
 .projectList {

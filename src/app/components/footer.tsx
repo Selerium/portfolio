@@ -2,22 +2,24 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full flex justify-center items-end pt-20 p-4 z-50">
+    <footer className="w-full flex justify-center items-end py-20 z-50">
       <div className="w-11/12 flex justify-between items-start text-white">
         <img src="/adi-logo.svg" className="h-8 w-auto"></img>
         <div className="flex flex-col gap-4">
-            <Link href="/">home</Link>
-            <Link href="/about">about</Link>
-            <Link href="/connect">connect</Link>
+          <Link href="/">home</Link>
+          <Link href="/about">about</Link>
+          <Link href="/connect">connect</Link>
         </div>
         <div className="flex flex-col gap-4">
-            <a href="" className="cursor-not-allowed">blog</a>
-            <Link href="/projects">projects</Link>
+          <a className="relative cursor-not-allowed text-gray-300">
+            blog<span className="transition-all absolute w-30 -top-1.5 left-2/3 px-2 py-1 bg-white text-black border border-primary text-center rounded-lg z-50">coming soon!</span>
+          </a>
+          <Link href="/projects">projects</Link>
         </div>
         <div className="flex flex-col gap-4">
-            <a href="https://github.com/selerium">github</a>
-            <a href="mailto:johnadithya008@gmail.com">mail</a>
-            <a href="https://linkedin.com/in/johnadi">linkedin</a>
+          <a href="https://github.com/selerium">github</a>
+          <a href="mailto:johnadithya008@gmail.com">mail</a>
+          <a href="https://linkedin.com/in/johnadi">linkedin</a>
         </div>
       </div>
     </footer>
