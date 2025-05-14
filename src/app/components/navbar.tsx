@@ -10,9 +10,17 @@ export default function NavBar() {
   const pages = ["welcome", "about", "projects", "connect"];
   const [chosenPage, setChosenPage] = useState(-1);
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
 
   function toggleSidebar() {
-    setShowSidebar(!showSidebar);
+    setTimeout(
+      () => {
+        console.log("changing page");
+        setShowSidebar(!showSidebar);
+        setShowLoader(false);
+      },
+      !showSidebar ? 0 : 2000
+    );
   }
 
   function Sidebar() {
@@ -23,21 +31,23 @@ export default function NavBar() {
         } fixed transition-all top-0 w-dvw h-dvh flex flex-col gap-12 justify-center items-center bg-black`}
       >
         <img
-          className={`delayed-text ${
-            showSidebar
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-full"
-          } transition-all w-20 h-auto p-4`}
+          className={`delayed-text
+            ${
+              showSidebar
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-full"
+            } transition-all w-20 h-auto p-4`}
           src="/adi-logo.svg"
         ></img>
         {pages.map((page, idx) => (
           <Link
             onClick={() => {
               setChosenPage(idx);
+              setShowLoader(true);
               toggleSidebar();
             }}
             href={page == "welcome" ? "/" : "/" + page}
-            className={`cursor-pointer delayed-text text-3xl ${
+            className={`router-link transition-all cursor-pointer delayed-text text-3xl ${
               primary.className
             } ${
               showSidebar
@@ -49,6 +59,18 @@ export default function NavBar() {
             {page}
           </Link>
         ))}
+        <div
+          className={`flex justify-center items-center absolute w-full h-full top-0 bg-black transition-all ${
+            showLoader ? "opacity-100 z-40" : "opacity-0 -z-40"
+          }`}
+        >
+          <div className="loaderParent w-32 h-32 flex justify-start items-start rounded-full border border-primary relative">
+            <img src="/custom-cursor.png" className="rotate-90 w-1/3 h-1/3 object-cover object-left"></img>
+            <div className="absolute flex justify-center items-center w-full h-full">
+              <h1 className={`rotate-[84deg] loaderChild text-3xl ${primary.className} tracking-tight pr-0.5 pb-0.5 text-center font-semibold`}>adi</h1>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -68,7 +90,11 @@ export default function NavBar() {
           <h4
             className={`${secondary.className} transition-all cursor-pointer font-extralight text-xl glow`}
           >
-            {chosenPage == -1 ? (firstPath.length > 1 ? firstPath.substring(1) : 'welcome') : pages[chosenPage]}
+            {chosenPage == -1
+              ? firstPath.length > 1
+                ? firstPath.substring(1)
+                : "welcome"
+              : pages[chosenPage]}
           </h4>
           <div className="h-[1px] w-14 bg-white"></div>
           <svg

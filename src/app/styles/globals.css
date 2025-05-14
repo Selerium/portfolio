@@ -97,3 +97,8 @@ a:hover {
 .about-hover:hover {
   opacity: 0.5;
 }
+
+.router-link:hover {
+  transition-delay: 0ms;
+  color: var(--secondary);
+}

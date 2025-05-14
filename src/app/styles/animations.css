@@ -13,6 +13,30 @@
     }
 }
 
+@keyframes loaderParent {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loaderChild {
+
+}
+
+.loaderParent {
+    animation: loaderParent 2000ms linear infinite;
+}
+
+.loaderChild {
+    animation: loaderParent 2000ms linear infinite reverse;
+}
+
 .nav-dropdown:hover {
     h4 {
         transform: scale(1.05);
@@ -23,21 +47,21 @@
 }
 
 .delayed-text:nth-child(1) {
-    transition-delay: 125ms;
+    transition-delay: calc(125ms * 1.5);
 }
 
 .delayed-text:nth-child(2) {
-    transition-delay: 150ms;
+    transition-delay: calc(150ms * 1.5);
 }
 
 .delayed-text:nth-child(3) {
-    transition-delay: 175ms;
+    transition-delay: calc(175ms * 1.5);
 }
 
 .delayed-text:nth-child(4) {
-    transition-delay: 200ms;
+    transition-delay: calc(200ms * 1.5);
 }
 
 .delayed-text:nth-child(5) {
-    transition-delay: 225ms;
+    transition-delay: calc(225ms * 1.5);
 }
