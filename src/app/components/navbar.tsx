@@ -5,6 +5,7 @@ import { primary, secondary } from "../styles/fonts";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+
 export default function NavBar() {
   const firstPath = usePathname();
   const pages = ["welcome", "about", "projects", "connect"];
@@ -67,7 +68,7 @@ export default function NavBar() {
           <div className="loaderParent w-32 h-32 flex justify-start items-start rounded-full border border-primary relative">
             <img src="/custom-cursor.png" className="rotate-90 w-1/3 h-1/3 object-cover object-left"></img>
             <div className="absolute flex justify-center items-center w-full h-full">
-              <h1 className={`rotate-[84deg] loaderChild text-3xl ${primary.className} tracking-tight pr-0.5 pb-0.5 text-center font-semibold`}>adi</h1>
+              <h1 className={`loaderChild text-3xl ${primary.className} tracking-tight pr-0.5 pb-0.5 text-center font-semibold`}>adi</h1>
             </div>
           </div>
         </div>
@@ -108,13 +109,13 @@ export default function NavBar() {
         </div>
         <div className="h-full w-40 flex items-center justify-between">
           <a href="mailto:johnadithya008@gmail.com">
-            <img className="h-7 link" src="mail.svg"></img>
+            <img className="h-7 navLink transition-all" src="mail.svg"></img>
           </a>
           <a href="https://github.com/selerium">
-            <img className="h-7 link" src="github.svg"></img>
+            <img className="h-7 navLink transition-all" src="github.svg"></img>
           </a>
           <a href="https://linkedin.com/in/johnadi">
-            <img className="h-7 link" src="linkedin.svg"></img>
+            <img className="h-7 navLink transition-all" src="linkedin.svg"></img>
           </a>
         </div>
       </nav>

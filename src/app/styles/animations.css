@@ -65,3 +65,7 @@
 .delayed-text:nth-child(5) {
     transition-delay: calc(225ms * 1.5);
 }
+
+.navLink:hover {
+    transform: scale(1.1);
+}

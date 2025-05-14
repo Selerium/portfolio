@@ -12,7 +12,7 @@ export default function Footer() {
         </div>
         <div className="flex flex-col gap-4">
           <a className="relative cursor-not-allowed text-gray-300">
-            blog<span className="transition-all absolute w-30 -top-1.5 left-2/3 px-2 py-1 bg-white text-black border border-primary text-center rounded-lg z-50">coming soon!</span>
+            blog<span className="pointer-events-none transition-all absolute w-30 -top-1.5 left-2/3 px-2 py-1 bg-white text-black border border-primary text-center rounded-lg z-50">coming soon!</span>
           </a>
           <Link href="/projects">projects</Link>
         </div>
