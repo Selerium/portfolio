@@ -51,17 +51,17 @@ body {
   animation-direction: alternate-reverse;
 }
 
-#about {
-  /* background-image: linear-gradient(#000000, var(--primary)); */
+/* #about {
+  background-image: linear-gradient(#000000, var(--primary));
 }
 
 #projects {
-  /* background-image: linear-gradient(var(--color-primary) 0%, #0f1012 29%, #0f1012 71%, var(--color-primary) 100%); */
+  background-image: linear-gradient(var(--color-primary) 0%, #0f1012 29%, #0f1012 71%, var(--color-primary) 100%);
 }
 
 #connect {
-  /* background-image: linear-gradient(var(--color-primary) 0%, #0f1012 75%, #000000 100%); */
-}
+  background-image: linear-gradient(var(--color-primary) 0%, #0f1012 75%, #000000 100%);
+} */
 
 a {
   span {
@@ -89,16 +89,17 @@ a:hover {
   }
 }
 
-.about-hover {
-  background-image: linear-gradient(var(--color-secondary) 40%, #000000 100%);
-  opacity: 0;
-}
-
-.about-hover:hover {
-  opacity: 0.5;
-}
-
 .router-link:hover {
   transition-delay: 0ms;
   color: var(--secondary);
+}
+
+.layer-gradient {
+  background-image: linear-gradient(#00000080 0%, #00000000 5%, #00000000 50%, #000000a0 75%);
+}
+
+.about-hover:hover {
+  box-shadow: #ffffffbe 0 0 2px 2px;
+  border: white;
+  border-width: 2px;
 }

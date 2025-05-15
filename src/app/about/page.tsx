@@ -40,14 +40,15 @@ export default function About() {
         onClick={() => clickSection(idx)}
         className={`${
           idx == activeSection ? "w-2/5" : ""
-        } w-1/5 grow h-4/5 bg-black cursor-pointer transition-all rounded-lg flex justify-center items-center relative`}
+        } w-1/5 grow h-4/5 cursor-pointer transition-all rounded-lg flex justify-center items-center relative`}
       >
-        <div className="absolute transition-all w-full h-full rounded-lg about-hover z-40"></div>
         <div
-          className={`absolute transition-all pointer-events-none overflow-y-clip flex flex-col justify-center items-center p-8 w-full h-full rounded-lg z-50`}
+          className={`absolute transition-all about-hover overflow-y-clip flex flex-col justify-center items-center w-full h-full rounded-lg z-50`}
         >
+          <div className="absolute w-full h-full z-10 layer-gradient rounded-lg"></div>
+          <img src={`/portfolio-images/${section.title}.png`} className={`object-cover rounded-lg h-full w-full opacity-75 ${idx == activeSection ? 'grayscale-0' : 'grayscale-100'}`}></img>
           <h2
-            className={`${idx == activeSection ? 'top-10' : 'top-1/2'} transition-all absolute z-50 pointer-events-none ${primary.className} w-5/6 text-center tracking-widest uppercase text-2xl font-semibold`}
+            className={`${idx == activeSection ? 'top-10' : 'top-1/2'} mix-blend-normal transition-all absolute z-30 pointer-events-none ${primary.className} w-5/6 text-center tracking-widest uppercase text-4xl font-semibold`}
           >
             {section.title}
           </h2>

@@ -6,46 +6,52 @@ import { primary, secondary } from "../styles/fonts";
 export default function Projects() {
   const projectList = [
     {
-      title: "project name",
+      title: "sta youth website",
       description:
-        "This contains information about the project itself. Ideally, a summary of what the project pertains, what was the final deliverable, and essentially the purpose of the project itself.",
-      tags: ["category", "tool", "framework", "info"],
+        "Website built as a creative side-project for the youth group that I lead at. Minimilist and user-friendly UX/UI that is clean and visually appealing with aspects that match the group's identity.",
+      tags: ["Web Development", "Web Design", "Vue 3", ],
+      image: '/youth-sample.png',
     },
     {
-      title: "project name",
+      title: "junia tourism",
       description:
-        "This contains information about the project itself. Ideally, a summary of what the project pertains, what was the final deliverable, and essentially the purpose of the project itself.",
-      tags: ["category", "tool", "framework", "info"],
+        "Website built that showcases different tours offered by Junia Tourism to help advertise and market towards the tourist audience in the locality.",
+      tags: ["Web Development", "Web Design", "Zola", ],
+      image: '',
     },
     {
-      title: "project name",
+      title: "cub3d",
       description:
-        "This contains information about the project itself. Ideally, a summary of what the project pertains, what was the final deliverable, and essentially the purpose of the project itself.",
-      tags: ["category", "tool", "framework", "info"],
+        "A project where we built a working raycaster engine in C to render a working visual simulation similar to the style of old school Doom or Wolfenstein games.",
+      tags: ["Visual Progrmaming", "C", "42AD"],
+      image: '',
     },
     {
-      title: "project name",
+      title: "minishell",
       description:
-        "This contains information about the project itself. Ideally, a summary of what the project pertains, what was the final deliverable, and essentially the purpose of the project itself.",
-      tags: ["category", "tool", "framework", "info"],
+        "Built our own shell in C, utilising existing shell executables with a few recreated ones. Also modified specific features to allow for more ease of use for certain aspects.",
+      tags: ["Software Development", "C", "42AD"],
+      image: '',
     },
     {
-      title: "project name",
+      title: "portfolio",
       description:
-        "This contains information about the project itself. Ideally, a summary of what the project pertains, what was the final deliverable, and essentially the purpose of the project itself.",
-      tags: ["category", "tool", "framework", "info"],
+        "The site you're currently looking at. A fun project for myself to work creatively as well as showcase my work so far. Allows for me to market my own freelance work.",
+      tags: ["Web Development", "Web Design", "Next.js", "React", ],
+      image: '',
     },
     {
-      title: "project name",
+      title: "inception",
       description:
-        "This contains information about the project itself. Ideally, a summary of what the project pertains, what was the final deliverable, and essentially the purpose of the project itself.",
-      tags: ["category", "tool", "framework", "info"],
+        "Educational project involving the setup of containers (NGINX, MariaDB, WordPress) and volumes in a Docker network that helped with in-depth understanding of DevOps, CI/CD pipelines and deployments.",
+      tags: ["DevOps", "Docker", "CI/CD", ],
     },
   ];
 
   function projectListDivs() {
     return projectList.map((project, idx) => (
       <div key={idx} className="projectList relative border rounded-lg h-80 w-80 grow flex basis-1/4 justify-center items-center overflow-y-clip">
+        <img className="absolute w-full h-full object-cover project-images" src={`${project.image}`}></img>
         <p
           className={`${primary.className} font-semibold text-2xl uppercase text-center tracking-widest border-gray-300`}
         >
