@@ -17,7 +17,7 @@ export default function Projects() {
       description:
         "Website built that showcases different tours offered by Junia Tourism to help advertise and market towards the tourist audience in the locality.",
       tags: ["Web Development", "Web Design", "Zola", ],
-      image: '',
+      image: '/junia-sample.png',
     },
     {
       title: "cub3d",
@@ -31,14 +31,14 @@ export default function Projects() {
       description:
         "Built our own shell in C, utilising existing shell executables with a few recreated ones. Also modified specific features to allow for more ease of use for certain aspects.",
       tags: ["Software Development", "C", "42AD"],
-      image: '',
+      image: '/minishell-sample.png',
     },
     {
       title: "portfolio",
       description:
         "The site you're currently looking at. A fun project for myself to work creatively as well as showcase my work so far. Allows for me to market my own freelance work.",
       tags: ["Web Development", "Web Design", "Next.js", "React", ],
-      image: '',
+      image: '/portfolio-sample.png',
     },
     {
       title: "inception",
@@ -51,13 +51,13 @@ export default function Projects() {
   function projectListDivs() {
     return projectList.map((project, idx) => (
       <div key={idx} className="projectList relative border rounded-lg h-80 w-80 grow flex basis-1/4 justify-center items-center overflow-y-clip">
-        <img className="absolute w-full h-full object-cover project-images" src={`${project.image}`}></img>
+        <img className="absolute w-full h-full object-cover project-images object-top z-10 opacity-40" src={`${project.image}`}></img>
         <p
-          className={`${primary.className} font-semibold text-2xl uppercase text-center tracking-widest border-gray-300`}
+          className={`${primary.className} font-semibold text-2xl uppercase text-center z-20 tracking-widest border-gray-300`}
         >
           {project.title}
         </p>
-        <div className="projectOverlay transition-all text-black p-4 absolute rounded-lg z-10 border-white bg-white h-full w-full flex flex-col justify-between items-start">
+        <div className="projectOverlay transition-all text-black p-4 absolute rounded-lg z-30 border-white bg-white h-full w-full flex flex-col justify-between items-start">
           <h2
             className={`${primary.className} text-2xl uppercase tracking-widest font-semibold`}
           >
