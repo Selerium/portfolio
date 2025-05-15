@@ -20,7 +20,7 @@ export default function NavBar() {
         setShowSidebar(!showSidebar);
         setShowLoader(false);
       },
-      !showSidebar ? 0 : 2000
+      !showSidebar ? 0 : 3000
     );
   }
 

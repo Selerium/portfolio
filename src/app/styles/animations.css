@@ -79,5 +79,5 @@
 }
 
 .project-images {
-    animation: projectImages 5000ms ease;
+    animation: projectImages 6000ms ease infinite;
 }

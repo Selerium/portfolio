@@ -24,7 +24,7 @@ export default function Projects() {
       description:
         "A project where we built a working raycaster engine in C to render a working visual simulation similar to the style of old school Doom or Wolfenstein games.",
       tags: ["Visual Progrmaming", "C", "42AD"],
-      image: '',
+      image: '/cub3d-sample.gif',
     },
     {
       title: "minishell",
@@ -45,6 +45,7 @@ export default function Projects() {
       description:
         "Educational project involving the setup of containers (NGINX, MariaDB, WordPress) and volumes in a Docker network that helped with in-depth understanding of DevOps, CI/CD pipelines and deployments.",
       tags: ["DevOps", "Docker", "CI/CD", ],
+      image: '/inception-sample.png',
     },
   ];
 
