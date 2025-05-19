@@ -3,6 +3,7 @@ import { primary } from "./styles/fonts";
 import NavBar from "./components/navbar";
 import "./styles/globals.css";
 import Footer from "./components/footer";
+import { sidebarContextProvider } from "./contexts/SidebarContext";
 
 export const metadata: Metadata = {
   title: "adi. - Portfolio",
@@ -14,8 +15,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log('mounteddddd');
-
   return (
     <html lang="en">
       <body

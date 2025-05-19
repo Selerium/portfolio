@@ -5,7 +5,6 @@ import { primary, secondary } from "../styles/fonts";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-
 export default function NavBar() {
   const firstPath = usePathname();
   const pages = ["welcome", "about", "projects", "connect"];
@@ -16,7 +15,6 @@ export default function NavBar() {
   function toggleSidebar() {
     setTimeout(
       () => {
-        console.log("changing page");
         setShowSidebar(!showSidebar);
         setShowLoader(false);
       },
