@@ -3,7 +3,6 @@ import { primary } from "./styles/fonts";
 import NavBar from "./components/navbar";
 import "./styles/globals.css";
 import Footer from "./components/footer";
-import { sidebarContextProvider } from "./contexts/SidebarContext";
 
 export const metadata: Metadata = {
   title: "adi. - Portfolio",

@@ -4,21 +4,26 @@ import { useState } from "react";
 import { primary, secondary } from "../styles/fonts";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useStore } from "../stores/SidebarStore";
 
 export default function NavBar() {
   const firstPath = usePathname();
   const pages = ["welcome", "about", "projects", "connect"];
   const [chosenPage, setChosenPage] = useState(-1);
-  const [showSidebar, setShowSidebar] = useState(false);
-  const [showLoader, setShowLoader] = useState(false);
+  const loaderState = useStore((state: any) => state.showLoader);
+  const toggleLoaderState = useStore((state: any) => state.toggleLoader);
+  const sidebarState = useStore((state: any) => state.showSidebar);
+  const setSidebarState = useStore((state: any) => state.setSidebar);
+  const loadedSite = useStore((state: any) => state.loadedSite);
+  const setLoadedSite = useStore((state: any) => state.offLoadedSite);
 
   function toggleSidebar() {
     setTimeout(
       () => {
-        setShowSidebar(!showSidebar);
-        setShowLoader(false);
+        setSidebarState(!sidebarState);
+        sidebarState ? toggleLoaderState() : "";
       },
-      !showSidebar ? 0 : 3000
+      !sidebarState ? 0 : 3000
     );
   }
 
@@ -26,13 +31,13 @@ export default function NavBar() {
     return (
       <div
         className={`${
-          showSidebar ? "opacity-100 z-50" : "opacity-0 -z-50 translate-y-full"
+          sidebarState ? "opacity-100 z-50" : "opacity-0 -z-50 translate-y-full"
         } fixed transition-all top-0 w-dvw h-dvh flex flex-col gap-12 justify-center items-center bg-black`}
       >
         <img
           className={`delayed-text
             ${
-              showSidebar
+              sidebarState
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-full"
             } transition-all w-20 h-auto p-4`}
@@ -41,15 +46,18 @@ export default function NavBar() {
         {pages.map((page, idx) => (
           <Link
             onClick={() => {
-              setChosenPage(idx);
-              setShowLoader(true);
-              toggleSidebar();
+              if (idx == chosenPage) setSidebarState(!sidebarState);
+              else {
+                setChosenPage(idx);
+                toggleSidebar();
+                toggleLoaderState();
+              }
             }}
             href={page == "welcome" ? "/" : "/" + page}
             className={`router-link transition-all cursor-pointer delayed-text text-3xl ${
               primary.className
             } ${
-              showSidebar
+              sidebarState
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-full"
             } transition-all uppercase tracking-widest font-semibold`}
@@ -60,13 +68,20 @@ export default function NavBar() {
         ))}
         <div
           className={`flex justify-center items-center absolute w-full h-full top-0 bg-black transition-all ${
-            showLoader ? "opacity-100 z-40" : "opacity-0 -z-40"
+            loaderState ? "opacity-100 z-40" : "opacity-0 -z-40"
           }`}
         >
           <div className="loaderParent w-32 h-32 flex justify-start items-start rounded-full border border-primary relative">
-            <img src="/custom-cursor.png" className="rotate-90 w-1/3 h-1/3 object-cover object-left"></img>
+            <img
+              src="/custom-cursor.png"
+              className="rotate-90 w-1/3 h-1/3 object-cover object-left"
+            ></img>
             <div className="absolute flex justify-center items-center w-full h-full">
-              <h1 className={`loaderChild text-3xl ${primary.className} tracking-tight pr-0.5 pb-0.5 text-center font-semibold`}>adi</h1>
+              <h1
+                className={`loaderChild text-3xl ${primary.className} tracking-tight pr-0.5 pb-0.5 text-center font-semibold`}
+              >
+                adi
+              </h1>
             </div>
           </div>
         </div>
@@ -113,7 +128,10 @@ export default function NavBar() {
             <img className="h-7 navLink transition-all" src="github.svg"></img>
           </a>
           <a href="https://linkedin.com/in/johnadi">
-            <img className="h-7 navLink transition-all" src="linkedin.svg"></img>
+            <img
+              className="h-7 navLink transition-all"
+              src="linkedin.svg"
+            ></img>
           </a>
         </div>
       </nav>
