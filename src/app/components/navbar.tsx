@@ -95,10 +95,17 @@ export default function NavBar() {
     >
       {Sidebar()}
       <nav className={`z-40 flex w-11/12 justify-between items-center h-fit`}>
-        <img src="/adi-logo.svg" className="w-20 mr-20 h-auto"></img>
+        <img
+          src="/adi-logo.svg"
+          className="hidden lg:block w-20 mr-20 h-auto"
+        ></img>
+        <img
+          src="/custom-cursor.png"
+          className="block lg:hidden w-6 mr-20 h-auto"
+        ></img>
         <div
           onClick={toggleSidebar}
-          className="flex gap-2 items-center justify-center relative nav-dropdown"
+          className="hidden lg:flex gap-2 items-center justify-center relative nav-dropdown"
         >
           <div className="h-[1px] w-14 bg-white"></div>
           <h4
@@ -120,7 +127,12 @@ export default function NavBar() {
             <path d="M1 1L5 4L9 1" stroke="white" />
           </svg>
         </div>
-        <div className="h-full w-40 flex items-center justify-between">
+        <img
+          onClick={toggleSidebar}
+          src="/hamborgir-menu.svg"
+          className="block lg:hidden w-6 h-auto"
+        ></img>
+        <div className="hidden lg:flex h-full w-40 items-center justify-between">
           <a href="mailto:johnadithya008@gmail.com">
             <img className="h-7 navLink transition-all" src="mail.svg"></img>
           </a>

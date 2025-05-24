@@ -16,11 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
       <body
         className={`${primary.className} antialiased w-full flex flex-col overflow-x-clip justify-start items-center`}
       >
-        <div className="w-50 h-50 bg-shadow -top-1/6 -left-1/6 z-0 absolute bg-secondary rounded-full"></div>
-        <div className="w-50 h-50 bg-shadow -bottom-1/6 -right-1/6 z-0 absolute bg-secondary rounded-full"></div>
+        <div className="max-w-50 max-h-50 w-[30vw] h-[30vh] bg-shadow -top-1/6 -left-1/6 z-0 absolute bg-secondary rounded-full"></div>
+        <div className="max-w-50 max-h-50 w-[30vw] h-[30vh] bg-shadow -bottom-1/6 -right-1/6 z-0 absolute bg-secondary rounded-full"></div>
         <NavBar />
         {children}
         <Footer />

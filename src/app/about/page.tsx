@@ -39,8 +39,8 @@ export default function About() {
         key={section.title}
         onClick={() => clickSection(idx)}
         className={`${
-          idx == activeSection ? "w-2/5" : ""
-        } w-1/5 grow h-4/5 cursor-pointer transition-all rounded-lg flex justify-center items-center relative`}
+          idx == activeSection ? "w-full lg:w-2/5" : ""
+        } w-full lg:w-1/5 grow lg:h-4/5 cursor-pointer transition-all rounded-lg flex justify-center items-center relative`}
       >
         <div
           className={`absolute transition-all about-hover overflow-y-clip flex flex-col justify-center items-center w-full h-full rounded-lg z-50`}
@@ -69,7 +69,7 @@ export default function About() {
       id="about"
       className="h-dvh py-4 box-border w-full flex justify-center items-center overflow-x-clip relative z-0"
     >
-      <div className="w-11/12 h-full gap-8 flex items-center">
+      <div className="w-11/12 h-5/6 lg:h-full gap-8 flex flex-col lg:flex-row items-center">
         {sectionDivs()}
       </div>
     </div>

@@ -23,15 +23,26 @@ export default function Connect() {
       last_name: formInfo.get("lastName"),
       email: formInfo.get("email"),
       whatsapp: formInfo.get("whatsapp"),
-      // enquiry_type: formInfo.get("enquiryType"),
+      enquiry_type: formInfo.get("enquiryType"),
       description: formInfo.get("description"),
     });
 
     if (error) {
       setDisableButton(true);
-      setError(false);
+      setError(true);
       setTitle("Invalid Form Fields");
       setMessage("Please check through your answers and resubmit.");
+      setShowToaster(true);
+      setTimeout(() => {
+        setDisableButton(false);
+        setShowToaster(false);
+      }, 5000);
+    }
+    else {
+      setDisableButton(true);
+      setError(false);
+      setTitle("Form Successfully Submitted");
+      setMessage("Thank you for your interest! We will reach out to you soon.");
       setShowToaster(true);
       setTimeout(() => {
         setDisableButton(false);
@@ -137,7 +148,7 @@ export default function Connect() {
                 </option>
               </select>
             </div>
-            <div className="grow w-full max-w-full min-w-72 flex flex-col gap-2">
+            <div className="grow w-full max-w-full flex flex-col gap-2">
               <label
                 className={`${secondary.className} w-full font-light text-md tracking-tight`}
               >

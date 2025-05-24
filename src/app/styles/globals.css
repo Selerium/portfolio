@@ -45,12 +45,16 @@ body {
 }
 
 .sample-shadow {
-  box-shadow: 0 0 35px 8px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 5vw 4px rgba(255, 255, 255, 0.15);
 }
 
 .bg-shadow {
-  box-shadow: 0 0 192px 174px var(--color-secondary);
   animation: movingGlowCircles ease 15s infinite;
+
+  box-shadow: 0 0 192px 174px var(--color-secondary);
+  @media screen and (max-width: 768px) {
+    box-shadow: 0 0 20vw 18vw var(--color-secondary);
+  }
 }
 
 .bg-shadow:nth-child(1) {
