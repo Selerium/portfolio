@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { primary, secondary } from "../styles/fonts";
-import { useRouter } from "next/router";
 
 export default function Projects() {
-  const {basePath} = useRouter();
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const projectList = [
     {
       title: "sta youth website",
@@ -54,7 +53,7 @@ export default function Projects() {
   function projectListDivs() {
     return projectList.map((project, idx) => (
       <div key={idx} className="projectList relative border rounded-lg h-80 w-80 grow flex basis-1/4 justify-center items-center overflow-y-clip">
-        <img className="absolute w-full h-full object-cover project-images object-top z-10 opacity-40" src={`/${basePath}/${project.image}`}></img>
+        <img className="absolute w-full h-full object-cover project-images object-top z-10 opacity-40" src={`${basePath}${project.image}`}></img>
         <p
           className={`${primary.className} font-semibold text-2xl uppercase text-center z-20 tracking-widest border-gray-300`}
         >

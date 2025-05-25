@@ -3,15 +3,14 @@
 import { useState } from "react";
 import { primary } from "./styles/fonts";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 export default function Home() {
-const { basePath } = useRouter();
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
   const [imageSrcs, setImageSrcs] = useState([
-    `/${basePath}/youth-sample.png`,
-    `/${basePath}/aziza-sample.png`,
-    `/${basePath}/junia-sample.png`,
+    `${basePath}/youth-sample.png`,
+    `${basePath}/aziza-sample.png`,
+    `${basePath}/junia-sample.png`,
   ]);
   const [leftElement, setLeftElement] = useState(0);
   const [activeElement, setActiveElement] = useState(1);
@@ -63,7 +62,7 @@ const { basePath } = useRouter();
       </div>
       <div className="w-11/12 h-2/12 gap-4 flex justify-between relative items-center">
         <button className="cursor-pointer link" onClick={moveLeft}>
-          <img src={`/${basePath}/arrow.svg`}></img>
+          <img src={`${basePath}/arrow.svg`}></img>
         </button>
         <div className="flex flex-col justify-center items-center gap-4">
           <h1 className="text-2xl text-center lg:text-6xl font-semibold tracking-tighter">
@@ -77,7 +76,7 @@ const { basePath } = useRouter();
           </Link>
         </div>
         <button className="cursor-pointer link" onClick={moveRight}>
-          <img src={`/${basePath}/arrow.svg`} className="rotate-180"></img>
+          <img src={`${basePath}/arrow.svg`} className="rotate-180"></img>
         </button>
       </div>
     </div>

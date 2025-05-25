@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 import { primary, secondary } from "../styles/fonts";
-import { useRouter } from "next/router";
 
 export default function About() {
-  const {basePath} = useRouter();
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
   const sections = [
     {
@@ -49,7 +48,7 @@ export default function About() {
           className={`absolute transition-all about-hover overflow-y-clip flex flex-col justify-center items-center w-full h-full rounded-lg z-50`}
         >
           <div className="absolute w-full h-full z-10 layer-gradient rounded-lg"></div>
-          <img src={`/${basePath}/portfolio-images/${section.title}.png`} className={`object-cover rounded-lg h-full w-full opacity-75 ${idx == activeSection ? 'grayscale-0' : 'grayscale-100'}`}></img>
+          <img src={`${basePath}/portfolio-images/${section.title}.png`} className={`object-cover rounded-lg h-full w-full opacity-75 ${idx == activeSection ? 'grayscale-0' : 'grayscale-100'}`}></img>
           <h2
             className={`${idx == activeSection ? 'top-10' : 'top-1/2'} mix-blend-normal transition-all absolute z-30 pointer-events-none ${primary.className} w-5/6 text-center tracking-widest uppercase text-4xl font-semibold`}
           >
