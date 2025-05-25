@@ -5,8 +5,10 @@ import { primary, secondary } from "../styles/fonts";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useStore } from "../stores/SidebarStore";
+import { useRouter } from "next/router";
 
 export default function NavBar() {
+  const {basePath} = useRouter();
   const firstPath = usePathname();
   const pages = ["welcome", "about", "projects", "connect"];
   const [chosenPage, setChosenPage] = useState(-1);
@@ -41,7 +43,7 @@ export default function NavBar() {
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-full"
             } transition-all w-20 h-auto p-4`}
-          src="/adi-logo.svg"
+          src={`/${basePath}/adi-logo.svg`}
         ></img>
         {pages.map((page, idx) => (
           <Link
@@ -73,7 +75,7 @@ export default function NavBar() {
         >
           <div className="loaderParent w-32 h-32 flex justify-start items-start rounded-full border border-primary relative">
             <img
-              src="/custom-cursor.png"
+              src={`/${basePath}/custom-cursor.png`}
               className="rotate-90 w-1/3 h-1/3 object-cover object-left"
             ></img>
             <div className="absolute flex justify-center items-center w-full h-full">
@@ -96,11 +98,11 @@ export default function NavBar() {
       {Sidebar()}
       <nav className={`z-40 flex w-11/12 justify-between items-center h-fit`}>
         <img
-          src="/adi-logo.svg"
+          src={`/${basePath}/adi-logo.svg`}
           className="hidden lg:block w-20 mr-20 h-auto"
         ></img>
         <img
-          src="/custom-cursor.png"
+          src={`/${basePath}/custom-cursor.png`}
           className="block lg:hidden w-6 mr-20 h-auto"
         ></img>
         <div
@@ -129,20 +131,20 @@ export default function NavBar() {
         </div>
         <img
           onClick={toggleSidebar}
-          src="/hamborgir-menu.svg"
+          src={`/${basePath}/hamborgir-menu.svg`}
           className="block lg:hidden w-6 h-auto"
         ></img>
         <div className="hidden lg:flex h-full w-40 items-center justify-between">
           <a href="mailto:johnadithya008@gmail.com">
-            <img className="h-7 navLink transition-all" src="mail.svg"></img>
+            <img className="h-7 navLink transition-all" src={`/${basePath}/mail.svg`}></img>
           </a>
           <a href="https://github.com/selerium">
-            <img className="h-7 navLink transition-all" src="github.svg"></img>
+            <img className="h-7 navLink transition-all" src={`/${basePath}/github.svg`}></img>
           </a>
           <a href="https://linkedin.com/in/johnadi">
             <img
               className="h-7 navLink transition-all"
-              src="linkedin.svg"
+              src={`/${basePath}/linkedin.svg`}
             ></img>
           </a>
         </div>
