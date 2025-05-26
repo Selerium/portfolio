@@ -52,7 +52,7 @@ export default function Projects() {
 
   function projectListDivs() {
     return projectList.map((project, idx) => (
-      <div key={idx} className="projectList relative border rounded-lg h-80 w-80 grow flex basis-1/4 justify-center items-center overflow-y-clip">
+      <div key={idx} className="projectList relative border rounded-lg h-80 min-w-72 w-80 grow flex basis-1/4 justify-center items-center overflow-y-clip">
         <img className="absolute w-full h-full object-cover project-images object-top z-10 opacity-40" src={`${basePath}${project.image}`}></img>
         <p
           className={`${primary.className} font-semibold text-2xl uppercase text-center z-20 tracking-widest border-gray-300`}
@@ -66,13 +66,13 @@ export default function Projects() {
             {project.title}
           </h2>
           <p
-            className={`${secondary.className} text-md font-light text-justify line-clamp-3`}
+            className={`${secondary.className} text-md font-light text-justify h-18 overflow-y-auto`}
           >
             {project.description}
           </p>
-          <div className="flex gap-4">
+          <div className="flex gap-2 overflow-x-auto w-full">
             {project.tags.map((tag, index) => (
-              <p key={index} className="p-2 bg-gray-300 rounded-lg font-semibold">{tag}</p>
+              <p key={index} className="p-2 min-w-fit bg-gray-300 rounded-lg font-semibold">{tag}</p>
             ))}
           </div>
           <Link href="/" className="cursor-pointer text-center w-full p-2 rounded-lg bg-primary text-white uppercase tracking-widest">

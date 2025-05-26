@@ -41,23 +41,23 @@ export default function About() {
         key={section.title}
         onClick={() => clickSection(idx)}
         className={`${
-          idx == activeSection ? "w-full lg:w-2/5" : ""
+          idx == activeSection ? "w-full h-full lg:w-2/5" : "h-1/6"
         } w-full lg:w-1/5 grow lg:h-4/5 cursor-pointer transition-all rounded-lg flex justify-center items-center relative`}
       >
         <div
           className={`absolute transition-all about-hover overflow-y-clip flex flex-col justify-center items-center w-full h-full rounded-lg z-50`}
         >
-          <div className="absolute w-full h-full z-10 layer-gradient rounded-lg"></div>
+          <div className="absolute w-full h-full z-10 not-lg:bg-black not-lg:opacity-50 lg:layer-gradient rounded-lg"></div>
           <img src={`${basePath}/portfolio-images/${section.title}.png`} className={`object-cover rounded-lg h-full w-full opacity-75 ${idx == activeSection ? 'grayscale-0' : 'grayscale-100'}`}></img>
           <h2
-            className={`${idx == activeSection ? 'top-10' : 'top-1/2'} mix-blend-normal transition-all absolute z-30 pointer-events-none ${primary.className} w-5/6 text-center tracking-widest uppercase text-4xl font-semibold`}
+            className={`${idx == activeSection ? 'top-2 hidden lg:block lg:top-10' : 'lg:top-1/2'} mix-blend-normal transition-all absolute z-30 pointer-events-none ${primary.className} w-5/6 text-center tracking-widest uppercase text-2xl lg:text-4xl font-semibold`}
           >
             {section.title}
           </h2>
           <p
             className={`${
-          idx == activeSection ? "opacity-100 bottom-10" : "opacity-0 bottom-1/2"
-        } absolute z-30 pointer-events-none transition-all ${secondary.className} w-5/6 text-center text-md font-light`}
+          idx == activeSection ? "opacity-100 lg:bottom-10" : "opacity-0 bottom-1/2"
+        } absolute z-30 pointer-events-none transition-all ${secondary.className} w-11/12 lg:w-5/6 text-center text-md font-light`}
           >
             {section.description}
           </p>
