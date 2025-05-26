@@ -47,7 +47,7 @@ export default function About() {
         <div
           className={`absolute transition-all about-hover overflow-y-clip flex flex-col justify-center items-center w-full h-full rounded-lg z-50`}
         >
-          <div className="absolute w-full h-full z-10 not-lg:bg-black not-lg:opacity-50 lg:layer-gradient rounded-lg"></div>
+          <div className="absolute w-full h-full z-10 not-lg:bg-black not-lg:opacity-50 layer-gradient rounded-lg"></div>
           <img src={`${basePath}/portfolio-images/${section.title}.png`} className={`object-cover rounded-lg h-full w-full opacity-75 ${idx == activeSection ? 'grayscale-0' : 'grayscale-100'}`}></img>
           <h2
             className={`${idx == activeSection ? 'top-2 hidden lg:block lg:top-10' : 'lg:top-1/2'} mix-blend-normal transition-all absolute z-30 pointer-events-none ${primary.className} w-5/6 text-center tracking-widest uppercase text-2xl lg:text-4xl font-semibold`}
