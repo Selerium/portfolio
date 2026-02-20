@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link";
-import { primary, secondary } from "../styles/fonts";
+import { primary, secondary } from "../../styles/fonts";
 
 export default function Projects() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -12,6 +12,7 @@ export default function Projects() {
         "Website built as a creative side-project for the youth group that I lead at. Minimilist and user-friendly UX/UI that is clean and visually appealing with aspects that match the group's identity.",
       tags: ["Web Development", "Web Design", "Vue 3", ],
       image: '/youth-sample.png',
+      link: '/sta-youth-website',
     },
     {
       title: "junia tourism",
@@ -19,6 +20,7 @@ export default function Projects() {
         "Website built that showcases different tours offered by Junia Tourism to help advertise and market towards the tourist audience in the locality.",
       tags: ["Web Development", "Web Design", "Zola", ],
       image: '/junia-sample.png',
+      link: '/junia-tourism',
     },
     {
       title: "cub3d",
@@ -26,6 +28,7 @@ export default function Projects() {
         "A project where we built a working raycaster engine in C to render a working visual simulation similar to the style of old school Doom or Wolfenstein games.",
       tags: ["Visual Progrmaming", "C", "42AD"],
       image: '/cub3d-sample.gif',
+      link: '/cub3d',
     },
     {
       title: "minishell",
@@ -33,6 +36,7 @@ export default function Projects() {
         "Built our own shell in C, utilising existing shell executables with a few recreated ones. Also modified specific features to allow for more ease of use for certain aspects.",
       tags: ["Software Development", "C", "42AD"],
       image: '/minishell-sample.png',
+      link: '/minishell',
     },
     {
       title: "portfolio",
@@ -40,6 +44,7 @@ export default function Projects() {
         "The site you're currently looking at. A fun project for myself to work creatively as well as showcase my work so far. Allows for me to market my own freelance work.",
       tags: ["Web Development", "Web Design", "Next.js", "React", ],
       image: '/portfolio-sample.png',
+      link: '/portfolio',
     },
     {
       title: "inception",
@@ -47,6 +52,7 @@ export default function Projects() {
         "Educational project involving the setup of containers (NGINX, MariaDB, WordPress) and volumes in a Docker network that helped with in-depth understanding of DevOps, CI/CD pipelines and deployments.",
       tags: ["DevOps", "Docker", "CI/CD", ],
       image: '/inception-sample.png',
+      link: '/inception',
     },
   ];
 
@@ -75,8 +81,8 @@ export default function Projects() {
               <p key={index} className="p-2 min-w-fit bg-gray-300 rounded-lg font-semibold">{tag}</p>
             ))}
           </div>
-          <Link href="/" className="cursor-pointer text-center w-full p-2 rounded-lg bg-primary text-white uppercase tracking-widest">
-            {"view project " + "->"}
+          <Link href={`/projects${project.link}`} className="cursor-pointer text-center w-full p-2 rounded-lg bg-primary text-white uppercase tracking-widest">
+            view project
           </Link>
         </div>
       </div>

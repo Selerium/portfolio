@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { primary } from "./styles/fonts";
-import NavBar from "./components/navbar";
-import "./styles/globals.css";
-import Footer from "./components/footer";
+import { primary } from "../styles/fonts";
+import NavBar from "../components/navbar";
+import "../styles/globals.css";
+import Footer from "../components/footer";
+import RouteTransition from "../components/RouteTransition";
 
 export const metadata: Metadata = {
   title: "adi. - Portfolio",
@@ -25,7 +26,11 @@ export default function RootLayout({
           <div className="max-w-50 max-h-50 w-[30vw] h-[30vh] bg-shadow -top-1/6 -left-1/6 z-0 absolute bg-secondary rounded-full"></div>
           <div className="max-w-50 max-h-50 w-[30vw] h-[30vh] bg-shadow  bottom-1/6 -right-1/6 z-0 absolute bg-secondary rounded-full"></div>
           <NavBar />
-          {children}
+          <RouteTransition>
+            <div id="route-content" className="w-full">
+              {children}
+            </div>
+          </RouteTransition>
           <Footer />
         </div>
       </body>

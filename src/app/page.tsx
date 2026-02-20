@@ -1,13 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { primary } from "./styles/fonts";
+import { primary } from "../styles/fonts";
 import Link from "next/link";
-import { useStore } from "./stores/SidebarStore";
 
 export default function Home() {
-  const setSidebar = useStore((state: any) => state.setSidebar);
-  const toggleLoader = useStore((state: any) => state.toggleLoader);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   const [imageSrcs, setImageSrcs] = useState([
@@ -71,14 +68,6 @@ export default function Home() {
           </h1>
           <Link
             href="/connect"
-            onClick={() => {
-              toggleLoader();
-              setSidebar(true);
-              setTimeout(() => {
-                setSidebar(false);
-                toggleLoader();
-              }, 3000);
-            }}
             className={`link cursor-pointer text-sm lg:text-xl tracking-widest lg:tracking-widest font-semibold ${primary.className} text-center uppercase py-2 pl-2 lg:pl-7 px-1 lg:px-4 bg-primary border border-white w-fit rounded-lg`}
           >
             get a quote

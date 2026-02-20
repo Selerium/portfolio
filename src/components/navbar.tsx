@@ -1,31 +1,48 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { primary, secondary } from "../styles/fonts";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useStore } from "../stores/SidebarStore";
+import TransitionLink from "./TransitionLink";
+
+const pages = ["welcome", "about", "projects", "connect"];
 
 export default function NavBar() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-  const firstPath = usePathname();
-  const pages = ["welcome", "about", "projects", "connect"];
+  const pathname = usePathname();
   const [chosenPage, setChosenPage] = useState(-1);
-  const loaderState = useStore((state: any) => state.showLoader);
-  const toggleLoaderState = useStore((state: any) => state.toggleLoader);
   const sidebarState = useStore((state: any) => state.showSidebar);
   const setSidebarState = useStore((state: any) => state.setSidebar);
-  const loadedSite = useStore((state: any) => state.loadedSite);
-  const setLoadedSite = useStore((state: any) => state.offLoadedSite);
+
+  // Sync chosenPage with current pathname
+  useEffect(() => {
+    const currentPath = pathname.replace(/\/$/, ''); // Remove trailing slash
+    if (currentPath === '' || currentPath === '/') {
+      setChosenPage(0); // welcome
+    } else {
+      const pageIndex = pages.findIndex(page => `/${page}` === currentPath);
+      if (pageIndex !== -1) {
+        setChosenPage(pageIndex);
+      }
+    }
+  }, [pathname]);
+
+  // Get current page name for display
+  function getCurrentPageName() {
+    if (chosenPage !== -1) {
+      return pages[chosenPage];
+    }
+    const currentPath = pathname.replace(/\/$/, ''); // Remove trailing slash
+    if (currentPath === '' || currentPath === '/') {
+      return "welcome";
+    }
+    const pageName = currentPath.substring(1); // Remove leading slash
+    return pages.includes(pageName) ? pageName : "welcome";
+  }
 
   function toggleSidebar() {
-    setTimeout(
-      () => {
-        setSidebarState(!sidebarState);
-        sidebarState ? toggleLoaderState() : "";
-      },
-      !sidebarState ? 0 : 3000
-    );
+    setSidebarState(!sidebarState);
   }
 
   function Sidebar() {
@@ -45,16 +62,16 @@ export default function NavBar() {
           src={`${basePath}/adi-logo.svg`}
         ></img>
         {pages.map((page, idx) => (
-          <Link
+          <TransitionLink
             onClick={() => {
-              if (idx == chosenPage) setSidebarState(!sidebarState);
-              else {
+              if (idx == chosenPage) {
+                setSidebarState(false);
+              } else {
                 setChosenPage(idx);
-                toggleSidebar();
-                toggleLoaderState();
+                setSidebarState(false);
               }
             }}
-            href={page == "welcome" ? "/" : "/" + page}
+            href={page == "welcome" ? "/" : `/${page}`}
             className={`router-link transition-all cursor-pointer delayed-text text-3xl ${
               primary.className
             } ${
@@ -65,27 +82,8 @@ export default function NavBar() {
             key={`${page}`}
           >
             {page}
-          </Link>
+          </TransitionLink>
         ))}
-        <div
-          className={`flex justify-center items-center absolute w-full h-full top-0 bg-black transition-all ${
-            loaderState ? "opacity-100 z-40" : "opacity-0 -z-40"
-          }`}
-        >
-          <div className="loaderParent w-32 h-32 flex justify-start items-start rounded-full border border-primary relative">
-            <img
-              src={`${basePath}/custom-cursor.png`}
-              className="rotate-90 w-1/3 h-1/3 object-cover object-left"
-            ></img>
-            <div className="absolute flex justify-center items-center w-full h-full">
-              <h1
-                className={`loaderChild text-3xl ${primary.className} tracking-tight pr-0.5 pb-0.5 text-center font-semibold`}
-              >
-                adi
-              </h1>
-            </div>
-          </div>
-        </div>
       </div>
     );
   }
@@ -112,11 +110,7 @@ export default function NavBar() {
           <h4
             className={`${secondary.className} transition-all cursor-pointer font-extralight text-xl glow`}
           >
-            {chosenPage == -1
-              ? firstPath.length > 1
-                ? firstPath.substring(1, firstPath.length - 1)
-                : "welcome"
-              : pages[chosenPage]}
+            {getCurrentPageName()}
           </h4>
           <div className="h-[1px] w-14 bg-white"></div>
           <svg
