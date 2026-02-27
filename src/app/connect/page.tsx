@@ -1,10 +1,10 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { primary, secondary } from "../styles/fonts";
-import { supabase } from "../stores/supabase";
-import { toasterStore } from "../stores/toasterStore";
-import Toaster from "../components/toaster";
+import { primary, secondary } from "../../styles/fonts";
+import { supabase } from "../../stores/supabase";
+import { toasterStore } from "../../stores/toasterStore";
+import Toaster from "../../components/toaster";
 
 export default function Connect() {
   const setTitle = toasterStore((state: any) => state.setTitle);

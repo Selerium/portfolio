@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { primary, secondary } from "../styles/fonts";
+import { primary, secondary } from "../../styles/fonts";
 
 export default function About() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';

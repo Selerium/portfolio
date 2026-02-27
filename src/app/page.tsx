@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { primary } from "./styles/fonts";
+import { primary } from "../styles/fonts";
 import Link from "next/link";
-import { useStore } from "./stores/SidebarStore";
+import { useStore } from "../stores/SidebarStore";
 
 export default function Home() {
   const setSidebar = useStore((state: any) => state.setSidebar);

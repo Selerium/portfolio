@@ -1,12 +1,9 @@
-"use client";
+import { primary, secondary } from "../../styles/fonts";
+import { supabase } from "@/stores/supabase";
 
-import Link from "next/link";
-import { primary, secondary } from "../styles/fonts";
-import { useState } from "react";
-
-export default function Projects() {
+export default async function Projects() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-  const [ viewProjectText, setViewProjectText ] = useState('VIEW PROJECT ->');
+  // const [ viewProjectText, setViewProjectText ] = useState('VIEW PROJECT ->');
 
   const projectList = [
     {
@@ -53,6 +50,8 @@ export default function Projects() {
     },
   ];
 
+  let { data: projectData } = await supabase.from('projects').select('title, description, tags, image_url')
+
   function projectListDivs() {
     return projectList.map((project, idx) => (
       <div
@@ -91,10 +90,8 @@ export default function Projects() {
           </div>
           <button
             className="relative transition-all cursor-not-allowed text-center w-full p-2 rounded-lg opacity-75 bg-primary text-white uppercase tracking-widest"
-            onMouseEnter={() => setViewProjectText('COMING SOON!')}
-            onMouseLeave={() => setViewProjectText('VIEW PROJECT ->')}
           >
-            {viewProjectText}
+            {'VIEW PROJECT ->'}
           </button>
           {/* <Link href="/" className="cursor-pointer text-center w-full p-2 rounded-lg bg-primary text-white uppercase tracking-widest">
             {"view project " + "->"}
