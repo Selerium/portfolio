@@ -24,7 +24,7 @@ export default function NavBar() {
         setSidebarState(!sidebarState);
         sidebarState ? toggleLoaderState() : "";
       },
-      !sidebarState ? 0 : 3000
+      !sidebarState ? 0 : 1000
     );
   }
 

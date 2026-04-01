@@ -49,7 +49,7 @@ body {
 }
 
 .bg-shadow {
-  animation: movingGlowCircles ease 15s infinite;
+  animation: movingGlowCircles ease 8s infinite;
 
   box-shadow: 0 0 192px 174px var(--color-secondary);
   @media screen and (max-width: 768px) {
