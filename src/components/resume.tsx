@@ -116,11 +116,11 @@ export default function Resume() {
   ];
 
   return (
-    <div className="w-3/5 h-fit flex flex-col gap-4 transition-all pb-8">
-      <h2 className="text-2xl lg:text-4xl font-semibold tracking-tighter">
+    <div className="w-3/5 min-w-72 h-fit flex flex-col gap-4 transition-all pb-8">
+      <h2 className="text-2xl lg:text-4xl font-semibold tracking-tighter order-first">
         my resume
       </h2>
-      <div className="flex flex-wrap gap-2 order-1">
+      <div className="flex flex-wrap gap-2 order-first">
         {options.map((option) => (
           <div
             key={option}
@@ -140,19 +140,19 @@ export default function Resume() {
       {resumeList.map((item) => (
         <div
           key={`${item.title}${item.organization}`}
-          className={`flex rounded-lg border border-primary transition-all bg-primary ${
+          className={`flex lg:flex-row flex-col rounded-lg border border-primary transition-all bg-primary ${
             selectedOption === "ALL" || item.type === selectedOption
-              ? "scale-100 opacity-100 order-2"
-              : "scale-50 opacity-0 order-last absolute bottom-0"
+              ? "opacity-100"
+              : "h-0 opacity-0 absolute bottom-0"
           }`}
         >
-          <div className="w-1/2 flex flex-col gap-2 p-4">
+          <div className="lg:w-1/2 flex flex-col gap-2 p-4">
             <div>
               <div className="flex gap-2">
                 <p className="tracking-tight font-semibold text-2xl">
                   {item.title}
                 </p>
-                <p className="py-1 px-2 rounded-lg bg-secondary">{item.type}</p>
+                <p className="py-1 px-2 h-fit rounded-lg bg-secondary">{item.type}</p>
               </div>
               <p className="font-light">
                 {item.organization} |{" "}
@@ -161,7 +161,7 @@ export default function Resume() {
             </div>
             <p className="font-light">{item.summary}</p>
           </div>
-          <div className="w-1/2 flex flex-col justify-start gap-2 p-4 bg-white text-black rounded-r-lg">
+          <div className="lg:w-1/2 flex flex-col justify-start gap-2 p-4 bg-white text-black rounded-lg">
             <p className="py-1 px-2 border border-primary rounded-lg w-fit">
               {item.endDate === 'Present' ? `since ${item.startDate} ` : `${item.startDate} - ${item.endDate}`}
             </p>

@@ -264,7 +264,7 @@ export default function Expertise({ changeSite }: any) {
 
   return (
     <div className="w-full flex justify-center items-center">
-      <div className="w-3/5 h-dvh flex flex-col justify-center items-center gap-8">
+      <div className="w-3/5 min-w-72 min-h-dvh h-fit py-8 flex flex-col justify-center items-center gap-8">
         <h2 className="text-2xl text-center lg:text-4xl font-semibold tracking-tighter">
           unleash your{"  "}
           <span
@@ -290,7 +290,7 @@ export default function Expertise({ changeSite }: any) {
           LET&apos;S TALK
         </Link>
         <h3 className="font-semibold text-xl mt-8">my tech expertise</h3>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap justify-center gap-2">
           {groups.map((group) => (
             <div
               key={group}
@@ -315,8 +315,8 @@ export default function Expertise({ changeSite }: any) {
                 key={skill.title}
                 className={`px-4 py-2 rounded-xl text-center flex gap-2 transition-all font-semibold ${
                   selectedGroup === "ALL" || skill.group === selectedGroup
-                    ? `opacity-100 order-first ${skill.style}`
-                    : "opacity-50 order-last"
+                    ? `opacity-100 ${skill.style}`
+                    : "opacity-25"
                 }
                   `}
               >
