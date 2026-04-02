@@ -116,7 +116,7 @@ export default function Resume() {
   ];
 
   return (
-    <div className="w-3/5 h-fit flex flex-col gap-4 transition-all">
+    <div className="w-3/5 h-fit flex flex-col gap-4 transition-all pb-8">
       <h2 className="text-2xl lg:text-4xl font-semibold tracking-tighter">
         my resume
       </h2>
