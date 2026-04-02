@@ -13,11 +13,10 @@ export default function Resume() {
       summary:
         "Full-stack developer responsible for designing and building multiple web platforms, contributing to frontend and backend integration while guiding technical decisions and maintaining team code quality through structured reviews and agile practices.",
       points: [
-        "Created and implemented UI/UX designs for 4 different websites.",
-        "Developed frontend functionality using Vue and TypeScript, working with a Golang backend.",
-        "Used Next.JS and Supabase for a full-stack multi-user project, as well as Tailwind CSS.",
-        "Planned the technology stack for websites as well as the company’s ecosystem of decentralized apps.",
-        "Conducted daily code reviews and sprint planning every two weeks to ensure optimum quality of code and team alignment.",
+        "Created and implemented UI/UX designs for multiple websites",
+        "Developed frontend in Vue, Next.JS; backend with Go and Supabase",
+        "Planned and architected through the system design process for various applications",
+        "Conducted periodic sprint plannings and code reviews to ensure quality code and team alignment",
       ],
       startDate: "Aug 2024",
       endDate: "Present",
@@ -30,27 +29,27 @@ export default function Resume() {
       summary:
         "Frontend-focused developer who improved performance and SEO while delivering multiple client websites, redesigning interfaces, and integrating APIs to create responsive and scalable web applications.",
       points: [
-        "Increased SEO and performance scores for a client website from 80% to 100%, enhancing web traffic.",
-        "Developed 4 website projects (static and dynamic) for clients, including dynamic PWAs using Angular and static sites with Hugo/Zola.",
-        "Redesigned websites for private and government entities to align with modern UI/UX standards.",
-        "Managed client projects and facilitated regular team meetings for progress reporting.",
-        "Integrated dynamic functionality via REST APIs (CRUD) for responsive user experiences.",
+        "Increased SEO and performance for client websites, enhancing web traffic.",
+        "Developed 4 websites for clients using Angular, Hugo & Zola",
+        "Conducted UX/UI redesign of client projects to align with modern trends",
+        "Managed client projects and facilitated regular team meetings for consistency",
+        "Integrated dynamic functionality via REST APIs",
       ],
       startDate: "July 2023",
       endDate: "July 2024",
     },
     {
-      title: "Freelance Development",
+      title: "Software Developer",
       type: "DEVELOPER",
-      organization: "Cross Current",
+      organization: "Self-employed",
       location: "Remote",
       summary:
         "Freelance developer and designer delivering tailored web solutions, combining UI/UX design, full-stack development, and consulting to help clients build functional and cost-effective platforms.",
       points: [
-        "Designed creative Figma prototypes based on client requirements and original concepts.",
-        "Utilised Vue and Supabase to create websites for events along with Stripe integration for payments.",
-        "Offered consulting on web solutions, creative direction, and hosting services.",
-        "Built websites and web applications for individual clients that required simple platforms at lower costs.",
+        "Designed creative Figma prototypes based on client requirements and concepts",
+        "Utilised Vue and Supabase to create websites for events along with Stripe integration",
+        "Offered consulting on web solutions, business direction, and hosting services",
+        "Built websites and web applications for individuals required simple, low-cost platforms",
       ],
       startDate: "September 2023",
       endDate: "Present",
@@ -63,9 +62,9 @@ export default function Resume() {
       summary:
         "Provided early-stage technical direction for a startup, contributing to foundational web development, product strategy, and quality assurance for MVPs and branding initiatives.",
       points: [
-        "Bootstrapped the start-up team with initial HTML and CSS structure and designs for their website.",
-        "Provided strategic guidance on product tech requirements and feasibility.",
-        "Conducted quality checks on MVPs, branding materials, and market insights.",
+        "Bootstrapped the team with initial HTML and CSS structure & designs for their app",
+        "Provided strategic guidance on product tech requirements and feasibility",
+        "Conducted quality checks on MVPs, branding materials, and business planning",
       ],
       startDate: "March 2020",
       endDate: "Present",
@@ -78,8 +77,8 @@ export default function Resume() {
       summary:
         "Volunteer leader mentoring youth and managing community initiatives, combining teaching, leadership, and team coordination to foster personal development and a supportive environment.",
       points: [
-        "Mentored and taught over 30 teenagers in self-help, mentorship, and theological studies.",
-        "Led a team of volunteers to create a supportive environment for youth development.",
+        "Mentored and taught over 40 teenagers in self-help, mentorship, and theological studies",
+        "Led a team of volunteers to create a supportive environment for youth development",
       ],
       startDate: "March 2022",
       endDate: "Present",
@@ -92,9 +91,9 @@ export default function Resume() {
       summary:
         "Comprehensive engineering program covering software development, networking, and business fundamentals, complemented by a capstone project focused on improving enterprise software systems.",
       points: [
-        "Coursework - Software Development, Data Science, Networking, Business Management.",
-        "Capstone Project - collaborated with a health insurance claims software company to enhance legacy systems and propose innovative solutions. Worked with Java Spring Boot and performed code quality checks.",
-        "Engaged heavily in student clubs focused on music, mental health, and sports.",
+        "Coursework - Software Development, Data Science, Networking, Business Management",
+        "Capstone Project - collaborated with a health insurance claims software company to enhance legacy systems and propose innovative solutions; worked with Java Spring Boot and performed code quality checks",
+        "Engaged heavily in student clubs focused on music, mental health, and sports",
       ],
       startDate: "2019",
       endDate: "2024",
@@ -107,10 +106,9 @@ export default function Resume() {
       summary:
         "Hands-on, peer-to-peer computer science program focused on practical software engineering, low-level programming, and problem-solving, completed alongside professional work experience.",
       points: [
-        "Coursework – Entrepreneurship, Advanced and Discrete Math, ICT, Business Planning.",
-        "Alongside work and university, I study in the 3-5 year higher education program at 42AbuDhabi.",
-        "Peer-to-peer education in programming, computer architecture, and Linux shell scripting.",
-        "Acquired skills in web development, C/C++, troubleshooting, and Git.",
+        "Coursework – Entrepreneurship, Advanced and Discrete Math, ICT, Business Planning",
+        "Peer-to-peer education in programming, computer architecture, and Linux shell scripting",
+        "Acquired skills in web development, C/C++, troubleshooting, and Git",
       ],
       startDate: "2022",
       endDate: "Present",
@@ -141,7 +139,7 @@ export default function Resume() {
       </div>
       {resumeList.map((item) => (
         <div
-          key={item.title}
+          key={`${item.title}${item.organization}`}
           className={`flex rounded-lg border border-primary transition-all bg-primary ${
             selectedOption === "ALL" || item.type === selectedOption
               ? "scale-100 opacity-100 order-2"
@@ -163,10 +161,15 @@ export default function Resume() {
             </div>
             <p className="font-light">{item.summary}</p>
           </div>
-          <div className="w-1/2 flex flex-col justify-center gap-2 p-4">
-            <ul className="list-disc">
+          <div className="w-1/2 flex flex-col justify-start gap-2 p-4 bg-white text-black rounded-r-lg">
+            <p className="py-1 px-2 border border-primary rounded-lg w-fit">
+              {item.endDate === 'Present' ? `since ${item.startDate} ` : `${item.startDate} - ${item.endDate}`}
+            </p>
+            <ul className="list-disc ml-4">
               {item.points.map((point) => (
-                <li key={point} className="font-light" >{point}</li>
+                <li key={point} className="font-light">
+                  {point}
+                </li>
               ))}
             </ul>
           </div>
