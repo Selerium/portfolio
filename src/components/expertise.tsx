@@ -267,7 +267,10 @@ export default function Expertise({ changeSite }: any) {
       <div className="w-3/5 h-dvh flex flex-col justify-center items-center gap-8">
         <h2 className="text-2xl text-center lg:text-4xl font-semibold tracking-tighter">
           unleash your{"  "}
-          <span className={`bg-[url('${basePath}/gradient.png')] bg-top animate-bg-move text-transparent bg-clip-text`}>
+          <span
+            style={{ backgroundImage: `url(${basePath}/gradient.png)` }}
+            className={`bg-top animate-bg-move text-transparent bg-clip-text`}
+          >
             creative{"  "}
           </span>
           vision
