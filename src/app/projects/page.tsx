@@ -1,5 +1,5 @@
 import { primary, secondary } from "../../styles/fonts";
-import { supabase } from "@/stores/supabase";
+// import { supabase } from "@/stores/supabase";
 
 export default async function Projects() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -50,7 +50,7 @@ export default async function Projects() {
     },
   ];
 
-  let { data: projectData } = await supabase.from('projects').select('title, description, tags, image_url')
+  // let { data: projectData } = await supabase.from('projects').select('title, description, tags, image_url')
 
   function projectListDivs() {
     return projectList.map((project, idx) => (
