@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function Expertise({ changeSite }: any) {
   const [selectedGroup, setSelectedGroup] = useState("ALL");
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   const groups = ["ALL", "FRONTEND", "BACKEND", "DATABASE", "DEVOPS", "UI/UX"];
   const skills = [
@@ -13,7 +14,7 @@ export default function Expertise({ changeSite }: any) {
       style: "bg-[#E34F26] text-white",
       icon: (
         <Image
-          src="/logos/html5.svg"
+          src={`${basePath}/logos/html5.svg`}
           className="rounded-sm invert"
           alt="JavaScript"
           width={22}
@@ -27,7 +28,7 @@ export default function Expertise({ changeSite }: any) {
       style: "bg-[#663399] text-white",
       icon: (
         <Image
-          src="/logos/css.svg"
+          src={`${basePath}/logos/css.svg`}
           className="rounded-sm invert"
           alt="JavaScript"
           width={22}
@@ -41,7 +42,7 @@ export default function Expertise({ changeSite }: any) {
       style: "bg-[#F7DF1E] text-black",
       icon: (
         <Image
-          src="/logos/javascript.svg"
+          src={`${basePath}/logos/javascript.svg`}
           className={`${
             selectedGroup !== "ALL" && selectedGroup !== "FRONTEND"
               ? "invert"
@@ -59,7 +60,7 @@ export default function Expertise({ changeSite }: any) {
       style: "bg-[#3178C6] text-black",
       icon: (
         <Image
-          src="/logos/typescript.svg"
+          src={`${basePath}/logos/typescript.svg`}
           className={`${
             selectedGroup !== "ALL" && selectedGroup !== "FRONTEND"
               ? "invert"
@@ -77,7 +78,7 @@ export default function Expertise({ changeSite }: any) {
       style: "bg-[#61DAFB] text-black",
       icon: (
         <Image
-          src="/logos/react.svg"
+          src={`${basePath}/logos/react.svg`}
           className={`${
             selectedGroup !== "ALL" && selectedGroup !== "FRONTEND"
               ? "invert"
@@ -95,7 +96,7 @@ export default function Expertise({ changeSite }: any) {
       style: "bg-[#ffffff] text-black",
       icon: (
         <Image
-          src="/logos/nextdotjs.svg"
+          src={`${basePath}/logos/nextdotjs.svg`}
           className={`${
             selectedGroup !== "ALL" && selectedGroup !== "FRONTEND"
               ? "invert"
@@ -113,7 +114,7 @@ export default function Expertise({ changeSite }: any) {
       style: "bg-[#06B6D4] text-white",
       icon: (
         <Image
-          src="/logos/tailwindcss.svg"
+          src={`${basePath}/logos/tailwindcss.svg`}
           className="rounded-sm invert"
           alt="JavaScript"
           width={22}
@@ -127,7 +128,7 @@ export default function Expertise({ changeSite }: any) {
       style: `font-semibold bg-[#5FA04E] text-black`,
       icon: (
         <Image
-          src="/logos/nodedotjs.svg"
+          src={`${basePath}/logos/nodedotjs.svg`}
           className={`${
             selectedGroup !== "ALL" && selectedGroup !== "BACKEND"
               ? "invert"
@@ -145,7 +146,7 @@ export default function Expertise({ changeSite }: any) {
       style: "bg-[#ffffff] text-black",
       icon: (
         <Image
-          src="/logos/express.svg"
+          src={`${basePath}/logos/express.svg`}
           className={`${
             selectedGroup !== "ALL" && selectedGroup !== "BACKEND"
               ? "invert"
@@ -163,7 +164,7 @@ export default function Expertise({ changeSite }: any) {
       style: "bg-[#47A248] text-white",
       icon: (
         <Image
-          src="/logos/mongodb.svg"
+          src={`${basePath}/logos/mongodb.svg`}
           className="rounded-sm invert"
           alt="JavaScript"
           width={22}
@@ -177,7 +178,7 @@ export default function Expertise({ changeSite }: any) {
       style: "bg-[#4169E1] text-white",
       icon: (
         <Image
-          src="/logos/postgresql.svg"
+          src={`${basePath}/logos/postgresql.svg`}
           className="rounded-sm invert"
           alt="JavaScript"
           width={22}
@@ -191,7 +192,7 @@ export default function Expertise({ changeSite }: any) {
       style: "bg-[#2496ED] text-white",
       icon: (
         <Image
-          src="/logos/docker.svg"
+          src={`${basePath}/logos/docker.svg`}
           className="rounded-sm invert"
           alt="JavaScript"
           width={22}
@@ -205,7 +206,7 @@ export default function Expertise({ changeSite }: any) {
       style: "bg-[#3FCF8E] text-black",
       icon: (
         <Image
-          src="/logos/supabase.svg"
+          src={`${basePath}/logos/supabase.svg`}
           className={`${
             selectedGroup !== "ALL" && selectedGroup !== "DATABASE"
               ? "invert"
@@ -223,7 +224,7 @@ export default function Expertise({ changeSite }: any) {
       style: "bg-[#F24E1E] text-white",
       icon: (
         <Image
-          src="/logos/figma.svg"
+          src={`${basePath}/logos/figma.svg`}
           className="rounded-sm invert"
           alt="JavaScript"
           width={22}
@@ -237,7 +238,7 @@ export default function Expertise({ changeSite }: any) {
       style: "bg-[#8C8073] text-white",
       icon: (
         <Image
-          src="/logos/gimp.svg"
+          src={`${basePath}/logos/gimp.svg`}
           className="rounded-sm invert"
           alt="JavaScript"
           width={22}
@@ -251,7 +252,7 @@ export default function Expertise({ changeSite }: any) {
       style: "bg-[#233A51] text-white",
       icon: (
         <Image
-          src="/logos/davinciresolve.svg"
+          src={`${basePath}/logos/davinciresolve.svg`}
           className="rounded-sm invert"
           alt="JavaScript"
           width={22}
@@ -266,7 +267,7 @@ export default function Expertise({ changeSite }: any) {
       <div className="w-3/5 h-dvh flex flex-col justify-center items-center gap-8">
         <h2 className="text-2xl text-center lg:text-4xl font-semibold tracking-tighter">
           unleash your{"  "}
-          <span className="bg-[url('/gradient.png')] bg-top animate-bg-move text-transparent bg-clip-text">
+          <span className={`bg-[url('${basePath}/gradient.png')] bg-top animate-bg-move text-transparent bg-clip-text`}>
             creative{"  "}
           </span>
           vision
