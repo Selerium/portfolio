@@ -104,9 +104,9 @@ export default async function Projects() {
   return (
     <div
       id="projects"
-      className="h-dvh py-4 box-border w-full flex justify-center items-center overflow-x-clip relative z-0"
+      className="min-h-dvh h-fit py-20 box-border w-full flex justify-center items-center overflow-x-clip relative z-0"
     >
-      <div className="w-11/12 h-5/6 flex flex-wrap gap-8 items-center overflow-y-auto">
+      <div className="w-11/12 h-full flex flex-wrap gap-8 items-center">
         {projectListDivs()}
       </div>
     </div>

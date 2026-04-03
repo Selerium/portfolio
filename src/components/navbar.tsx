@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { useStore } from "../stores/SidebarStore";
 
 export default function NavBar() {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const firstPath = usePathname();
   const pages = ["welcome", "about", "projects", "connect"];
   const [chosenPage, setChosenPage] = useState(-1);
@@ -93,7 +93,9 @@ export default function NavBar() {
       className={`w-full fixed overflow-y-clip flex items-start justify-center left-0 top-0 z-50`}
     >
       {Sidebar()}
-      <nav className={`flex w-11/12 justify-between items-center h-fit backdrop-blur-3xl py-4`}>
+      <nav
+        className={`flex w-11/12 justify-between items-center h-fit py-4 backdrop-blur-3xl`}
+      >
         <img
           src={`${basePath}/adi-logo.svg`}
           className="hidden lg:block w-20 mr-20 h-auto"
@@ -133,10 +135,16 @@ export default function NavBar() {
         ></img>
         <div className="hidden lg:flex h-full w-40 items-center justify-between">
           <a href="mailto:johnadithya008@gmail.com">
-            <img className="h-7 navLink transition-all" src={`${basePath}/mail.svg`}></img>
+            <img
+              className="h-7 navLink transition-all"
+              src={`${basePath}/mail.svg`}
+            ></img>
           </a>
           <a href="https://github.com/selerium">
-            <img className="h-7 navLink transition-all" src={`${basePath}/github.svg`}></img>
+            <img
+              className="h-7 navLink transition-all"
+              src={`${basePath}/github.svg`}
+            ></img>
           </a>
           <a href="https://linkedin.com/in/johnadi">
             <img
