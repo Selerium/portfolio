@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { primary } from "@/styles/fonts";
 
 export default function Expertise({ changeSite }: any) {
   const [selectedGroup, setSelectedGroup] = useState("ALL");
@@ -285,7 +286,7 @@ export default function Expertise({ changeSite }: any) {
         <Link
           href="/connect"
           onClick={changeSite}
-          className="link rounded-lg border p-2 tracking-tight border-primary hover:border-black bg-primary hover:text-black hover:bg-white hover:shadow-md shadow-blue-300/25 transition-all"
+          className={`${primary.className} link rounded-lg border border-white p-2 pl-4 tracking-widest font-semibold hover:border-black bg-primary hover:text-black hover:bg-white hover:shadow-md shadow-blue-300/25 transition-all`}
         >
           LET&apos;S TALK
         </Link>

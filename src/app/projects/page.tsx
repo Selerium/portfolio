@@ -56,29 +56,29 @@ export default async function Projects() {
     return projectList.map((project, idx) => (
       <div
         key={idx}
-        className="projectList relative border rounded-lg h-80 min-w-72 w-80 grow flex basis-1/4 justify-center items-center overflow-y-clip"
+        className="projectList relative border rounded-lg h-80 min-w-72 w-80 grow flex basis-1/4 justify-center items-start overflow-clip"
       >
         <img
           className="absolute w-full h-full object-cover project-images object-top z-10 opacity-40"
           src={`${basePath}${project.image}`}
         ></img>
         <p
-          className={`${primary.className} font-semibold text-2xl uppercase text-center z-20 tracking-widest border-gray-300`}
+          className={`${primary.className} m-auto font-semibold text-2xl uppercase text-center z-20 tracking-widest border-gray-300`}
         >
           {project.title}
         </p>
-        <div className="projectOverlay transition-all text-black p-4 absolute rounded-lg z-30 border-white bg-white h-full w-full flex flex-col justify-between items-start">
+        <div className="projectOverlay transition-all text-black p-4 absolute rounded-lg z-30 border-white bg-white h-full w-full flex flex-col gap-4 items-start overflow-y-scroll">
           <h2
             className={`${primary.className} text-2xl uppercase tracking-widest font-semibold`}
           >
             {project.title}
           </h2>
           <p
-            className={`${secondary.className} text-md font-light text-justify h-18 overflow-y-auto`}
+            className={`${secondary.className} text-md font-light text-justify h-fit`}
           >
             {project.description}
           </p>
-          <div className="flex gap-2 overflow-x-auto w-full">
+          <div className="flex flex-wrap gap-2 w-full">
             {project.tags.map((tag, index) => (
               <p
                 key={index}

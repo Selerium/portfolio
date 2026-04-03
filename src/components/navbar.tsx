@@ -15,8 +15,6 @@ export default function NavBar() {
   const toggleLoaderState = useStore((state: any) => state.toggleLoader);
   const sidebarState = useStore((state: any) => state.showSidebar);
   const setSidebarState = useStore((state: any) => state.setSidebar);
-  const loadedSite = useStore((state: any) => state.loadedSite);
-  const setLoadedSite = useStore((state: any) => state.offLoadedSite);
 
   function toggleSidebar() {
     setTimeout(
@@ -92,10 +90,10 @@ export default function NavBar() {
 
   return (
     <div
-      className={`w-full h-dvh absolute overflow-y-clip flex items-start justify-center left-0 top-0 py-4`}
+      className={`w-full fixed overflow-y-clip flex items-start justify-center left-0 top-0 z-50`}
     >
       {Sidebar()}
-      <nav className={`z-40 flex w-11/12 justify-between items-center h-fit`}>
+      <nav className={`flex w-11/12 justify-between items-center h-fit backdrop-blur-3xl py-4`}>
         <img
           src={`${basePath}/adi-logo.svg`}
           className="hidden lg:block w-20 mr-20 h-auto"

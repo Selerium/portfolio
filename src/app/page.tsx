@@ -4,7 +4,6 @@ import { useState } from "react";
 import { primary } from "../styles/fonts";
 import Link from "next/link";
 import { useStore } from "../stores/SidebarStore";
-import Image from "next/image";
 import Expertise from "@/components/expertise";
 import Resume from "@/components/resume";
 
@@ -13,11 +12,11 @@ export default function Home() {
   const toggleLoader = useStore((state: any) => state.toggleLoader);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-  const [imageSrcs, setImageSrcs] = useState([
+  const imageSrcs = [
     `${basePath}/youth-sample.png`,
     `${basePath}/aziza-sample.png`,
     `${basePath}/junia-sample.png`,
-  ]);
+  ];
   const [leftElement, setLeftElement] = useState(0);
   const [activeElement, setActiveElement] = useState(1);
   const [rightElement, setRightElement] = useState(2);
@@ -58,8 +57,8 @@ export default function Home() {
               draggable={false}
               className={`transition-all duration-300 absolute rounded-lg object-cover ${
                 index == activeElement
-                  ? "z-30 max-w-8/12 min-w-56 max-h-5/6 min-h-96 sample-shadow"
-                  : "z-10 max-w-5/12 min-w-42 max-h-3/6 min-h-80 opacity-25"
+                  ? "z-10 max-w-8/12 min-w-56 max-h-5/6 min-h-96 sample-shadow"
+                  : "z-0 max-w-5/12 min-w-42 max-h-3/6 min-h-80 opacity-25"
               }
             ${index == leftElement ? "-translate-x-full cursor-pointer" : ""}
             ${index == rightElement ? "translate-x-full cursor-pointer" : ""}
@@ -75,7 +74,7 @@ export default function Home() {
             ></img>
           ))}
         </div>
-        <div className="w-11/12 h-2/12 gap-4 flex justify-between relative items-center">
+        <div className="w-11/12 h-2/12 gap-4 flex justify-between relative items-center z-0">
           <button className="cursor-pointer link" onClick={moveLeft}>
             <img src={`${basePath}/arrow.svg`}></img>
           </button>
@@ -86,9 +85,9 @@ export default function Home() {
             <Link
               href="/connect"
               onClick={changeSite}
-              className={`link cursor-pointer text-sm lg:text-xl tracking-widest lg:tracking-widest font-semibold ${primary.className} text-center uppercase py-2 pl-2 lg:pl-7 px-1 lg:px-4 bg-primary border border-white w-fit rounded-lg`}
+              className={`link rounded-lg border border-white p-2 pl-4 tracking-widest font-semibold hover:border-black bg-primary hover:text-black hover:bg-white hover:shadow-md shadow-blue-300/25 transition-all ${primary.className}`}
             >
-              get a quote
+              GET A QUOTE
             </Link>
           </div>
           <button className="cursor-pointer link" onClick={moveRight}>
@@ -98,6 +97,20 @@ export default function Home() {
       </div>
       <Expertise changeSite={changeSite} />
       <Resume />
+      <div className="flex flex-col items-center gap-4 w-3/5 min-w-72 p-4 mb-8 rounded-lg border-primary border">
+        <h2 className="font-semibold text-3xl text-center">develop conveniently</h2>
+        <p className="font-light text-center">
+          Need a website? A developer? An employee? Good suggestions for food in
+          the UAE? Reach out, and we&apos;ll make sure to get back to you with
+          what you need.
+        </p>
+        <Link
+          className={`${primary.className} w-fit link rounded-lg border border-white p-2 pl-4 tracking-widest font-semibold hover:border-black bg-primary hover:text-black hover:bg-white hover:shadow-md shadow-blue-300/25 transition-all`}
+          href="/connect"
+        >
+          GET IN TOUCH
+        </Link>
+      </div>
     </>
   );
 }
