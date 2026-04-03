@@ -124,7 +124,7 @@ export default function Resume() {
         opacity: [0, 1],
         transformX: [100, 0],
         duration: 300,
-        delay: stagger(150),
+        delay: stagger(50),
         autoplay: onScroll({
           enter: "bottom bottom",
         }),

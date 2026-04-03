@@ -124,7 +124,7 @@ export default function Home() {
           >
             <img src={`${basePath}/arrow.svg`}></img>
           </button>
-          <div className="flex flex-col justify-center items-center gap-4">
+          <div className="w-full flex flex-col justify-center items-center gap-4">
             <h1 className="invisible text-2xl text-center lg:text-6xl font-semibold tracking-tighter">
               your website could look like this
             </h1>
