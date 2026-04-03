@@ -9,7 +9,6 @@ import Resume from "@/components/resume";
 import {
   animate,
   createScope,
-  onScroll,
   set,
   splitText,
   stagger,
@@ -28,10 +27,7 @@ export default function Home() {
       set(split.words, {
         opacity: 0,
       });
-
       split.$target.classList.remove("invisible");
-
-      split.words.forEach((word) => word.classList.remove("invisible"));
 
       animate(".imageCards", {
         filter: ["opacity(0)", "opacity(1)"],
@@ -128,7 +124,10 @@ export default function Home() {
           ))}
         </div>
         <div className="w-11/12 h-2/12 gap-4 flex justify-between relative items-center z-0">
-          <button className="callToAction opacity-0 cursor-pointer link" onClick={moveLeft}>
+          <button
+            className="not-lg:hidden callToAction opacity-0 cursor-pointer link"
+            onClick={moveLeft}
+          >
             <img src={`${basePath}/arrow.svg`}></img>
           </button>
           <div className="flex flex-col justify-center items-center gap-4">
@@ -143,7 +142,10 @@ export default function Home() {
               GET A QUOTE
             </Link>
           </div>
-          <button className="callToAction opacity-0 cursor-pointer link" onClick={moveRight}>
+          <button
+            className="not-lg:hidden callToAction opacity-0 cursor-pointer link"
+            onClick={moveRight}
+          >
             <img src={`${basePath}/arrow.svg`} className="rotate-180"></img>
           </button>
         </div>

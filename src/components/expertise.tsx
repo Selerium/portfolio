@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { primary } from "@/styles/fonts";
+import { animate, createScope, onScroll, set, stagger } from "animejs";
 
 export default function Expertise({ changeSite }: any) {
   const [selectedGroup, setSelectedGroup] = useState("ALL");
@@ -263,10 +264,35 @@ export default function Expertise({ changeSite }: any) {
     },
   ];
 
+  const root = useRef(null);
+  const scope = useRef(null as any);
+
+  useEffect(() => {
+    scope.current = createScope({ root }).add((self) => {
+      const animation = animate(".scrollIn", {
+        opacity: [0, 1],
+        autoplay: onScroll({
+          enter: "bottom top",
+          onEnter: () => {
+            animation.restart();
+          },
+          onLeave: () => {
+            animation.reset();
+          },
+        }),
+        easing: "linear",
+        duration: 300,
+        delay: stagger(50),
+      });
+    });
+
+    return () => scope.current.revert();
+  }, []);
+
   return (
-    <div className="w-full flex justify-center items-center">
+    <div ref={root} className="w-full flex justify-center items-center">
       <div className="w-3/5 min-w-72 min-h-dvh h-fit py-8 flex flex-col justify-center items-center gap-8">
-        <h2 className="text-2xl text-center lg:text-4xl font-semibold tracking-tighter">
+        <h2 className="scrollIn text-2xl text-center lg:text-4xl font-semibold tracking-tighter">
           unleash your{"  "}
           <span
             style={{ backgroundImage: `url(${basePath}/gradient.png)` }}
@@ -276,7 +302,7 @@ export default function Expertise({ changeSite }: any) {
           </span>
           vision
         </h2>
-        <p className="text-xl tracking-tight font-extralight text-center">
+        <p className="scrollIn opacity-0 text-xl tracking-tight font-extralight text-center">
           In a day and age where there&apos;s a solution for every possible
           problem, what makes you stand out is your innovation. Your creativity
           should shine bright, that&apos;s why I desire to be challenged in
@@ -286,12 +312,14 @@ export default function Expertise({ changeSite }: any) {
         <Link
           href="/connect"
           onClick={changeSite}
-          className={`${primary.className} link rounded-lg border border-white p-2 pl-4 tracking-widest font-semibold hover:border-black bg-primary hover:text-black hover:bg-white hover:shadow-md shadow-blue-300/25 transition-all`}
+          className={`${primary.className} scrollIn opacity-0 link rounded-lg border border-white p-2 pl-4 tracking-widest font-semibold hover:border-black bg-primary hover:text-black hover:bg-white hover:shadow-md shadow-blue-300/25 transition-all`}
         >
           LET&apos;S TALK
         </Link>
-        <h3 className="font-semibold text-xl mt-8">my tech expertise</h3>
-        <div className="flex flex-wrap justify-center gap-2">
+        <h3 className="scrollIn opacity-0 font-semibold text-xl mt-8">
+          my tech expertise
+        </h3>
+        <div className="scrollIn opacity-0 flex flex-wrap justify-center gap-2">
           {groups.map((group) => (
             <div
               key={group}
@@ -314,7 +342,7 @@ export default function Expertise({ changeSite }: any) {
             .map((skill) => (
               <div
                 key={skill.title}
-                className={`px-4 py-2 rounded-xl text-center flex gap-2 transition-all font-semibold ${
+                className={`scrollIn opacity-0 px-4 py-2 rounded-xl text-center flex gap-2 transition-all font-semibold ${
                   selectedGroup === "ALL" || skill.group === selectedGroup
                     ? `opacity-100 ${skill.style}`
                     : "opacity-25"
