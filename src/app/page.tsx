@@ -6,13 +6,7 @@ import Link from "next/link";
 import { useStore } from "../stores/SidebarStore";
 import Expertise from "@/components/expertise";
 import Resume from "@/components/resume";
-import {
-  animate,
-  createScope,
-  set,
-  splitText,
-  stagger,
-} from "animejs";
+import { animate, createScope, set, splitText, stagger } from "animejs";
 
 export default function Home() {
   const root = useRef(null);
@@ -154,13 +148,13 @@ export default function Home() {
       <div className="w-full flex flex-col justify-center items-center">
         <Resume />
         <div className="flex flex-col items-center gap-4 w-3/5 min-w-72 p-4 mb-8 rounded-lg border-primary border">
-          <h2 className="font-semibold text-3xl text-center">
-            develop conveniently
+          <h2 className="font-semibold text-3xl text-center tracking-tight">
+            development made <span className="italic">convenient</span>
           </h2>
-          <p className="font-light text-center">
-            Need a website? A developer? An employee? Good suggestions for food
-            in the UAE? Reach out, and we&apos;ll make sure to get back to you
-            with what you need.
+          <p className="w-3/5 font-light text-center">
+            Need a website? A developer? An employee? Good suggestions for food?
+            Reach out, and we&apos;ll make sure to get back to you with what you
+            need.
           </p>
           <Link
             className={`${primary.className} w-fit link rounded-lg border border-white p-2 pl-4 tracking-widest font-semibold hover:border-black bg-primary hover:text-black hover:bg-white hover:shadow-md shadow-blue-300/25 transition-all`}

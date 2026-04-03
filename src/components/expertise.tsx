@@ -273,10 +273,7 @@ export default function Expertise({ changeSite }: any) {
         opacity: [0, 1],
         autoplay: onScroll({
           enter: "bottom top",
-          leave: 'top bottom',
-          // onEnter: () => {
-          //   animation.restart();
-          // },
+          leave: "top bottom",
         }),
         easing: "linear",
         duration: 300,
