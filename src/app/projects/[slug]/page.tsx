@@ -53,14 +53,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <img src={basePath + project.image} alt={project.title + " visual"} className="w-full max-h-[620px] object-cover" />
               </div>
             </section>
-            {project.mediaNote && (\n              <section className="rounded-xl border border-dashed border-primary p-6">
+            {project.mediaNote && (<section className="rounded-xl border border-dashed border-primary p-6">
               <h2 className={primary.className + " text-3xl font-semibold tracking-tight"}>next-level case study content</h2>
               <p className={secondary.className + " mt-4 font-light leading-relaxed"}>Add screenshots, short screen recordings, architecture diagrams, technical decisions, challenges, outcomes, performance notes, accessibility details, and live/GitHub links here as each project gets documented.</p>
             </section>
           </div>
           <aside className="lg:sticky lg:top-8 h-fit rounded-xl border border-primary p-5">
             <p className="uppercase tracking-[0.25em] text-xs font-semibold">technology &amp; focus</p>
-            {project.github && (\n              <Link href={project.github} target="_blank" rel="noreferrer" className="mt-4 block text-sm uppercase tracking-widest font-semibold underline underline-offset-4">view on GitHub &rarr;</Link>\n            )}\n            <div className="flex flex-wrap gap-2 mt-4">
+            {project.github && (<Link href={project.github} target="_blank" rel="noreferrer" className="mt-4 block text-sm uppercase tracking-widest font-semibold underline underline-offset-4">view on GitHub &rarr;</Link>)}
+            <div className="flex flex-wrap gap-2 mt-4">
               {project.tags.map((tag) => <span key={tag} className="px-3 py-2 rounded-lg bg-primary text-white text-sm font-semibold">{tag}</span>)}
             </div>
           </aside>
