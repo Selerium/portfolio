@@ -67,7 +67,7 @@ export const projects: Project[] = [
     title: "transcendence",
     description: "A full-stack multiplayer Pong platform built as a 42 Common Core project, combining a browser SPA, Django API, PostgreSQL, Docker, and Nginx.",
     tags: ["JavaScript", "Django", "PostgreSQL", "Docker", "Nginx", "Multiplayer"],
-    image: "/transcendence-sample.gif",
+    image: "/transcendence-sample.png",
     github: "https://github.com/Selerium/transcendence",
     overview: "A multi-service web application that moves beyond isolated exercises into a browser client, backend API, relational persistence, deployment layer, multiplayer gameplay, and user-to-user functionality working together.",
     architecture: "Browser SPA → Nginx frontend/API proxy → Django backend → PostgreSQL, with all services connected through a Docker network and persistent volumes.",
