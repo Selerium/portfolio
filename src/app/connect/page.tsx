@@ -2,7 +2,6 @@
 
 import { FormEvent, useState } from "react";
 import { primary, secondary } from "../../styles/fonts";
-import { supabase } from "../../stores/supabase";
 import { toasterStore } from "../../stores/toasterStore";
 import Toaster from "../../components/toaster";
 
@@ -15,40 +14,15 @@ export default function Connect() {
 
   async function submitForm(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    const formInfo = new FormData(event.currentTarget);
-
-    const { data, error } = await supabase.from("formResponses").insert({
-      first_name: formInfo.get("firstName"),
-      last_name: formInfo.get("lastName"),
-      email: formInfo.get("email"),
-      whatsapp: formInfo.get("whatsapp"),
-      enquiry_type: formInfo.get("enquiryType"),
-      description: formInfo.get("description"),
-    });
-
-    if (error) {
-      setDisableButton(true);
-      setError(true);
-      setTitle("Invalid Form Fields");
-      setMessage("Please check through your answers and resubmit.");
-      setShowToaster(true);
-      setTimeout(() => {
-        setDisableButton(false);
-        setShowToaster(false);
-      }, 5000);
-    }
-    else {
-      setDisableButton(true);
-      setError(false);
-      setTitle("Form Successfully Submitted");
-      setMessage("Thank you for your interest! We will reach out to you soon.");
-      setShowToaster(true);
-      setTimeout(() => {
-        setDisableButton(false);
-        setShowToaster(false);
-      }, 5000);
-    }
+    setDisableButton(true);
+    setError(true);
+    setTitle("Form Unavailable");
+    setMessage("The contact form is currently unavailable. Please use the available contact details instead.");
+    setShowToaster(true);
+    window.setTimeout(() => {
+      setDisableButton(false);
+      setShowToaster(false);
+    }, 5000);
   }
 
   return (
