@@ -102,7 +102,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             </section>
 
-            {project.mediaNote && (
+            {/* {project.mediaNote && (
               <section className="rounded-xl border border-dashed border-primary p-6">
                 <h2 className={primary.className + " text-3xl font-semibold tracking-tight"}>next-level case study content</h2>
                 <p className={secondary.className + " mt-4 font-light leading-relaxed"}>{project.mediaNote}</p>
@@ -110,7 +110,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   media / screenshots / diagrams to add
                 </div>
               </section>
-            )}
+            )} */}
           </div>
 
           <aside className="lg:sticky lg:top-8 h-fit rounded-xl border border-primary p-5">
