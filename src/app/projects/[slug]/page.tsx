@@ -53,7 +53,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <img src={basePath + project.image} alt={project.title + " visual"} className="w-full max-h-[620px] object-cover" />
               </div>
             </section>
-            {project.mediaNote && (\n              <section className="rounded-xl border border-dashed border-primary p-6">
+            {project.mediaNote && (<section className="rounded-xl border border-dashed border-primary p-6">
               <h2 className={primary.className + " text-3xl font-semibold tracking-tight"}>next-level case study content</h2>
               <p className={secondary.className + " mt-4 font-light leading-relaxed"}>Add screenshots, short screen recordings, architecture diagrams, technical decisions, challenges, outcomes, performance notes, accessibility details, and live/GitHub links here as each project gets documented.</p>
             </section>
