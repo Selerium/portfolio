@@ -6,71 +6,14 @@ export type Project = {
   image: string;
   overview: string;
   highlights: string[];
+  engineeringFocus: string[];
+  architecture?: string;
+  context?: string;
   github?: string;
   mediaNote?: string;
 };
 
 export const projects: Project[] = [
-  {
-    slug: "sta-youth-website",
-    title: "sta youth website",
-    description: "Website built as a creative side-project for the youth group that I lead at. Minimalist and user-friendly UX/UI that is clean and visually appealing with aspects that match the group's identity.",
-    tags: ["Web Development", "Web Design", "Vue 3"],
-    image: "/youth-sample.png",
-    github: "https://github.com/Selerium/sta-youth-website",
-    overview: "A focused website for a youth community, designed around a clean visual system and an approachable user experience.",
-    highlights: ["Designed the experience around the group's visual identity.", "Focused on clear navigation and a minimal interface.", "Built as a practical web project with both design and development in mind."],
-  },
-  {
-    slug: "junia-tourism",
-    title: "junia tourism",
-    description: "Website built that showcases different tours offered by Junia Tourism to help advertise and market towards the tourist audience in the locality.",
-    tags: ["Web Development", "Web Design", "Zola"],
-    image: "/junia-sample.png",
-    github: "https://github.com/Selerium/junia-tourism",
-    overview: "A tourism-focused marketing site that presents available tours in a visual, accessible format.",
-    highlights: ["Structured the site around presenting tour offerings clearly.", "Combined marketing-focused content with a visual web experience.", "Built with Zola for a lightweight static-site workflow."],
-  },
-  {
-    slug: "cub3d",
-    title: "cub3d",
-    description: "A project where we built a working raycaster engine in C to render a working visual simulation similar to the style of old school Doom or Wolfenstein games.",
-    tags: ["Visual Programming", "C", "42AD"],
-    image: "/cub3d-sample.gif",
-    github: "https://github.com/Selerium/cub3d",
-    overview: "A low-level graphics project centred on implementing a raycasting engine in C and turning that engine into a playable visual simulation.",
-    highlights: ["Implemented a raycaster engine in C.", "Worked with real-time visual rendering rather than a traditional web UI.", "Explored the foundations behind the visual style of early first-person games."],
-  },
-  {
-    slug: "minishell",
-    title: "minishell",
-    description: "Built our own shell in C, utilising existing shell executables with a few recreated ones. Also modified specific features to allow for more ease of use for certain aspects.",
-    tags: ["Software Development", "C", "42AD"],
-    image: "/minishell-sample.png",
-    github: "https://github.com/Selerium/minishell",
-    overview: "A systems-programming project that recreates core shell behaviour in C while working with existing executables and shell features.",
-    highlights: ["Built a custom shell implementation in C.", "Worked with existing command-line executables and recreated selected functionality.", "Focused on making shell interactions practical and easier to use."],
-  },
-  {
-    slug: "portfolio",
-    title: "portfolio",
-    description: "The site you're currently looking at. A fun project for myself to work creatively as well as showcase my work so far. Allows for me to market my own freelance work.",
-    tags: ["Web Development", "Web Design", "Next.js", "React"],
-    image: "/portfolio-sample.png",
-    github: "https://github.com/Selerium/portfolio",
-    overview: "This portfolio combines a personal visual identity with a working showcase for development, design, and professional experience.",
-    highlights: ["Built with Next.js and React.", "Uses animation and interaction to give the portfolio a more expressive feel.", "Designed to support both personal presentation and freelance enquiries."],
-  },
-  {
-    slug: "inception",
-    title: "inception",
-    description: "Educational project involving the setup of containers (NGINX, MariaDB, WordPress) and volumes in a Docker network that helped with in-depth understanding of DevOps, CI/CD pipelines and deployments.",
-    tags: ["DevOps", "Docker", "CI/CD"],
-    image: "/inception-sample.png",
-    github: "https://github.com/Selerium/inception",
-    overview: "A containerisation project focused on assembling a multi-service environment with Docker and understanding how the pieces work together.",
-    highlights: ["Worked with NGINX, MariaDB and WordPress containers.", "Used Docker networking and volumes as part of the environment.", "Built practical understanding of deployment and DevOps workflows."],
-  },
   {
     slug: "crosscurrent-events-platform",
     title: "crosscurrent events platform",
@@ -78,9 +21,22 @@ export const projects: Project[] = [
     tags: ["Next.js", "React", "Express", "TypeScript", "Prisma", "PostgreSQL", "Docker", "Nginx"],
     image: "/portfolio-sample.png",
     github: "https://github.com/Selerium/crosscurrent-events-platform",
-    overview: "A production-oriented full-stack platform built around real event-registration workflows rather than a simple CRUD interface. The frontend, API, database, and reverse proxy are separated into distinct services and run through Docker Compose.",
-    highlights: ["Registration and attendee management with search, filtering, sorting, and profile workflows.", "Stripe and manual payment handling, including early-bird registration logic.", "Express/TypeScript API backed by Prisma and PostgreSQL.", "Nginx provides the public-facing reverse proxy and HTTPS layer.", "Integrations include Stripe, Resend, ExcelJS, and file uploads."],
-    mediaNote: "Add registration/admin dashboard screenshots, payment-flow diagrams, architecture diagrams, and a short walkthrough of an end-to-end registration."
+    overview: "A production-oriented application built around real operational requirements rather than a simple CRUD demonstration. The platform separates the web client, API, database, and public-facing proxy while supporting the different states and workflows involved in event registration.",
+    architecture: "Next.js / React frontend → Nginx reverse proxy and TLS → Express/TypeScript API → Prisma/PostgreSQL, with the stack orchestrated through Docker Compose.",
+    context: "Actively developed around evolving registration, payment, and administrative requirements.",
+    highlights: [
+      "Registration and attendee management with search, filtering, sorting, profile navigation, and parent information.",
+      "Payment workflows covering Stripe, manually marked payments, and early-bird eligibility rather than treating payment as a single boolean state.",
+      "Email delivery, file uploads, and ExcelJS data export for operational workflows.",
+      "Clear separation between frontend, API, database, and infrastructure services.",
+    ],
+    engineeringFocus: [
+      "Designing application state around real business workflows and exceptions.",
+      "Maintaining boundaries between frontend, API, persistence, and infrastructure.",
+      "Building reproducible development and deployment environments with Docker Compose.",
+      "Integrating external services such as Stripe and Resend without coupling them to the core domain model.",
+    ],
+    mediaNote: "Add admin dashboard screenshots, registration/payment state diagrams, the service architecture diagram, and a short end-to-end registration walkthrough."
   },
   {
     slug: "eduai",
@@ -89,20 +45,22 @@ export const projects: Project[] = [
     tags: ["Next.js", "React", "Express", "TypeScript", "Prisma", "PostgreSQL", "WebSockets", "Docker"],
     image: "/portfolio-sample.png",
     github: "https://github.com/Selerium/innovation-challenge",
-    overview: "A TypeScript monorepo containing separate web and server applications plus shared packages. The prototype brings together authenticated student and teacher workflows, classes, gamification, database persistence, WebSockets, and AI-oriented functionality.",
-    highlights: ["pnpm workspace separating the web client, server, and shared code.", "Next.js/React frontend with Tailwind, shadcn/ui, Zod, and explicit loading/error/empty states.", "Express/TypeScript server using Prisma and PostgreSQL.", "Better Auth and WebSocket support for authenticated, interactive workflows.", "Docker Compose coordinates PostgreSQL, the API, and web application."],
-    mediaNote: "Add teacher dashboard screenshots, student journey screens, AI interaction examples, WebSocket/live-state visuals, and a monorepo architecture diagram."
-  },
-  {
-    slug: "express-prisma-nginx-docker",
-    title: "express + prisma + nginx + docker",
-    description: "A reusable Dockerized backend foundation for Express applications with PostgreSQL, Prisma, authentication, transactional email, and an Nginx reverse proxy.",
-    tags: ["Express", "Prisma", "PostgreSQL", "Nginx", "Docker"],
-    image: "/inception-sample.png",
-    github: "https://github.com/Selerium/express-prisma-nginx-docker",
-    overview: "A reusable backend and infrastructure starter that packages common application concerns into a repeatable foundation: authentication, account flows, PostgreSQL/Prisma, reverse proxying, HTTPS, and development/production separation.",
-    highlights: ["Authentication foundations including registration, login, verification, password recovery, and profile management.", "Prisma-backed PostgreSQL persistence.", "Nginx reverse proxy with HTTP/HTTPS production configuration.", "Docker Compose manages the application services and persistent database.", "Development and production behaviour can be switched through configuration."],
-    mediaNote: "Add an architecture diagram, Nginx routing diagram, authentication-flow screenshots, and a short deployment/configuration walkthrough."
+    overview: "An end-to-end TypeScript monorepo that brings a web client, API, database, authentication, shared packages, live communication, and role-specific workflows into one coherent application architecture.",
+    architecture: "Next.js web client ↔ HTTP/WebSocket ↔ Express server ↔ Prisma/PostgreSQL, with shared TypeScript packages and Docker Compose coordinating the environment.",
+    context: "Prototype completed as an end-to-end application rather than an isolated frontend exercise.",
+    highlights: [
+      "Student and teacher workflows, classes, gamification, authentication, seeded data, and AI-oriented functionality.",
+      "pnpm workspace with separate web and server applications plus a shared package.",
+      "Better Auth, Zod validation, Prisma/PostgreSQL persistence, and WebSocket support.",
+      "Explicit loading, error, and empty states for authenticated, role-specific workflows.",
+    ],
+    engineeringFocus: [
+      "Monorepo boundaries that keep frontend and backend development explicit while sharing types and utilities.",
+      "Designing application state and UX for authenticated, role-specific flows.",
+      "Combining request/response APIs with WebSocket-based interactive behaviour.",
+      "Containerizing the web app, API, and database into a repeatable development environment.",
+    ],
+    mediaNote: "Add teacher dashboard and student journey screenshots, AI interaction examples, WebSocket/live-state visuals, and the monorepo architecture diagram."
   },
   {
     slug: "transcendence",
@@ -111,9 +69,172 @@ export const projects: Project[] = [
     tags: ["JavaScript", "Django", "PostgreSQL", "Docker", "Nginx", "Multiplayer"],
     image: "/cub3d-sample.gif",
     github: "https://github.com/Selerium/transcendence",
-    overview: "A multi-service web application where the browser client, Django backend, PostgreSQL database, and Nginx deployment layer work together to provide multiplayer Pong and social platform features.",
-    highlights: ["Multiplayer Pong gameplay and tournament participation.", "Accounts, profiles, friends, achievements, and messaging.", "Django API with separate application areas for users, friends, achievements, matches, messaging, and OAuth.", "Docker Compose networking across frontend, backend, and PostgreSQL services.", "Frontend implemented with JavaScript, HTML, and CSS without relying on a modern frontend framework."],
-    mediaNote: "Add gameplay screenshots/video, tournament flow, multiplayer architecture diagram, social/profile screens, and a deployment/networking diagram."
+    overview: "A multi-service web application that moves beyond isolated exercises into a browser client, backend API, relational persistence, deployment layer, multiplayer gameplay, and user-to-user functionality working together.",
+    architecture: "Browser SPA → Nginx frontend/API proxy → Django backend → PostgreSQL, with all services connected through a Docker network and persistent volumes.",
+    context: "Built as the final project of the 42 Abu Dhabi Common Core curriculum.",
+    highlights: [
+      "Multiplayer Pong gameplay and tournament participation.",
+      "Accounts, profiles, friends, achievements, messaging, and OAuth-related backend areas.",
+      "Django API with separate application areas for users, friends, achievements, matches, messages, and OAuth.",
+      "Frontend built with JavaScript, HTML, and CSS without relying on a modern frontend framework.",
+    ],
+    engineeringFocus: [
+      "Coordinating a browser application, backend API, relational database, and reverse proxy.",
+      "Building interactive multiplayer functionality rather than a static interface.",
+      "Structuring a larger client-side application with lower-level web technologies.",
+      "Managing Docker networking, persistent volumes, and service boundaries.",
+    ],
+    mediaNote: "Add gameplay footage, tournament flow screenshots, profile/social screens, API/service architecture, and a deployment/networking diagram."
+  },
+  {
+    slug: "express-prisma-nginx-docker",
+    title: "express + prisma + nginx + docker",
+    description: "A reusable Dockerized backend foundation for Express applications with PostgreSQL, Prisma, authentication, transactional email, and an Nginx reverse proxy.",
+    tags: ["Express", "Prisma", "PostgreSQL", "Nginx", "Docker"],
+    image: "/inception-sample.png",
+    github: "https://github.com/Selerium/express-prisma-nginx-docker",
+    overview: "A reusable backend and infrastructure foundation that packages recurring application concerns into a repeatable starting point instead of rebuilding authentication, persistence, reverse proxying, and environment setup for every project.",
+    architecture: "Internet → Nginx HTTP/HTTPS → Express backend → PostgreSQL/Prisma, with Resend available for transactional email and Docker Compose managing the services.",
+    context: "Designed as a reusable starting point for Express + PostgreSQL applications.",
+    highlights: [
+      "Registration, login, email verification, password recovery, profile management, account settings, onboarding, and auth-state navigation.",
+      "Prisma-backed PostgreSQL persistence with a customizable user model.",
+      "Development and production modes with HTTP locally and HTTPS plus HTTP-to-HTTPS redirection in production.",
+      "Persistent database storage and optional transactional email through Resend.",
+    ],
+    engineeringFocus: [
+      "Turning repeated backend and infrastructure concerns into a reusable foundation.",
+      "Separating development and production behaviour through configuration.",
+      "Understanding reverse proxying, TLS, persistence, and container orchestration.",
+      "Creating application infrastructure that can support domain-specific features on top.",
+    ],
+    mediaNote: "Add the architecture diagram, authentication flow, Nginx routing/TLS diagram, and a short development-to-production configuration walkthrough."
+  },
+  {
+    slug: "inception",
+    title: "inception",
+    description: "A containerisation project involving NGINX, MariaDB, WordPress, Docker networking, and persistent volumes.",
+    tags: ["DevOps", "Docker", "CI/CD"],
+    image: "/inception-sample.png",
+    github: "https://github.com/Selerium/inception",
+    overview: "A 42 infrastructure project focused on understanding how a multi-service application is assembled and deployed with containers, networking, persistent storage, and a reverse proxy.",
+    highlights: [
+      "Worked with NGINX, MariaDB, and WordPress as separate services.",
+      "Used Docker networking and volumes to connect services and preserve data.",
+      "Developed practical understanding of service isolation and deployment-oriented configuration.",
+    ],
+    engineeringFocus: [
+      "Container orchestration and service-to-service networking.",
+      "Persistent storage and separation of application responsibilities.",
+      "Reverse proxy and deployment fundamentals.",
+    ],
+    mediaNote: "Add the Docker service diagram, Nginx routing, volume/network layout, and a short explanation of how the containers start and communicate."
+  },
+  {
+    slug: "minishell",
+    title: "minishell",
+    description: "A Unix shell implementation in C covering parsing, expansion, redirections, pipelines, processes, signals, and memory management.",
+    tags: ["C", "Systems Programming", "Unix", "42AD"],
+    image: "/minishell-sample.png",
+    github: "https://github.com/Selerium/minishell",
+    overview: "A low-level systems project that rebuilds core shell behaviour instead of delegating process execution and parsing to a high-level runtime. The code is split into parsing, expansion, execution, built-ins, redirection, signal handling, and cleanup responsibilities.",
+    architecture: "User input → syntax validation → parsing/tokenisation → quote handling and expansion → redirections/pipelines → command lookup/execution → process and signal management.",
+    context: "Built as part of the 42 Abu Dhabi curriculum.",
+    highlights: [
+      "Command execution through PATH plus built-ins including echo, cd, pwd, export, unset, env, and exit.",
+      "Pipes, input/output redirections, environment expansion, quoting, syntax validation, and signal handling.",
+      "Separate components for parsing, expansion, execution, built-ins, redirections, signals, and memory cleanup.",
+      "Valgrind tooling for leak checking and file-descriptor tracking.",
+    ],
+    engineeringFocus: [
+      "Unix process creation and process control.",
+      "File descriptors, pipes, redirections, and signal semantics.",
+      "Memory ownership, cleanup across execution paths, and low-level debugging.",
+      "Building a non-trivial command interpreter without relying on a high-level process runner.",
+    ],
+    mediaNote: "Add a shell demo recording, parsing/execution pipeline diagram, examples of pipes and redirections, and a short note on memory/signal handling."
+  },
+  {
+    slug: "cub3d",
+    title: "cub3d",
+    description: "A C raycasting project that renders a real-time visual simulation inspired by early first-person games.",
+    tags: ["C", "Graphics", "Raycasting", "42AD"],
+    image: "/cub3d-sample.gif",
+    github: "https://github.com/Selerium/cub3d",
+    overview: "A low-level graphics project centred on implementing a raycasting engine in C and turning the maths and rendering pipeline into an interactive first-person environment.",
+    highlights: [
+      "Implemented a raycaster engine in C.",
+      "Worked with real-time rendering and graphics primitives rather than a conventional web interface.",
+      "Applied computational geometry concepts to transform a 2D map into a first-person visual representation.",
+    ],
+    engineeringFocus: [
+      "Low-level C programming and graphics-oriented problem solving.",
+      "Real-time rendering and performance-sensitive loops.",
+      "Translating mathematical concepts into an interactive visual system.",
+    ],
+    mediaNote: "Add the existing gameplay GIF plus a raycasting/rendering diagram and a short explanation of the frame-generation pipeline."
+  },
+  {
+    slug: "portfolio",
+    title: "portfolio",
+    description: "The portfolio site itself: a Next.js and React project combining personal branding, project case studies, animation, and freelance presentation.",
+    tags: ["Next.js", "React", "TypeScript", "Anime.js", "Web Design"],
+    image: "/portfolio-sample.png",
+    github: "https://github.com/Selerium/portfolio",
+    overview: "A working product as well as a showcase: the site uses Next.js and React to present projects, case studies, experience, and contact pathways with a deliberately expressive visual system.",
+    highlights: [
+      "Next.js and React application with reusable project data and dynamic case-study routes.",
+      "Anime.js interactions and motion designed around the portfolio's visual identity.",
+      "Structured project pages that can be extended with screenshots, diagrams, recordings, and technical notes.",
+    ],
+    engineeringFocus: [
+      "Component-driven frontend architecture and dynamic routing.",
+      "Interaction design, accessibility considerations, and reduced-motion support.",
+      "Presenting technical work as readable case studies rather than only image galleries.",
+    ],
+    mediaNote: "Keep the existing portfolio visual as the hero, then add screenshots of the homepage motion, project listing, and a representative case study."
+  },
+  {
+    slug: "sta-youth-website",
+    title: "sta youth website",
+    description: "A minimalist landing page for a youth ministry, built with Vue and Tailwind around a clear visual identity.",
+    tags: ["Vue", "Tailwind CSS", "Web Design"],
+    image: "/youth-sample.png",
+    github: "https://github.com/Selerium/sta-youth-website",
+    overview: "A focused client-style landing page that combines a simple information architecture with a visual identity designed for a youth community.",
+    context: "A practical side project for a youth ministry.",
+    highlights: [
+      "Built with Vue and Tailwind CSS.",
+      "Focused the interface around clear content hierarchy and a minimal visual system.",
+      "Combined implementation and visual design decisions around an identifiable audience.",
+    ],
+    engineeringFocus: [
+      "Responsive frontend implementation.",
+      "Utility-first styling and visual consistency.",
+      "Designing around a specific audience and content goal.",
+    ],
+    mediaNote: "Add the existing site visual plus a small before/after or design-system section if additional screenshots are available."
+  },
+  {
+    slug: "junia-tourism",
+    title: "junia tourism",
+    description: "A static tourism marketing site built with vanilla HTML/CSS/JS and Zola, with the visual design created from scratch in Figma.",
+    tags: ["HTML", "CSS", "JavaScript", "Zola", "Figma"],
+    image: "/junia-sample.png",
+    github: "https://github.com/Selerium/junia",
+    overview: "A lightweight static-site project designed to showcase tourism offerings while keeping the implementation simple, fast, and easy to deploy.",
+    context: "Design created from scratch in Figma before implementation.",
+    highlights: [
+      "Built with vanilla HTML, CSS, and JavaScript.",
+      "Uses Zola as a static-site generator.",
+      "Covered both visual design and implementation, from Figma through to a runnable site.",
+    ],
+    engineeringFocus: [
+      "Static-site architecture and build tooling.",
+      "Translating an original Figma design into a responsive web implementation.",
+      "Keeping a marketing site lightweight without unnecessary framework overhead.",
+    ],
+    mediaNote: "Add the Figma design, final site screenshots, and a small section showing the design-to-implementation process."
   },
 ];
 
