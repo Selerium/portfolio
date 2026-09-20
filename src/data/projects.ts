@@ -17,7 +17,7 @@ export const projects: Project[] = [
     description: "Website built as a creative side-project for the youth group that I lead at. Minimalist and user-friendly UX/UI that is clean and visually appealing with aspects that match the group's identity.",
     tags: ["Web Development", "Web Design", "Vue 3"],
     image: "/youth-sample.png",
-    github: "https://github.com/Selerium/sta-youth",
+    github: "https://github.com/Selerium/sta-youth-website",
     overview: "A focused website for a youth community, designed around a clean visual system and an approachable user experience.",
     highlights: ["Designed the experience around the group's visual identity.", "Focused on clear navigation and a minimal interface.", "Built as a practical web project with both design and development in mind."],
   },
