@@ -11,6 +11,7 @@ import { animate, createScope, set, splitText, stagger } from "animejs";
 export default function Home() {
   const root = useRef(null);
   const scope = useRef(null as any);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
     scope.current = createScope({ root }).add((self) => {
@@ -79,7 +80,7 @@ export default function Home() {
     setRightElement(n + 1 == imageSrcs.length ? 0 : n + 1);
   }
 
-  const changeSite = (e: any) => {
+  const changeSite = () => {
     toggleLoader();
     setSidebar(true);
     setTimeout(() => {
@@ -122,7 +123,7 @@ export default function Home() {
             className="not-lg:hidden callToAction opacity-0 cursor-pointer link"
             onClick={moveLeft}
           >
-            <img src={`${basePath}/arrow.svg`}></img>
+            <img src={`${basePath}/arrow.svg`} alt="" />
           </button>
           <div className="w-full flex flex-col justify-center items-center gap-4">
             <h1 className="invisible text-2xl text-center lg:text-6xl font-semibold tracking-tighter">
@@ -140,7 +141,7 @@ export default function Home() {
             className="not-lg:hidden callToAction opacity-0 cursor-pointer link"
             onClick={moveRight}
           >
-            <img src={`${basePath}/arrow.svg`} className="rotate-180"></img>
+            <img src={`${basePath}/arrow.svg`} alt="" className="rotate-180" />
           </button>
         </div>
       </div>
