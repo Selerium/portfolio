@@ -12,18 +12,18 @@ export default function Connect() {
   const setError = toasterStore((state: any) => state.setError);
   const [disableButton, setDisableButton] = useState(false);
 
-  async function submitForm(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setDisableButton(true);
-    setError(true);
-    setTitle("Form Unavailable");
-    setMessage("The contact form is currently unavailable. Please use the available contact details instead.");
-    setShowToaster(true);
-    window.setTimeout(() => {
-      setDisableButton(false);
-      setShowToaster(false);
-    }, 5000);
-  }
+  // async function submitForm(event: FormEvent<HTMLFormElement>) {
+  //   event.preventDefault();
+  //   setDisableButton(true);
+  //   setError(true);
+  //   setTitle("Form Unavailable");
+  //   setMessage("The contact form is currently unavailable. Please use the available contact details instead.");
+  //   setShowToaster(true);
+  //   window.setTimeout(() => {
+  //     setDisableButton(false);
+  //     setShowToaster(false);
+  //   }, 5000);
+  // }
 
   return (
     <div
@@ -42,7 +42,8 @@ export default function Connect() {
           (unless you're a cat - heard that's fatal)
         </p>
         <form
-          onSubmit={submitForm}
+          action="https://formsubmit.co/johnadithya008@gmail.com"
+          method="POST"
           className="flex flex-col gap-4 w-full min-w-72 p-4 box-border max-h-4/5 overflow-y-auto"
         >
           <div className="flex flex-col xl:flex-row xl:flex-wrap gap-4 w-full justify-center">
