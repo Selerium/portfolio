@@ -42,7 +42,7 @@ export default function Connect() {
           (unless you're a cat - heard that's fatal)
         </p>
         <form
-          action="https://formsubmit.co/johnadithya008@gmail.com"
+          action="https://formsubmit.co/2798e985d3524484a0a43b3dfd99d3a4"
           method="POST"
           className="flex flex-col gap-4 w-full min-w-72 p-4 box-border max-h-4/5 overflow-y-auto"
         >
