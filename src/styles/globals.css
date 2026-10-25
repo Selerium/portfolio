@@ -114,3 +114,290 @@ a:hover {
   border: white;
   border-width: 2px;
 }
+/* Hero stage */
+.hero {
+  color: #f8fafc;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(79, 70, 229, 0.16), transparent 42%),
+    radial-gradient(circle at 82% 92%, rgba(20, 184, 166, 0.1), transparent 46%),
+    linear-gradient(180deg, #08090c 0%, #0a0b10 58%, #0b0c11 100%);
+}
+
+.hero-aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.55;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.hero-aurora-one {
+  top: -12%;
+  left: -12%;
+  width: min(48vw, 640px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.4), transparent 68%);
+  animation: heroAuroraOne 20s ease-in-out infinite alternate;
+}
+
+.hero-aurora-two {
+  right: -8%;
+  bottom: -18%;
+  width: min(42vw, 560px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.28), transparent 68%);
+  animation: heroAuroraTwo 26s ease-in-out infinite alternate;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: clamp(42px, 5vw, 72px) clamp(42px, 5vw, 72px);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 38%, black, transparent 76%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 38%, black, transparent 76%);
+}
+
+.hero-title {
+  color: #f8fafc;
+  font-size: clamp(2.6rem, 4.8vw, 5.4rem);
+  line-height: 0.96;
+  text-wrap: balance;
+}
+
+.hero-accent {
+  background-image: linear-gradient(100deg, #c7d2fe 0%, #67e8f9 48%, #f0abfc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-stage {
+  perspective: 1600px;
+}
+
+.deck-tilt {
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.deck-track {
+  position: relative;
+  width: 100%;
+  height: clamp(280px, 44vh, 480px);
+  margin-inline: auto;
+  transform-style: preserve-3d;
+}
+
+.deck-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 1rem;
+  background: #0b0c10;
+  transform-style: preserve-3d;
+  transition:
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 200ms ease,
+    filter 200ms ease,
+    border-color 200ms ease;
+}
+
+.deck-card.is-active {
+  --deck-x: 0px;
+  --deck-z: 70px;
+  --deck-ry: 0deg;
+  --deck-scale: 1;
+  z-index: 3;
+  opacity: 1;
+  cursor: default;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+}
+
+.deck-card.is-left {
+  --deck-x: calc(-1 * clamp(40px, 4vw, 70px));
+  --deck-z: -120px;
+  --deck-ry: 18deg;
+  --deck-scale: 0.82;
+  z-index: 2;
+  opacity: 0.42;
+  filter: saturate(0.6) brightness(0.65);
+}
+
+.deck-card.is-right {
+  --deck-x: clamp(40px, 4vw, 70px);
+  --deck-z: -120px;
+  --deck-ry: -18deg;
+  --deck-scale: 0.82;
+  z-index: 2;
+  opacity: 0.42;
+  filter: saturate(0.6) brightness(0.65);
+}
+
+.hero .deck-card:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: #0b0c10;
+  color: inherit;
+}
+
+.hero-control {
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  transition: all 300ms ease;
+  backdrop-filter: blur(12px);
+}
+
+.hero-control:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  transform: scale(1.06);
+}
+
+.hero-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.hero-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: heroMarquee 24s linear infinite;
+  will-change: transform;
+}
+
+.hero-marquee:hover .hero-marquee-track {
+  animation-play-state: paused;
+}
+
+.hero-scroll-cue {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 1.1rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.hero-scroll-cue::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  height: 0.9rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), transparent);
+  animation: heroScrollCue 1.8s ease-in-out infinite;
+}
+
+@keyframes heroAuroraOne {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(9vw, 7vh, 0) scale(1.18);
+  }
+}
+
+@keyframes heroAuroraTwo {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-7vw, -6vh, 0) scale(0.92);
+  }
+}
+
+@keyframes heroMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-33.3333%, 0, 0);
+  }
+}
+
+@keyframes heroScrollCue {
+  0%,
+  100% {
+    transform: translate(-50%, -3px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    transform: translate(-50%, 7px);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .deck-track {
+    width: 92vw;
+    height: 38vh;
+  }
+
+  .deck-card {
+    width: 86vw;
+  }
+
+  .deck-card.is-left {
+    --deck-x: calc(-1 * 32vw);
+    --deck-z: -90px;
+    --deck-ry: 14deg;
+    --deck-scale: 0.8;
+  }
+
+  .deck-card.is-right {
+    --deck-x: 32vw;
+    --deck-z: -90px;
+    --deck-ry: -14deg;
+    --deck-scale: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-aurora,
+  .hero-marquee-track,
+  .hero-scroll-cue::after,
+  .animate-bg-move,
+  .project-images,
+  .loaderParent,
+  .loaderChild {
+    animation: none !important;
+  }
+
+  .deck-tilt {
+    transition: none;
+  }
+
+  .hero-marquee-track {
+    transform: none !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

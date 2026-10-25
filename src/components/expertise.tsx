@@ -1,14 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { primary } from "@/styles/fonts";
-import { animate, createScope, onScroll, set, stagger } from "animejs";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export default function Expertise({ changeSite }: any) {
   const [selectedGroup, setSelectedGroup] = useState("ALL");
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-  const groups = ["ALL", "FRONTEND", "BACKEND", "DATABASE", "DEVOPS", "UI/UX"];
+  const groups = [
+    "ALL",
+    "FRONTEND",
+    "BACKEND",
+    "DATABASE",
+    "DEVOPS",
+    "SYSTEMS",
+    "UI/UX",
+  ];
   const skills = [
     {
       title: "HTML",
@@ -18,7 +26,7 @@ export default function Expertise({ changeSite }: any) {
         <Image
           src={`${basePath}/logos/html5.svg`}
           className="rounded-sm invert"
-          alt="JavaScript"
+          alt=""
           width={22}
           height={22}
         />
@@ -32,7 +40,7 @@ export default function Expertise({ changeSite }: any) {
         <Image
           src={`${basePath}/logos/css.svg`}
           className="rounded-sm invert"
-          alt="JavaScript"
+          alt=""
           width={22}
           height={22}
         />
@@ -50,7 +58,7 @@ export default function Expertise({ changeSite }: any) {
               ? "invert"
               : ""
           } rounded-sm`}
-          alt="JavaScript"
+          alt=""
           width={22}
           height={22}
         />
@@ -68,7 +76,7 @@ export default function Expertise({ changeSite }: any) {
               ? "invert"
               : ""
           } rounded-sm`}
-          alt="JavaScript"
+          alt=""
           width={22}
           height={22}
         />
@@ -86,7 +94,7 @@ export default function Expertise({ changeSite }: any) {
               ? "invert"
               : ""
           } rounded-sm`}
-          alt="JavaScript"
+          alt=""
           width={22}
           height={22}
         />
@@ -104,7 +112,35 @@ export default function Expertise({ changeSite }: any) {
               ? "invert"
               : ""
           } rounded-sm`}
-          alt="JavaScript"
+          alt=""
+          width={22}
+          height={22}
+        />
+      ),
+    },
+    {
+      title: "Vue",
+      group: "FRONTEND",
+      style: "bg-[#41B883] text-white",
+      icon: (
+        <Image
+          src={`${basePath}/logos/vuedotjs.svg`}
+          className="rounded-sm invert"
+          alt="Vue"
+          width={22}
+          height={22}
+        />
+      ),
+    },
+    {
+      title: "Angular",
+      group: "FRONTEND",
+      style: "bg-[#DD0031] text-white",
+      icon: (
+        <Image
+          src={`${basePath}/logos/angular.svg`}
+          className="rounded-sm invert"
+          alt="Angular"
           width={22}
           height={22}
         />
@@ -118,7 +154,7 @@ export default function Expertise({ changeSite }: any) {
         <Image
           src={`${basePath}/logos/tailwindcss.svg`}
           className="rounded-sm invert"
-          alt="JavaScript"
+          alt=""
           width={22}
           height={22}
         />
@@ -136,7 +172,7 @@ export default function Expertise({ changeSite }: any) {
               ? "invert"
               : ""
           } rounded-sm`}
-          alt="JavaScript"
+          alt=""
           width={22}
           height={22}
         />
@@ -154,7 +190,77 @@ export default function Expertise({ changeSite }: any) {
               ? "invert"
               : ""
           } rounded-sm`}
-          alt="JavaScript"
+          alt=""
+          width={22}
+          height={22}
+        />
+      ),
+    },
+    {
+      title: "Django",
+      group: "BACKEND",
+      style: "bg-[#092E20] text-white",
+      icon: (
+        <Image
+          src={`${basePath}/logos/django.svg`}
+          className="rounded-sm invert"
+          alt="Django"
+          width={22}
+          height={22}
+        />
+      ),
+    },
+    {
+      title: "Fastify",
+      group: "BACKEND",
+      style: "bg-[#000000] text-white",
+      icon: (
+        <Image
+          src={`${basePath}/logos/fastify.svg`}
+          className="rounded-sm invert"
+          alt="Fastify"
+          width={22}
+          height={22}
+        />
+      ),
+    },
+    {
+      title: "Python",
+      group: "BACKEND",
+      style: "bg-[#3776AB] text-white",
+      icon: (
+        <Image
+          src={`${basePath}/logos/python.svg`}
+          className="rounded-sm invert"
+          alt="Python"
+          width={22}
+          height={22}
+        />
+      ),
+    },
+    {
+      title: "Golang",
+      group: "BACKEND",
+      style: "bg-[#00ADD8] text-black",
+      icon: (
+        <Image
+          src={`${basePath}/logos/go.svg`}
+          className="rounded-sm"
+          alt="Go"
+          width={22}
+          height={22}
+        />
+      ),
+    },
+    {
+      title: "C / C++",
+      group: "SYSTEMS",
+      style: "bg-[#00599C] text-white",
+      icon: (
+        <Image
+          src={`${basePath}/logos/cplusplus.svg`}
+          className="rounded-sm invert"
+          alt="C and C++"
           width={22}
           height={22}
         />
@@ -168,7 +274,7 @@ export default function Expertise({ changeSite }: any) {
         <Image
           src={`${basePath}/logos/mongodb.svg`}
           className="rounded-sm invert"
-          alt="JavaScript"
+          alt=""
           width={22}
           height={22}
         />
@@ -182,7 +288,7 @@ export default function Expertise({ changeSite }: any) {
         <Image
           src={`${basePath}/logos/postgresql.svg`}
           className="rounded-sm invert"
-          alt="JavaScript"
+          alt=""
           width={22}
           height={22}
         />
@@ -196,7 +302,35 @@ export default function Expertise({ changeSite }: any) {
         <Image
           src={`${basePath}/logos/docker.svg`}
           className="rounded-sm invert"
-          alt="JavaScript"
+          alt=""
+          width={22}
+          height={22}
+        />
+      ),
+    },
+    {
+      title: "MySQL",
+      group: "DATABASE",
+      style: "bg-[#4479A1] text-white",
+      icon: (
+        <Image
+          src={`${basePath}/logos/mysql.svg`}
+          className="rounded-sm invert"
+          alt="MySQL"
+          width={22}
+          height={22}
+        />
+      ),
+    },
+    {
+      title: "AWS",
+      group: "DEVOPS",
+      style: "bg-[#232F3E] text-white",
+      icon: (
+        <Image
+          src={`${basePath}/logos/amazonwebservices.svg`}
+          className="rounded-sm invert"
+          alt="Amazon Web Services"
           width={22}
           height={22}
         />
@@ -214,7 +348,7 @@ export default function Expertise({ changeSite }: any) {
               ? "invert"
               : ""
           } rounded-sm`}
-          alt="JavaScript"
+          alt=""
           width={22}
           height={22}
         />
@@ -228,7 +362,7 @@ export default function Expertise({ changeSite }: any) {
         <Image
           src={`${basePath}/logos/figma.svg`}
           className="rounded-sm invert"
-          alt="JavaScript"
+          alt=""
           width={22}
           height={22}
         />
@@ -242,7 +376,7 @@ export default function Expertise({ changeSite }: any) {
         <Image
           src={`${basePath}/logos/gimp.svg`}
           className="rounded-sm invert"
-          alt="JavaScript"
+          alt=""
           width={22}
           height={22}
         />
@@ -256,7 +390,7 @@ export default function Expertise({ changeSite }: any) {
         <Image
           src={`${basePath}/logos/davinciresolve.svg`}
           className="rounded-sm invert"
-          alt="JavaScript"
+          alt=""
           width={22}
           height={22}
         />
@@ -264,30 +398,18 @@ export default function Expertise({ changeSite }: any) {
     },
   ];
 
-  const root = useRef(null);
-  const scope = useRef(null as any);
-
-  useEffect(() => {
-    scope.current = createScope({ root }).add((self) => {
-      const animation = animate(".scrollIn", {
-        opacity: [0, 1],
-        autoplay: onScroll({
-          enter: "bottom top",
-          leave: "top bottom",
-        }),
-        easing: "linear",
-        duration: 300,
-        delay: stagger(50),
-      });
-    });
-
-    return () => scope.current.revert();
-  }, []);
+  const root = useRef<HTMLDivElement>(null);
+  useScrollReveal(root, {
+    selector: "[data-reveal]",
+    y: 26,
+    duration: 300,
+    stagger: 20,
+  });
 
   return (
     <div ref={root} className="w-full flex justify-center items-center">
       <div className="w-3/5 min-w-72 min-h-dvh h-fit py-8 flex flex-col justify-center items-center gap-8">
-        <h2 className="scrollIn text-2xl text-center lg:text-4xl font-semibold tracking-tighter">
+        <h2 data-reveal className="text-2xl text-center lg:text-4xl font-semibold tracking-tighter">
           unleash your{"  "}
           <span
             style={{ backgroundImage: `url(${basePath}/gradient.png)` }}
@@ -297,7 +419,7 @@ export default function Expertise({ changeSite }: any) {
           </span>
           vision
         </h2>
-        <p className="scrollIn opacity-0 text-xl tracking-tight font-extralight text-center">
+        <p data-reveal className="text-xl tracking-tight font-extralight text-center">
           In a day and age where there&apos;s a solution for every possible
           problem, what makes you stand out is your innovation. Your creativity
           should shine bright, that&apos;s why I desire to be challenged in
@@ -307,14 +429,15 @@ export default function Expertise({ changeSite }: any) {
         <Link
           href="/connect"
           onClick={changeSite}
-          className={`${primary.className} scrollIn opacity-0 link rounded-lg border border-white p-2 pl-4 tracking-widest font-semibold hover:border-black bg-primary hover:text-black hover:bg-white hover:shadow-md shadow-blue-300/25 transition-all`}
+          data-reveal
+          className={`${primary.className} link rounded-lg border border-white p-2 pl-4 tracking-widest font-semibold hover:border-black bg-primary hover:text-black hover:bg-white hover:shadow-md shadow-blue-300/25 transition-all`}
         >
           LET&apos;S TALK
         </Link>
-        <h3 className="scrollIn opacity-0 font-semibold text-xl mt-8">
+        <h3 data-reveal className="font-semibold text-xl mt-8">
           my tech expertise
         </h3>
-        <div className="scrollIn opacity-0 flex flex-wrap justify-center gap-2">
+        <div data-reveal className="flex flex-wrap justify-center gap-2">
           {groups.map((group) => (
             <div
               key={group}
@@ -335,17 +458,18 @@ export default function Expertise({ changeSite }: any) {
           {skills
             .sort((a, b) => a.group.localeCompare(b.group))
             .map((skill) => (
-              <div
-                key={skill.title}
-                className={`scrollIn opacity-0 px-4 py-2 rounded-xl text-center flex gap-2 transition-all font-semibold ${
-                  selectedGroup === "ALL" || skill.group === selectedGroup
-                    ? `opacity-100 ${skill.style}`
-                    : "opacity-25"
-                }
-                  `}
-              >
-                {skill.icon}
-                <p>{skill.title}</p>
+              <div key={skill.title} data-reveal>
+                <div
+                  className={`px-4 py-2 rounded-xl text-center flex gap-2 transition-all font-semibold ${
+                    selectedGroup === "ALL" || skill.group === selectedGroup
+                      ? `opacity-100 ${skill.style}`
+                      : "opacity-25"
+                  }
+                    `}
+                >
+                  {skill.icon}
+                  <p>{skill.title}</p>
+                </div>
               </div>
             ))}
         </div>

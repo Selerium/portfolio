@@ -9,7 +9,17 @@ import { useStore } from "../stores/SidebarStore";
 export default function NavBar() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const firstPath = usePathname();
-  const pages = ["welcome", "about", "projects", "connect"];
+  const pathname =
+    firstPath.replace(basePath, "").replace(/\/+$/, "") || "/";
+  const pages = ["welcome", "projects", "connect"];
+  const desktopPages = [
+    { label: "projects", href: "/projects" },
+    { label: "connect", href: "/connect" },
+  ];
+  const isPageActive = (href: string) =>
+    href === "/projects"
+      ? pathname === href || pathname.startsWith(`${href}/`)
+      : pathname === href;
   const [chosenPage, setChosenPage] = useState(-1);
   const loaderState = useStore((state: any) => state.showLoader);
   const toggleLoaderState = useStore((state: any) => state.toggleLoader);
@@ -96,37 +106,41 @@ export default function NavBar() {
       <nav
         className={`flex w-11/12 justify-between items-center h-fit py-4 backdrop-blur-3xl`}
       >
-        <img
-          src={`${basePath}/adi-logo.svg`}
-          className="hidden lg:block w-20 mr-20 h-auto"
-        ></img>
+        <Link href="/" className="hidden lg:block w-20 shrink-0">
+          <img
+            src={`${basePath}/adi-logo.svg`}
+            className="w-20 h-auto"
+            alt="adi. home"
+          />
+        </Link>
         <img
           src={`${basePath}/custom-cursor.png`}
           className="block lg:hidden w-6 mr-20 h-auto"
         ></img>
         <div
-          onClick={toggleSidebar}
-          className="hidden lg:flex gap-2 items-center justify-center relative nav-dropdown"
+          className={`hidden lg:flex flex-1 items-center justify-center gap-10 ${secondary.className}`}
         >
-          <div className="h-[1px] w-14 bg-white"></div>
-          <h4
-            className={`${secondary.className} transition-all cursor-pointer font-extralight text-xl glow`}
-          >
-            {chosenPage == -1
-              ? firstPath.length > 1
-                ? firstPath.substring(1, firstPath.length - 1)
-                : "welcome"
-              : pages[chosenPage]}
-          </h4>
-          <div className="h-[1px] w-14 bg-white"></div>
-          <svg
-            viewBox="0 0 10 5"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="absolute translate-y-5 w-3 transition-all cursor-pointer"
-          >
-            <path d="M1 1L5 4L9 1" stroke="white" />
-          </svg>
+          {desktopPages.map((page) => {
+            const active = isPageActive(page.href);
+
+            return (
+              <Link
+                key={page.href}
+                href={page.href}
+                aria-current={active ? "page" : undefined}
+                className={`relative py-2 text-xl font-extralight tracking-wide transition-colors ${
+                  active ? "text-white" : "text-white/55 hover:text-white"
+                }`}
+              >
+                {page.label}
+                <span
+                  className={`absolute inset-x-0 -bottom-1 h-px bg-white transition-all duration-300 ${
+                    active ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+                  }`}
+                />
+              </Link>
+            );
+          })}
         </div>
         <img
           onClick={toggleSidebar}

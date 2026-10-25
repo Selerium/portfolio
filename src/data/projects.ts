@@ -4,6 +4,7 @@ export type Project = {
   description: string;
   tags: string[];
   image: string;
+  media?: string;
   overview: string;
   highlights: string[];
   engineeringFocus: string[];
@@ -19,7 +20,7 @@ export const projects: Project[] = [
     title: "crosscurrent events platform",
     description: "A full-stack event management platform for registrations, administration, payments, attendee management, and operational workflows.",
     tags: ["Next.js", "React", "Express", "TypeScript", "Prisma", "PostgreSQL", "Docker", "Nginx"],
-    image: "/crosscurrent-sample.png",
+    image: "/crosscurrent-sample.webp",
     github: "https://github.com/Selerium/crosscurrent-events-platform",
     overview: "A production-oriented application built around real operational requirements rather than a simple CRUD demonstration. The platform separates the web client, API, database, and public-facing proxy while supporting the different states and workflows involved in event registration.",
     architecture: "Next.js / React frontend → Nginx reverse proxy and TLS → Express/TypeScript API → Prisma/PostgreSQL, with the stack orchestrated through Docker Compose.",
@@ -43,7 +44,7 @@ export const projects: Project[] = [
     title: "EduAI",
     description: "A full-stack educational assistant prototype combining authentication, classes, teacher workflows, gamification, student experiences, and AI-oriented functionality.",
     tags: ["Next.js", "React", "Express", "TypeScript", "Prisma", "PostgreSQL", "WebSockets", "Docker"],
-    image: "/eduai-sample.png",
+    image: "/eduai-sample.webp",
     github: "https://github.com/Selerium/innovation-challenge",
     overview: "An end-to-end TypeScript monorepo that brings a web client, API, database, authentication, shared packages, live communication, and role-specific workflows into one coherent application architecture.",
     architecture: "Next.js web client ↔ HTTP/WebSocket ↔ Express server ↔ Prisma/PostgreSQL, with shared TypeScript packages and Docker Compose coordinating the environment.",
@@ -67,7 +68,7 @@ export const projects: Project[] = [
     title: "transcendence",
     description: "A full-stack multiplayer Pong platform built as a 42 Common Core project, combining a browser SPA, Django API, PostgreSQL, Docker, and Nginx.",
     tags: ["JavaScript", "Django", "PostgreSQL", "Docker", "Nginx", "Multiplayer"],
-    image: "/transcendence-sample.png",
+    image: "/transcendence-sample.webp",
     github: "https://github.com/Selerium/transcendence",
     overview: "A multi-service web application that moves beyond isolated exercises into a browser client, backend API, relational persistence, deployment layer, multiplayer gameplay, and user-to-user functionality working together.",
     architecture: "Browser SPA → Nginx frontend/API proxy → Django backend → PostgreSQL, with all services connected through a Docker network and persistent volumes.",
@@ -91,7 +92,7 @@ export const projects: Project[] = [
     title: "express + prisma + nginx + docker",
     description: "A reusable Dockerized backend foundation for Express applications with PostgreSQL, Prisma, authentication, transactional email, and an Nginx reverse proxy.",
     tags: ["Express", "Prisma", "PostgreSQL", "Nginx", "Docker"],
-    image: "/express-prisma-nginx-docker.png",
+    image: "/express-prisma-nginx-docker.webp",
     github: "https://github.com/Selerium/express-prisma-nginx-docker",
     overview: "A reusable backend and infrastructure foundation that packages recurring application concerns into a repeatable starting point instead of rebuilding authentication, persistence, reverse proxying, and environment setup for every project.",
     architecture: "Internet → Nginx HTTP/HTTPS → Express backend → PostgreSQL/Prisma, with Resend available for transactional email and Docker Compose managing the services.",
@@ -115,7 +116,7 @@ export const projects: Project[] = [
     title: "inception",
     description: "A containerisation project involving NGINX, MariaDB, WordPress, Docker networking, and persistent volumes.",
     tags: ["DevOps", "Docker", "CI/CD"],
-    image: "/inception-sample.png",
+    image: "/inception-sample.webp",
     github: "https://github.com/Selerium/inception",
     overview: "A 42 infrastructure project focused on understanding how a multi-service application is assembled and deployed with containers, networking, persistent storage, and a reverse proxy.",
     highlights: [
@@ -135,7 +136,7 @@ export const projects: Project[] = [
     title: "minishell",
     description: "A Unix shell implementation in C covering parsing, expansion, redirections, pipelines, processes, signals, and memory management.",
     tags: ["C", "Systems Programming", "Unix", "42AD"],
-    image: "/minishell-sample.png",
+    image: "/minishell-sample.webp",
     github: "https://github.com/Selerium/minishell",
     overview: "A low-level systems project that rebuilds core shell behaviour instead of delegating process execution and parsing to a high-level runtime. The code is split into parsing, expansion, execution, built-ins, redirection, signal handling, and cleanup responsibilities.",
     architecture: "User input → syntax validation → parsing/tokenisation → quote handling and expansion → redirections/pipelines → command lookup/execution → process and signal management.",
@@ -159,7 +160,8 @@ export const projects: Project[] = [
     title: "cub3d",
     description: "A C raycasting project that renders a real-time visual simulation inspired by early first-person games.",
     tags: ["C", "Graphics", "Raycasting", "42AD"],
-    image: "/cub3d-sample.gif",
+    image: "/cub3d-poster.webp",
+    media: "/cub3d-animated.webp",
     github: "https://github.com/Selerium/cub3d",
     overview: "A low-level graphics project centred on implementing a raycasting engine in C and turning the maths and rendering pipeline into an interactive first-person environment.",
     highlights: [
@@ -179,7 +181,7 @@ export const projects: Project[] = [
     title: "portfolio",
     description: "The portfolio site itself: a Next.js and React project combining personal branding, project case studies, animation, and freelance presentation.",
     tags: ["Next.js", "React", "TypeScript", "Anime.js", "Web Design"],
-    image: "/portfolio-sample.png",
+    image: "/portfolio-sample.webp",
     github: "https://github.com/Selerium/portfolio",
     overview: "A working product as well as a showcase: the site uses Next.js and React to present projects, case studies, experience, and contact pathways with a deliberately expressive visual system.",
     highlights: [
@@ -199,7 +201,7 @@ export const projects: Project[] = [
     title: "sta youth website",
     description: "A minimalist landing page for a youth ministry, built with Vue and Tailwind around a clear visual identity.",
     tags: ["Vue", "Tailwind CSS", "Web Design"],
-    image: "/youth-sample.png",
+    image: "/youth-sample.webp",
     github: "https://github.com/Selerium/sta-youth-website",
     overview: "A focused client-style landing page that combines a simple information architecture with a visual identity designed for a youth community.",
     context: "A practical side project for a youth ministry.",
@@ -220,7 +222,7 @@ export const projects: Project[] = [
     title: "junia tourism",
     description: "A static tourism marketing site built with vanilla HTML/CSS/JS and Zola, with the visual design created from scratch in Figma.",
     tags: ["HTML", "CSS", "JavaScript", "Zola", "Figma"],
-    image: "/junia-sample.png",
+    image: "/junia-sample.webp",
     github: "https://github.com/Selerium/junia",
     overview: "A lightweight static-site project designed to showcase tourism offerings while keeping the implementation simple, fast, and easy to deploy.",
     context: "Design created from scratch in Figma before implementation.",

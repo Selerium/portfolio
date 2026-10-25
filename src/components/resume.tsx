@@ -1,5 +1,5 @@
-import { animate, createScope, onScroll, stagger } from "animejs";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export default function Resume() {
   const [selectedOption, setSelectedOption] = useState("ALL");
@@ -116,94 +116,108 @@ export default function Resume() {
     },
   ];
 
-  const root = useRef(null);
-  const scope = useRef(null as any);
-  useEffect(() => {
-    scope.current = createScope({ root }).add((self) => {
-      const animation = animate(".resumeCard", {
-        opacity: [0, 1],
-        transformX: [100, 0],
-        duration: 300,
-        delay: stagger(50),
-        autoplay: onScroll({
-          enter: "bottom bottom",
-        }),
-        onComplete: () => {
-          animation.revert();
-        },
-      });
-    });
+  const root = useRef<HTMLDivElement>(null);
+  const header = useRef<HTMLDivElement>(null);
+  const cards = useRef<HTMLDivElement>(null);
 
-    return () => scope.current.revert();
-  }, []);
+  useScrollReveal(header, {
+    selector: "[data-reveal]",
+    y: 22,
+    duration: 300,
+    stagger: 20,
+  });
+
+  useScrollReveal(cards, {
+    selector: "[data-reveal]",
+    x: 70,
+    y: 0,
+    duration: 300,
+    stagger: 0,
+  });
 
   return (
     <div
       ref={root}
       className="w-3/5 min-w-72 h-fit flex flex-col gap-4 transition-all pb-8"
     >
-      <h2 className="text-2xl lg:text-4xl font-semibold tracking-tighter order-first">
-        my resume
-      </h2>
-      <div className="flex flex-wrap gap-2 order-first">
-        {options.map((option) => (
-          <div
-            key={option}
-            className={`px-4 py-2 rounded-xl text-center flex gap-2 border transition-all cursor-pointer ${
-              selectedOption === option
-                ? "bg-white text-primary border-primary"
-                : "border-primary hover:bg-primary hover:text-white"
-            }`}
-            onClick={() =>
-              setSelectedOption(option === selectedOption ? "ALL" : option)
-            }
-          >
-            <p className="select-none">{option}</p>
-          </div>
-        ))}
-      </div>
-      {resumeList.map((item) => (
-        <div
-          key={`${item.title}${item.organization}`}
-          className={`resumeCard flex lg:flex-row flex-col rounded-lg border border-primary transition-all bg-primary ${
-            selectedOption === "ALL" || item.type === selectedOption
-              ? "opacity-100"
-              : "h-0 opacity-0 absolute bottom-0"
-          }`}
-        >
-          <div className="lg:w-1/2 flex flex-col gap-2 p-4">
-            <div>
-              <div className="flex gap-2">
-                <p className="tracking-tight font-semibold text-2xl lowercase">
-                  {item.title}
-                </p>
-                <p className="py-1 px-2 h-fit rounded-lg bg-secondary">
-                  {item.type}
-                </p>
-              </div>
-              <p className="font-light">
-                {item.organization} |{" "}
-                <span className="italic">{item.location}</span>
-              </p>
+      <div ref={header} className="flex flex-col gap-4">
+        <h2 data-reveal className="text-2xl lg:text-4xl font-semibold tracking-tighter">
+          my resume
+        </h2>
+        <p data-reveal className="text-sm font-light text-white/60">
+          Available for full-stack roles in London and across the UK ·
+          relocating from Abu Dhabi
+        </p>
+        <div data-reveal className="flex flex-wrap gap-2">
+          {options.map((option) => (
+            <div
+              key={option}
+              className={`px-4 py-2 rounded-xl text-center flex gap-2 border transition-all cursor-pointer ${
+                selectedOption === option
+                  ? "bg-white text-primary border-primary"
+                  : "border-primary hover:bg-primary hover:text-white"
+              }`}
+              onClick={() =>
+                setSelectedOption(option === selectedOption ? "ALL" : option)
+              }
+            >
+              <p className="select-none">{option}</p>
             </div>
-            <p className="font-light">{item.summary}</p>
-          </div>
-          <div className="lg:w-1/2 flex flex-col justify-start gap-2 p-4 bg-white text-black rounded-lg">
-            <p className="py-1 px-2 border border-primary rounded-lg w-fit">
-              {item.endDate === "Present"
-                ? `since ${item.startDate} `
-                : `${item.startDate} - ${item.endDate}`}
-            </p>
-            <ul className="list-disc ml-4">
-              {item.points.map((point) => (
-                <li key={point} className="font-light">
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </div>
+          ))}
         </div>
-      ))}
+      </div>
+      <div ref={cards} className="relative flex flex-col gap-4">
+        {resumeList.map((item) => {
+          const isVisible =
+            selectedOption === "ALL" || item.type === selectedOption;
+
+          return (
+            <div
+              key={`${item.title}${item.organization}`}
+              className={`transition-all ${
+                isVisible ? "opacity-100" : "h-0 opacity-0 absolute bottom-0 pointer-events-none"
+              }`}
+            >
+              <div
+                data-reveal
+                className="resumeCard flex lg:flex-row flex-col rounded-lg border border-primary transition-all bg-primary"
+              >
+                <div className="lg:w-1/2 flex flex-col gap-2 p-4">
+                  <div>
+                    <div className="flex gap-2">
+                      <p className="tracking-tight font-semibold text-2xl lowercase">
+                        {item.title}
+                      </p>
+                      <p className="py-1 px-2 h-fit rounded-lg bg-secondary">
+                        {item.type}
+                      </p>
+                    </div>
+                    <p className="font-light">
+                      {item.organization} |{" "}
+                      <span className="italic">{item.location}</span>
+                    </p>
+                  </div>
+                  <p className="font-light">{item.summary}</p>
+                </div>
+                <div className="lg:w-1/2 flex flex-col justify-start gap-2 p-4 bg-white text-black rounded-lg">
+                  <p className="py-1 px-2 border border-primary rounded-lg w-fit">
+                    {item.endDate === "Present"
+                      ? `since ${item.startDate} `
+                      : `${item.startDate} - ${item.endDate}`}
+                  </p>
+                  <ul className="list-disc ml-4">
+                    {item.points.map((point) => (
+                      <li key={point} className="font-light">
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

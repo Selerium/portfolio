@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { primary, secondary } from "../../../styles/fonts";
 import { getProject, projects } from "@/data/projects";
+import ScrollReveal from "@/components/scroll-reveal";
+import JsonLd from "@/components/json-ld";
+import { breadcrumbSchema, projectSchema } from "@/lib/schema";
+import { absoluteUrl, basePath, projectUrl } from "@/lib/site";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -9,6 +15,45 @@ type ProjectPageProps = {
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: ProjectPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProject(slug);
+
+  if (!project) {
+    return { title: "Project not found" };
+  }
+
+  const canonical = projectUrl(project.slug);
+  const title = `${project.title} case study`;
+
+  return {
+    title,
+    description: project.description,
+    alternates: { canonical },
+    openGraph: {
+      type: "article",
+      url: canonical,
+      title: `${title} | Adi`,
+      description: project.description,
+      images: [
+        {
+          url: absoluteUrl("/og-image.png"),
+          width: 1200,
+          height: 630,
+          alt: `${project.title} case study by Adi`,
+        },
+      ],
+    },
+    twitter: {
+      title: `${title} | Adi`,
+      description: project.description,
+      images: [absoluteUrl("/og-image.png")],
+    },
+  };
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
@@ -19,19 +64,30 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const projectMedia = project.media || project.image;
   const currentIndex = projects.findIndex((item) => item.slug === project.slug);
   const previous = projects[currentIndex - 1];
   const next = projects[currentIndex + 1];
 
   return (
     <main className="w-full min-h-dvh py-16 lg:py-24 flex justify-center">
-      <article className="w-11/12 max-w-6xl">
-        <Link href="/projects" className="link inline-flex mb-10 text-sm uppercase tracking-[0.25em] font-semibold">
-          &larr; back to projects
-        </Link>
+      <JsonLd
+        data={[
+          projectSchema(project),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Projects", path: "/projects/" },
+            { name: project.title, path: `/projects/${project.slug}/` },
+          ]),
+        ]}
+      />
+      <ScrollReveal className="w-11/12 max-w-6xl">
+        <article>
+          <Link href="/projects" data-reveal className="link inline-flex mb-10 text-sm uppercase tracking-[0.25em] font-semibold">
+            &larr; back to projects
+          </Link>
 
-        <header className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-end">
+        <header data-reveal className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-end">
           <div>
             <p className="uppercase tracking-[0.3em] text-sm font-semibold text-primary">case study</p>
             <h1 className={primary.className + " mt-3 text-5xl lg:text-7xl font-semibold tracking-tighter uppercase"}>
@@ -40,24 +96,27 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <p className="mt-6 text-xl font-light leading-relaxed">{project.description}</p>
           </div>
 
-          <div className="rounded-xl border border-primary overflow-hidden bg-white">
-            <img
+          <div className="relative rounded-xl border border-primary overflow-hidden bg-white aspect-video">
+            <Image
               src={basePath + project.image}
               alt={project.title + " project preview"}
-              className="w-full aspect-video object-cover"
+              fill
+              priority
+              sizes="(max-width: 1024px) 92vw, 46vw"
+              className="object-cover"
             />
           </div>
         </header>
 
         <div className="mt-16 grid lg:grid-cols-[1fr_280px] gap-12">
           <div className="space-y-14">
-            <section>
+            <section data-reveal>
               <h2 className={primary.className + " text-3xl font-semibold tracking-tight"}>overview</h2>
               <p className="mt-4 text-lg font-light leading-relaxed">{project.overview}</p>
             </section>
 
             {project.architecture && (
-              <section>
+              <section data-reveal>
                 <h2 className={primary.className + " text-3xl font-semibold tracking-tight"}>architecture</h2>
                 <div className="mt-5 rounded-xl border border-primary/40 p-5 bg-white/60">
                   <p className={secondary.className + " font-light leading-relaxed"}>{project.architecture}</p>
@@ -65,7 +124,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </section>
             )}
 
-            <section>
+            <section data-reveal>
               <h2 className={primary.className + " text-3xl font-semibold tracking-tight"}>engineering focus</h2>
               <ul className="mt-5 space-y-3 list-disc ml-5">
                 {project.engineeringFocus.map((item) => (
@@ -74,7 +133,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </ul>
             </section>
 
-            <section>
+            <section data-reveal>
               <h2 className={primary.className + " text-3xl font-semibold tracking-tight"}>highlights</h2>
               <ul className="mt-5 space-y-3 list-disc ml-5">
                 {project.highlights.map((highlight) => (
@@ -84,20 +143,23 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </section>
 
             {project.context && (
-              <section className="rounded-xl border border-primary p-6">
+              <section data-reveal className="rounded-xl border border-primary p-6">
                 <p className="uppercase tracking-[0.25em] text-xs font-semibold">project context</p>
                 <p className="mt-3 font-light leading-relaxed">{project.context}</p>
               </section>
             )}
 
-            <section>
+            <section data-reveal>
               <h2 className={primary.className + " text-3xl font-semibold tracking-tight"}>project media</h2>
               <p className="mt-3 text-sm uppercase tracking-widest opacity-60">Existing portfolio media</p>
-              <div className="mt-5 rounded-xl border border-primary overflow-hidden">
-                <img
-                  src={basePath + project.image}
+              <div className="relative mt-5 rounded-xl border border-primary overflow-hidden aspect-video max-h-[620px]">
+                <Image
+                  src={basePath + projectMedia}
                   alt={project.title + " visual"}
-                  className="w-full max-h-[620px] object-cover"
+                  fill
+                  unoptimized={Boolean(project.media)}
+                  sizes="(max-width: 1024px) 92vw, 66vw"
+                  className="object-cover"
                 />
               </div>
             </section>
@@ -137,12 +199,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </aside>
         </div>
 
-        <nav className="mt-16 pt-8 border-t border-primary flex flex-col sm:flex-row gap-4 justify-between">
+        <nav data-reveal className="mt-16 pt-8 border-t border-primary flex flex-col sm:flex-row gap-4 justify-between">
           {previous ? <Link href={"/projects/" + previous.slug} className="link">&larr; {previous.title}</Link> : <span />}
           {next ? <Link href={"/projects/" + next.slug} className="link sm:text-right">{next.title} &rarr;</Link> : <span />}
         </nav>
 
-        <div className="mt-10 flex justify-center">
+        <div data-reveal className="mt-10 flex justify-center">
           <Link
             href="/connect"
             className={secondary.className + " link rounded-lg border border-white p-3 tracking-widest font-semibold bg-primary text-white hover:bg-white hover:text-black hover:border-black transition-all"}
@@ -150,7 +212,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             DISCUSS A PROJECT
           </Link>
         </div>
-      </article>
+        </article>
+      </ScrollReveal>
     </main>
   );
 }

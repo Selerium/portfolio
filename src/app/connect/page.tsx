@@ -1,9 +1,10 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useRef, useState } from "react";
 import { primary, secondary } from "../../styles/fonts";
 import { toasterStore } from "../../stores/toasterStore";
 import Toaster from "../../components/toaster";
+import { useMountReveal } from "@/hooks/useScrollReveal";
 
 export default function Connect() {
   const setTitle = toasterStore((state: any) => state.setTitle);
@@ -11,6 +12,14 @@ export default function Connect() {
   const setShowToaster = toasterStore((state: any) => state.setShowToaster);
   const setError = toasterStore((state: any) => state.setError);
   const [disableButton, setDisableButton] = useState(false);
+  const root = useRef<HTMLDivElement>(null);
+
+  useMountReveal(root, {
+    selector: "[data-reveal]",
+    y: 22,
+    duration: 200,
+    stagger: 20,
+  });
 
   // async function submitForm(event: FormEvent<HTMLFormElement>) {
   //   event.preventDefault();
@@ -27,21 +36,38 @@ export default function Connect() {
 
   return (
     <div
+      ref={root}
       id="connect"
       className={`h-dvh py-4 box-border w-full flex justify-center items-center relative z-0`}
     >
       <div className="w-1/3 min-w-72 flex flex-col h-4/5 justify-center items-center gap-4">
         <h1
+          data-reveal
           className={`${primary.className} lowercase tracking-tight font-semibold text-center text-3xl xl:text-5xl`}
         >
           curious? get in touch
         </h1>
         <p
+          data-reveal
           className={`${secondary.className} tracking-tight text-md font-light`}
         >
-          (unless you're a cat - heard that's fatal)
+          (unless you&apos;re a cat - heard that&apos;s fatal)
         </p>
+        <p
+          data-reveal
+          className="text-center text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200/85"
+        >
+          Relocating to London · Open to UK roles
+        </p>
+        <a
+          data-reveal
+          href="mailto:johnadithya008@gmail.com"
+          className="text-sm underline underline-offset-4 hover:opacity-70"
+        >
+          johnadithya008@gmail.com
+        </a>
         <form
+          data-reveal
           action="https://formsubmit.co/2798e985d3524484a0a43b3dfd99d3a4"
           method="POST"
           className="flex flex-col gap-4 w-full min-w-72 p-4 box-border max-h-4/5 overflow-y-auto"

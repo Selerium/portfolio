@@ -24,7 +24,6 @@ export default function Footer() {
         <img src={`${basePath}/adi-logo.svg`} className="h-8 w-auto"></img>
         <div className="flex flex-row lg:flex-col gap-4">
           <Link onClick={showLoader} href="/">home</Link>
-          <Link onClick={showLoader} href="/about">about</Link>
           <Link onClick={showLoader} href="/connect">connect</Link>
         </div>
         <div className="flex flex-row lg:flex-col gap-4">
