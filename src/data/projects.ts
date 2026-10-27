@@ -64,6 +64,33 @@ export const projects: Project[] = [
     mediaNote: "Add teacher dashboard and student journey screenshots, AI interaction examples, WebSocket/live-state visuals, and the monorepo architecture diagram."
   },
   {
+    slug: "ai-compliance-checker",
+    title: "AI Compliance Checker",
+    description: "An AI-assisted compliance review workspace that evaluates proposed AI use cases against a defined policy framework and produces structured, auditable risk reports.",
+    tags: ["Next.js", "React", "TypeScript", "Express", "Anthropic Claude", "Tool Use", "SSE", "Zod", "Prisma", "PostgreSQL", "Docker", "Nginx"],
+    image: "/gradient.png",
+    github: "https://github.com/Selerium/AI-Compliance-Checker",
+    overview: "An end-to-end compliance analysis application built around a tool-using Claude workflow. It combines model-assisted policy analysis with deterministic risk controls, server-side report validation, explicit human review, and an audit trail. The system is designed to make the AI's output reviewable and bounded rather than treating a model response as an authoritative compliance decision.",
+    architecture: "Next.js / React frontend → Nginx reverse proxy → Express / TypeScript API → Anthropic Claude tool-use workflow and Prisma / PostgreSQL persistence, orchestrated with Docker Compose. Server-sent events stream assessment progress and tool activity to the client.",
+    context: "Prototype demonstrating an AI-assisted review workflow. Assessment evidence is explicitly limited to requirements-only scope: the system does not ingest evidence documents or independently verify real-world compliance.",
+    highlights: [
+      "Claude tool-use workflow for policy lookup, data classification, risk analysis, and structured assessment reports across eight defined policy requirements.",
+      "Deterministic baseline risk scoring kept independent of model output, with server-side normalization to constrain unsupported compliance claims and validate citations.",
+      "Prompt-injection guardrails and sensitive-value redaction before model processing, with bounded tool calls, report sizes, and assessment execution.",
+      "Server-sent events for live progress, tool activity, and web-research updates during an assessment.",
+      "Persistent assessment history, versioned reports, human-review decisions, audit events, and PDF report export.",
+      "Administrative views for assessment review, usage and cost tracking, user management, and audit history.",
+    ],
+    engineeringFocus: [
+      "Combining probabilistic model reasoning with deterministic application rules and schema-validated output.",
+      "Designing an observable AI workflow with streaming progress, token / latency / cost tracking, and persisted audit events.",
+      "Treating prompt injection and sensitive data as application-level security concerns, not only prompt-writing problems.",
+      "Separating AI recommendations from explicit human-review decisions and enforcing review-state transitions on the server.",
+      "Operating a multi-service TypeScript application with Docker Compose, Nginx, Express, Prisma, and PostgreSQL.",
+    ],
+    mediaNote: "Add the assessment workflow, structured report and risk summary, streaming tool activity, guardrail examples, human-review states, admin/audit screens, and an architecture diagram."
+  },
+  {
     slug: "transcendence",
     title: "transcendence",
     description: "A full-stack multiplayer Pong platform built as a 42 Common Core project, combining a browser SPA, Django API, PostgreSQL, Docker, and Nginx.",
