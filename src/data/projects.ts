@@ -270,7 +270,7 @@ export const projects: Project[] = [
     title: "crypto market maker simulator",
     description: "A full-stack crypto market-making simulator for BTC/USDT and ETH/USDT, with configurable two-sided quotes, inventory-aware strategy, simulated fills, portfolio accounting, and real-time market monitoring.",
     tags: ["Python", "FastAPI", "React", "TypeScript", "PostgreSQL", "WebSockets", "Docker", "Trading Systems"],
-    image: "/market-maker-simulation-sample.webp",
+    image: "/gradient.png",
     github: "https://github.com/Selerium/market-maker-simulation",
     overview: "An educational market-making desk simulation built end to end. A configurable quote engine places simulated bids and asks around the market price, accounts for inventory skew and hard risk limits, and tracks fees, positions, and realised and unrealised P&L. The deterministic default feed makes sessions reproducible, while an opt-in Kraken public ticker provides live prices without placing real orders.",
     architecture: "React / Vite / TypeScript / Tailwind dashboard → Nginx → FastAPI REST and bounded WebSocket updates → async SQLAlchemy / Alembic → PostgreSQL. Market data is provided by a deterministic simulator by default or Kraken's public v2 ticker when enabled.",
