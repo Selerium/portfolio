@@ -265,6 +265,33 @@ export const projects: Project[] = [
     ],
     mediaNote: "Add the Figma design, final site screenshots, and a small section showing the design-to-implementation process."
   },
+  {
+    slug: "market-maker-simulation",
+    title: "crypto market maker simulator",
+    description: "A full-stack crypto market-making simulator for BTC/USDT and ETH/USDT, with configurable two-sided quotes, inventory-aware strategy, simulated fills, portfolio accounting, and real-time market monitoring.",
+    tags: ["Python", "FastAPI", "React", "TypeScript", "PostgreSQL", "WebSockets", "Docker", "Trading Systems"],
+    image: "/market-maker-simulation-sample.webp",
+    github: "https://github.com/Selerium/market-maker-simulation",
+    overview: "An educational market-making desk simulation built end to end. A configurable quote engine places simulated bids and asks around the market price, accounts for inventory skew and hard risk limits, and tracks fees, positions, and realised and unrealised P&L. The deterministic default feed makes sessions reproducible, while an opt-in Kraken public ticker provides live prices without placing real orders.",
+    architecture: "React / Vite / TypeScript / Tailwind dashboard → Nginx → FastAPI REST and bounded WebSocket updates → async SQLAlchemy / Alembic → PostgreSQL. Market data is provided by a deterministic simulator by default or Kraken's public v2 ticker when enabled.",
+    context: "Simulation and education only: no real orders or funds are used, and the public market-data provider needs no private exchange API credentials.",
+    highlights: [
+      "Decimal-based quote generation with configurable spread, quote size, inventory skew, and inventory/exposure limits.",
+      "Simulated quote-crossing fills, fees, long/short positions, average entry price, and realised/unrealised P&L.",
+      "Live dashboard for market prices, bid/ask quotes, strategy versions, portfolio, fills, and risk headroom, updated over WebSockets.",
+      "Deterministic simulated market feed plus optional Kraken v2 public ticker with reconnect backoff and stale-data detection.",
+      "PostgreSQL persistence for sampled market observations, immutable strategy versions, simulated trading state, and trade history.",
+      "Docker Compose deployment and CI checks for backend and frontend linting, types, tests, and builds.",
+    ],
+    engineeringFocus: [
+      "Applying Decimal arithmetic to financial quantities and keeping accounting values precise across API boundaries.",
+      "Designing inventory-aware quoting and explicit risk controls that suppress quotes when market data is stale or limits are breached.",
+      "Separating market-data providers behind an interface so simulated and public live feeds share the same engine.",
+      "Coordinating async REST APIs, bounded WebSocket events, persistence, migrations, and a real-time React dashboard.",
+      "Making the system reproducible and testable through deterministic simulation and CI.",
+    ],
+    mediaNote: "Screenshots to add later: live trading dashboard, strategy controls, bid/ask and price chart, portfolio/P&L and risk headroom, fills/history, and a system architecture diagram."
+  },
 ];
 
 export function getProject(slug: string) {
